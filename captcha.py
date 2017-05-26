@@ -2,19 +2,25 @@ from PIL import Image, ImageTk, ImageEnhance
 import numpy as np
 import cv2
 
-folder = 'nccu/'
+folder = '9x9/'
 
 #處理驗證碼
 def Captcha():
+    #循環處理
     for t in range(0,100):
+        #讀圖檔
         img = Image.open('img/' + folder + str(t) + '.bmp', 'r')
         print('讀取' + 'img/' + folder + str(t) + '.bmp...')
+
+        #去除噪點 干擾線
         # enhancer = ImageEnhance.Contrast(img)
         # img = enhancer.enhance(5.0)
         # enhancer = ImageEnhance.Brightness(img)
         # img = enhancer.enhance(10.0)
         pixdata = img.load()
         img.save('img/' + folder + str(t) + '_bright.bmp')
+
+
         # for y in range(img.size[1]): 
             # for x in range(img.size[0]): 
                 # if pixdata[x, y][0] < 10: 
@@ -28,6 +34,9 @@ def Captcha():
                 # if pixdata[x, y][2] > 0:
                     # pixdata[x, y] = (255, 255, 255, 255)
                     
+        
+        #二值化
+
         # for x in range(img.width):
         #     for y in range(img.height):
         #         if pixdata[x , y][1] != 255 and pixdata[x , y][2] == 255:
@@ -35,6 +44,8 @@ def Captcha():
         #         else:
         #             pixdata[x , y] = (255 , 255 , 255 , 255)
 
+
+        #去除噪點
         count = 0
         for i in range(img.width):
             for j in range(img.height):
@@ -51,10 +62,12 @@ def Captcha():
                 if count >= 7:
                     pixdata[i,j] = (255 , 255 , 255 , 255)    
          
+        #存檔
         img.save('img/' + folder + str(t) + '_black.bmp')
 
         im = cv2.imread('img/' + folder + str(t) + '_black.bmp' , 0)
 
+        #平滑化
         kernel = np.ones((2 , 2) , np.uint8)
         opening = cv2.morphologyEx(im, cv2.MORPH_OPEN, kernel)
 
