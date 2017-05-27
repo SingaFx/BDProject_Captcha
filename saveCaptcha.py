@@ -8,8 +8,8 @@ HEADER = {'Connection': 'keep-alive',
           'Accept-Language': 'zh-CN,zh;q=0.8',
           }
 for i in range(0,100):
-    r = requests.get('https://isdna1.yzu.edu.tw/Cnstdsel/SelRandomImage.aspx', headers=HEADER)
-    f = open('img/yzu_course/' + str(i) + '.bmp', 'wb')
+    r = requests.get('http://railway.hinet.net/ImageOut.jsp?pageRandom=0.026864249647313043', headers=HEADER)
+    f = open('img/railway/' + str(i) + '.bmp', 'wb')
     f.write(r.content)
     f.close()
     print(i)

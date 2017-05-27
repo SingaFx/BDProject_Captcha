@@ -3,7 +3,7 @@ import cv2
 import numpy as np    
 import os
 
-folder = 'nctu_course'
+folder = 'railway'
 
 pwd = os.path.split(os.path.realpath(__file__))[0]
 for t in range(0,100):

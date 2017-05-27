@@ -1,16 +1,20 @@
+#coding=utf-8  
 from PIL import Image, ImageTk, ImageEnhance
 import numpy as np
 import cv2
+import os
 
-folder = '9x9/'
+folder = 'railway'
 
+pwd = os.path.split(os.path.realpath(__file__))[0]
 #處理驗證碼
 def Captcha():
     #循環處理
     for t in range(0,100):
+        path = os.path.join(pwd, 'img\\' + folder + '\\' + str(t))
         #讀圖檔
-        img = Image.open('img/' + folder + str(t) + '.bmp', 'r')
-        print('讀取' + 'img/' + folder + str(t) + '.bmp...')
+        img = Image.open(path + '.bmp', 'r')
+        print('讀取' + path + '.bmp' + '...')
 
         #去除噪點 干擾線
         # enhancer = ImageEnhance.Contrast(img)
@@ -18,7 +22,7 @@ def Captcha():
         # enhancer = ImageEnhance.Brightness(img)
         # img = enhancer.enhance(10.0)
         pixdata = img.load()
-        img.save('img/' + folder + str(t) + '_bright.bmp')
+        img.save(path + '_bright.bmp')
 
 
         # for y in range(img.size[1]): 
@@ -63,9 +67,9 @@ def Captcha():
                     pixdata[i,j] = (255 , 255 , 255 , 255)    
          
         #存檔
-        img.save('img/' + folder + str(t) + '_black.bmp')
+        img.save(path + '_black.bmp')
 
-        im = cv2.imread('img/' + folder + str(t) + '_black.bmp' , 0)
+        im = cv2.imread(path + '_black.bmp' , 0)
 
         #平滑化
         kernel = np.ones((2 , 2) , np.uint8)
@@ -73,7 +77,7 @@ def Captcha():
 
         #opening = cv2.blur(opening , (2, 2))
         #opening = cv2.dilate(opening, (1, 1), iterations=1)
-        cv2.imwrite('img/' + folder + str(t) + '_black2.bmp', opening)
+        cv2.imwrite(path +'_black2.bmp', opening)
 
 if __name__ == "__main__":
     Captcha()
