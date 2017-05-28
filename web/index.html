@@ -1,0 +1,257 @@
+<!DOCTYPE HTML>
+<!--
+	Road Trip by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Road Trip by TEMPLATED</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+    <style>
+        canvas {
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+    </style>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<a href="#menu"><span>Menu</span></a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+				</ul>
+			</nav>
+
+		<!-- Banner -->
+		<!--
+			Note: To show a background image, set the "data-bg" attribute below
+			to the full filename of your image. This is used in each section to set
+			the background image.
+		-->
+			<section id="banner" class="bg-img" data-bg="banner.jpg">
+				<div class="inner">
+					<header>
+						<h1>This is an Analysis for Captcha</h1>
+					</header>
+				</div>
+				<a href="#one" class="more">Learn More</a>
+			</section>
+        <!--Upload Image-->
+        <section id="one" class="wrapper post bg-img" data-bg="banner6.jpg">
+            <div class="inner">
+                <article class="box">
+                    <header>
+                        <h4>Please Upload Your Captcha</h4>
+                    </header>
+                    <div class="content">
+                        <form method="post" enctype="multipart/form-data" action="receiver.php">
+                            <input name="file" type="file" value="選擇檔案"><input name="upload" type="submit" value="上傳">
+                        </form>
+                    </div>
+                </article>
+            </div>
+        </section>
+        
+		<!-- One -->
+			<section id="one" class="wrapper post bg-img" data-bg="banner2.jpg">
+				<div class="inner">
+					<article class="box">
+						<header>
+							<h2>方法一</h2>
+						</header>
+						<div class="content">
+                            <canvas id="barChart01" width="400" height="400"></canvas>
+                            <script>
+                            <!--Bar Chart-->
+                            var barData = {
+                                labels: ["執行50次", "執行100次", "執行200次"],
+                                datasets: [
+                                    {
+                                        label: "成功率(%)",
+                                        backgroundColor: "rgba(255, 99, 132, 1)",
+                                        strokeColor: "rgba(220, 220, 220, 1)",
+                                        highlightFill: "rgba(220, 220, 220, 1)",
+                                        highlightStroke: "rgba(220, 220, 220, 1)",
+                                        data: [65, 59, 80]
+                                    },
+                                ]
+                            };
+                            
+                            //return chart
+                                var ctx = document.getElementById("barChart01");
+                                var myRadarChart = new Chart(ctx, {
+                                    type: 'bar',
+                                    data: barData,
+                                    options:{
+                                        responsive: false,
+                                    }
+                                });
+                            </script>
+                            <script>
+                            //initilaize 
+                              var sidebar;
+                              $('body').css({
+                                'padding-left': '350px'
+                              });
+                              sidebar = $("<div id='one'></div>");
+                              sidebar.css({
+                                'position': 'fixed',
+                                'left': '0px',
+                                'top': '0px',
+                                'z-index': 9999,
+                                'width': '290px',
+                                'height': '100%',
+                                'background-color': 'blue'  // Confirm it shows up
+                              });
+                              $('body').append(sidebar);
+                            </script>
+						</div>
+					</article>
+				</div>
+				<a href="#two" class="more">Learn More</a>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="wrapper post bg-img" data-bg="banner5.jpg">
+				<div class="inner">
+					<article class="box">
+						<header>
+							<h2>方法二</h2>
+						</header>
+						<div class="content">
+							<canvas id="barChart02" width="400" height="400"></canvas>
+                            <script>
+                            <!--Bar Chart-->
+                            var barData = {
+                                labels: ["執行50次", "執行100次", "執行200次"],
+                                datasets: [
+                                    {
+                                        label: "成功率(%)",
+                                        backgroundColor: "rgba(255, 99, 132, 1)",
+                                        strokeColor: "rgba(220, 220, 220, 1)",
+                                        highlightFill: "rgba(220, 220, 220, 1)",
+                                        highlightStroke: "rgba(220, 220, 220, 1)",
+                                        data: [81, 56, 55]
+                                    },
+                                ]
+                            };
+                            
+                            //return chart
+                                var ctx = document.getElementById("barChart02");
+                                var myRadarChart = new Chart(ctx, {
+                                    type: 'bar',
+                                    data: barData,
+                                    options:{
+                                        responsive: false,
+                                    }
+                                });
+                            </script>
+						</div>
+					</article>
+				</div>
+				<a href="#three" class="more">Learn More</a>
+			</section>
+
+		<!-- Three -->
+			<section id="three" class="wrapper post bg-img" data-bg="banner4.jpg">
+				<div class="inner">
+					<article class="box">
+						<header>
+							<h2>方法三</h2>
+						</header>
+						<div class="content">
+							<canvas id="barChart03" width="400" height="400"></canvas>
+                            <script>
+                            <!--Bar Chart-->
+                            var barData = {
+                                labels: ["執行50次", "執行100次", "執行200次"],
+                                datasets: [
+                                    {
+                                        label: "成功率(%)",
+                                        backgroundColor: "rgba(255, 99, 132, 1)",
+                                        strokeColor: "rgba(220, 220, 220, 1)",
+                                        highlightFill: "rgba(220, 220, 220, 1)",
+                                        highlightStroke: "rgba(220, 220, 220, 1)",
+                                        data: [100, 28, 48]
+                                    },
+                                ]
+                            };
+                            
+                            //return chart
+                                var ctx = document.getElementById("barChart03");
+                                var myRadarChart = new Chart(ctx, {
+                                    type: 'bar',
+                                    data: barData,
+                                    options:{
+                                        responsive: false,
+                                    }
+                                });
+                            </script>
+						</div>
+					</article>
+				</div>
+				<a href="#four" class="more">Learn More</a>
+			</section>
+
+		<!-- Four -->
+			<section id="four" class="wrapper post bg-img" data-bg="banner3.jpg">
+				<div class="inner">
+					<article class="box">
+						<header>
+							<h2>方法四</h2>
+						</header>
+						<div class="content">
+							<canvas id="barChart04" width="400" height="400"></canvas>
+                            <script>
+                            <!--Bar Chart-->
+                            var barData = {
+                                labels: ["執行50次", "執行100次", "執行200次"],
+                                datasets: [
+                                    {
+                                        label: "成功率(%)",
+                                        backgroundColor: "rgba(255, 99, 132, 1)",
+                                        strokeColor: "rgba(220, 220, 220, 1)",
+                                        highlightFill: "rgba(220, 220, 220, 1)",
+                                        highlightStroke: "rgba(220, 220, 220, 1)",
+                                        data: [40, 19, 86]
+                                    },
+                                ]
+                            };
+                            
+                            //return chart
+                                var ctx = document.getElementById("barChart04");
+                                var myRadarChart = new Chart(ctx, {
+                                    type: 'bar',
+                                    data: barData,
+                                    options:{
+                                        responsive: false,
+                                    }
+                                });
+                            </script>
+						</div>
+					</article>
+				</div>
+			</section>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+	</body>
+</html>
