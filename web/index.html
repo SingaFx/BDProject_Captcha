@@ -20,9 +20,257 @@
             margin-right: auto;
             display: block;
         }
+        /*
+		.file {
+			position: relative;
+			display: inline-block;
+			background: #D0EEFF;
+			border: 1px solid #99D3F5;
+			border-radius: 4px;
+			padding: 4px 12px;
+			overflow: hidden;
+			color: #1E88C7;
+			text-decoration: none;
+			text-indent: 0;
+			line-height: 30px;
+		}
+		
+		.file input {
+			position: absolute;
+			font-size: 100px;
+			right: 0;
+			top: 0;
+			opacity: 0;
+		}
+		.file:hover {
+			background: #AADFFD;
+			border-color: #78C3F3;
+			color: #004974;
+			text-decoration: none;
+		}
+		*/
+
+		.filecontainer
+            {
+                width: 100%;
+                max-width: 680px; /* 800 */
+                text-align: center;
+                margin: 0 auto;
+            }
+
+                .filecontainer h1
+                {
+                    font-size: 42px;
+                    font-weight: 300;
+                    color: #0f3c4b;
+                    margin-bottom: 40px;
+                }
+                .filecontainer h1 a:hover,
+                .filecontainer h1 a:focus
+                {
+                    color: #39bfd3;
+                }
+
+                .filecontainer nav
+                {
+                    margin-bottom: 40px;
+                }
+                    .filecontainer nav a
+                    {
+                        border-bottom: 2px solid #c8dadf;
+                        display: inline-block;
+                        padding: 4px 8px;
+                        margin: 0 5px;
+                    }
+                    .filecontainer nav a.is-selected
+                    {
+                        font-weight: 700;
+                        color: #39bfd3;
+                        border-bottom-color: currentColor;
+                    }
+                    .filecontainer nav a:not( .is-selected ):hover,
+                    .filecontainer nav a:not( .is-selected ):focus
+                    {
+                        border-bottom-color: #0f3c4b;
+                    }
+
+                .filecontainer footer
+                {
+                    color: #92b0b3;
+                    margin-top: 40px;
+                }
+                    .filecontainer footer p + p
+                    {
+                        margin-top: 1em;
+                    }
+                    .filecontainer footer a:hover,
+                    .filecontainer footer a:focus
+                    {
+                        color: #39bfd3;
+                    }
+
+                .filebox
+                {
+                    font-size: 1.25rem; /* 20 */
+                    background-color: #c8dadf;
+                    position: relative;
+                    padding: 100px 20px;
+                }
+                .filebox.has-advanced-upload
+                {
+                    outline: 2px dashed #92b0b3;
+                    outline-offset: -10px;
+
+                    -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+                    transition: outline-offset .15s ease-in-out, background-color .15s linear;
+                }
+                .filebox.is-dragover
+                {
+                    outline-offset: -20px;
+                    outline-color: #c8dadf;
+                    background-color: #fff;
+                }
+                    .filebox__dragndrop,
+                    .filebox__icon
+                    {
+                        display: none;
+                    }
+                    .filebox.has-advanced-upload .filebox__dragndrop
+                    {
+                        display: inline;
+                    }
+                    .filebox.has-advanced-upload .filebox__icon
+                    {
+                        width: 100%;
+                        height: 80px;
+                        fill: #92b0b3;
+                        display: block;
+                        margin-bottom: 40px;
+                    }
+
+                    .filebox.is-uploading .filebox__input,
+                    .filebox.is-success .filebox__input,
+                    .filebox.is-error .filebox__input
+                    {
+                        visibility: hidden;
+                    }
+
+                    .filebox__uploading,
+                    .filebox__success,
+                    .filebox__error
+                    {
+                        display: none;
+                    }
+                    .filebox.is-uploading .filebox__uploading,
+                    .filebox.is-success .filebox__success,
+                    .filebox.is-error .filebox__error
+                    {
+                        display: block;
+                        position: absolute;
+                        top: 50%;
+                        right: 0;
+                        left: 0;
+
+                        -webkit-transform: translateY( -50% );
+                        transform: translateY( -50% );
+                    }
+                    .filebox__uploading
+                    {
+                        font-style: italic;
+                    }
+                    .filebox__success
+                    {
+                        -webkit-animation: appear-from-inside .25s ease-in-out;
+                        animation: appear-from-inside .25s ease-in-out;
+                    }
+                        @-webkit-keyframes appear-from-inside
+                        {
+                            from    { -webkit-transform: translateY( -50% ) scale( 0 ); }
+                            75%     { -webkit-transform: translateY( -50% ) scale( 1.1 ); }
+                            to      { -webkit-transform: translateY( -50% ) scale( 1 ); }
+                        }
+                        @keyframes appear-from-inside
+                        {
+                            from    { transform: translateY( -50% ) scale( 0 ); }
+                            75%     { transform: translateY( -50% ) scale( 1.1 ); }
+                            to      { transform: translateY( -50% ) scale( 1 ); }
+                        }
+
+                    .filebox__restart
+                    {
+                        font-weight: 700;
+                    }
+                    .filebox__restart:focus,
+                    .filebox__restart:hover
+                    {
+                        color: #39bfd3;
+                    }
+
+                    .file{
+                        display: none;
+                    }
+
+                    .js .filebox__file
+                    {
+                        width: 0.1px;
+                        height: 0.1px;
+                        opacity: 0;
+                        overflow: hidden;
+                        position: absolute;
+                        z-index: -1;
+                    }
+                    .js .filebox__file + label
+                    {
+                        max-width: 80%;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        cursor: pointer;
+                        display: inline-block;
+                        overflow: hidden;
+                    }
+                    .js .filebox__file + label:hover strong,
+                    .filebox__file:focus + label strong,
+                    .filebox__file.has-focus + label strong
+                    {
+                        color: #39bfd3;
+                    }
+                    .js .filebox__file:focus + label,
+                    .js .filebox__file.has-focus + label
+                    {
+                        outline: 1px dotted #000;
+                        outline: -webkit-focus-ring-color auto 5px;
+                    }
+                        .js .filebox__file + label *
+                        {
+                            /* pointer-events: none; */ /* in case of FastClick lib use */
+                        }
+
+                    .no-js .filebox__file + label
+                    {
+                        display: none;
+                    }
+
+                    .no-js .filebox__button
+                    {
+                        display: block;
+                    }
+                    .filebox__button
+                    {
+                        font-weight: 700;
+                        color: #e5edf1;
+                        background-color: #39bfd3;
+                        display: none;
+                        padding: 8px 16px;
+                        margin: 40px auto 0;
+                    }
+                        .filebox__button:hover,
+                        .filebox__button:focus
+                        {
+                            background-color: #0f3c4b;
+                        }
+
     </style>
 	<body>
-
 		<!-- Header -->
 			<header id="header">
 				<a href="#menu"><span>Menu</span></a>
@@ -56,15 +304,39 @@
                     <header>
                         <h4>Please Upload Your Captcha</h4>
                     </header>
-                    <div class="content">
-                        <form method="post" enctype="multipart/form-data" action="receiver.php">
-                            <input name="file" type="file" value="選擇檔案"><input name="upload" type="submit" value="上傳">
+                    <!--
+                    <form method="post" enctype="multipart/form-data" action="receiver.php">
+                       
+                        <br>
+                        <img id="previewFile" height="100" width="200"/>
+                        </br>
+                        <a href="javascript:;" class="file">選擇檔案
+                            <input type="file" name="file" id="file" accept="image/*" onchange="loadFile(event)">
+                        </a>
+                        <a href="javascript:;" class="file">上傳
+                            <input type="submit" name="upload" id="">
+                        </a>
+                     
+                    </form>
+                    -->
+                    <div class="filecontainer" role="main">
+                        <form class="filebox" method="post" action="receiver.php" enctype="multipart/form-data" novalidate class="filebox has-advanced-upload">
+                          <div class="filebox__input">
+                            <br><img id="previewFile" height="100" width="200"/></br>
+                            <input type="file" name="file" id="file" class="file" data-multiple-caption="{count} files selected" multiple>
+                            <label for="file"><strong>Choose a file</strong><span class=""> or drag it here</span>.</label>
+                            <!--<button class="" type="submit">Upload</button>-->
+                          </div>
+                          <div class="filebox__uploading">Uploading&hellip;</div>
+                          <div class="filebox__success">Done!</div>
+                          <div class="filebox__error">Error! <span></span>.</div>
+                          <input type="hidden" name="ajax" value="1"></form>
                         </form>
                     </div>
+                   
                 </article>
             </div>
         </section>
-        
 		<!-- One -->
 			<section id="one" class="wrapper post bg-img" data-bg="banner2.jpg">
 				<div class="inner">
@@ -253,5 +525,197 @@
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+<script>
+    var loadFile = function(file) {
+        var output = document.getElementById('previewFile');
+        output.src = URL.createObjectURL(file);
+    };
+      
+</script>
+<script>
+    'use strict';
+
+    ;( function ( document, window, index )
+    {
+        // feature detection for drag&drop upload
+        var isAdvancedUpload = function()
+            {
+                var div = document.createElement( 'div' );
+                return ( ( 'draggable' in div ) || ( 'ondragstart' in div && 'ondrop' in div ) ) && 'FormData' in window && 'FileReader' in window;
+            }();
+
+
+        // applying the effect for every form
+        var forms = document.querySelectorAll( '.filebox' );
+        Array.prototype.forEach.call( forms, function( form )
+        {
+            var input        = form.querySelector( 'input[type="file"]' ),
+                label        = form.querySelector( 'label' ),
+                errorMsg     = form.querySelector( '.filebox__error span' ),
+                restart      = form.querySelectorAll( '.filebox__restart' ),
+                droppedFiles = false,
+                showFiles    = function( files )
+                {
+                    label.textContent = files.length > 1 ? ( input.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', files.length ) : files[ 0 ].name;
+                    loadFile(files[0]);
+                },
+                triggerFormSubmit = function()
+                {
+                    var event = document.createEvent( 'HTMLEvents' );
+                    event.initEvent( 'submit', true, false );
+                    form.dispatchEvent( event );
+                };
+
+            // letting the server side to know we are going to make an Ajax request
+            var ajaxFlag = document.createElement( 'input' );
+            ajaxFlag.setAttribute( 'type', 'hidden' );
+            ajaxFlag.setAttribute( 'name', 'ajax' );
+            ajaxFlag.setAttribute( 'value', 1 );
+            form.appendChild( ajaxFlag );
+
+            // automatically submit the form on file select
+            input.addEventListener( 'change', function( e )
+            {
+                showFiles( e.target.files );
+
+                
+                triggerFormSubmit();
+
+                
+            });
+
+            // drag&drop files if the feature is available
+            if( isAdvancedUpload )
+            {
+                form.classList.add( 'has-advanced-upload' ); // letting the CSS part to know drag&drop is supported by the browser
+
+                [ 'drag', 'dragstart', 'dragend', 'dragover', 'dragenter', 'dragleave', 'drop' ].forEach( function( event )
+                {
+                    form.addEventListener( event, function( e )
+                    {
+                        // preventing the unwanted behaviours
+                        e.preventDefault();
+                        e.stopPropagation();
+                    });
+                });
+                [ 'dragover', 'dragenter' ].forEach( function( event )
+                {
+                    form.addEventListener( event, function()
+                    {
+                        form.classList.add( 'is-dragover' );
+                    });
+                });
+                [ 'dragleave', 'dragend', 'drop' ].forEach( function( event )
+                {
+                    form.addEventListener( event, function()
+                    {
+                        form.classList.remove( 'is-dragover' );
+                    });
+                });
+                form.addEventListener( 'drop', function( e )
+                {
+                    droppedFiles = e.dataTransfer.files; // the files that were dropped
+                    showFiles( droppedFiles );
+
+                    
+                    triggerFormSubmit();
+
+                                    });
+            }
+
+            
+            // if the form was submitted
+            form.addEventListener( 'submit', function( e )
+            {
+                // preventing the duplicate submissions if the current one is in progress
+                if( form.classList.contains( 'is-uploading' ) ) return false;
+
+                form.classList.add( 'is-uploading' );
+                form.classList.remove( 'is-error' );
+
+                if( isAdvancedUpload ) // ajax file upload for modern browsers
+                {
+                    e.preventDefault();
+
+                    // gathering the form data
+                    var ajaxData = new FormData( form );
+                    if( droppedFiles )
+                    {
+                        Array.prototype.forEach.call( droppedFiles, function( file )
+                        {
+                            ajaxData.append( input.getAttribute( 'name' ), file );
+                        });
+                    }
+
+                    // ajax request
+                    var ajax = new XMLHttpRequest();
+                    ajax.open( form.getAttribute( 'method' ), form.getAttribute( 'action' ), true );
+
+                    ajax.onload = function()
+                    {
+                        form.classList.remove( 'is-uploading' );
+                        if( ajax.status >= 200 && ajax.status < 400 )
+                        {
+                            var data = JSON.parse( ajax.responseText );
+                            form.classList.add( data.success == true ? 'is-success' : 'is-error' );
+                            if( !data.success ) errorMsg.textContent = data.error;
+                        }
+                        else alert( 'Error. Please, contact the webmaster!' );
+                    };
+
+                    ajax.onerror = function()
+                    {
+                        form.classList.remove( 'is-uploading' );
+                        alert( 'Error. Please, try again!' );
+                    };
+
+                    ajax.send( ajaxData );
+                }
+                else // fallback Ajax solution upload for older browsers
+                {
+                    var iframeName  = 'uploadiframe' + new Date().getTime(),
+                        iframe      = document.createElement( 'iframe' );
+
+                        $iframe     = $( '<iframe name="' + iframeName + '" style="display: none;"></iframe>' );
+
+                    iframe.setAttribute( 'name', iframeName );
+                    iframe.style.display = 'none';
+
+                    document.body.appendChild( iframe );
+                    form.setAttribute( 'target', iframeName );
+
+                    iframe.addEventListener( 'load', function()
+                    {
+                        var data = JSON.parse( iframe.contentDocument.body.innerHTML );
+                        form.classList.remove( 'is-uploading' )
+                        form.classList.add( data.success == true ? 'is-success' : 'is-error' )
+                        form.removeAttribute( 'target' );
+                        if( !data.success ) errorMsg.textContent = data.error;
+                        iframe.parentNode.removeChild( iframe );
+                    });
+                }
+            });
+            
+            
+            // restart the form if has a state of error/success
+            Array.prototype.forEach.call( restart, function( entry )
+            {
+                entry.addEventListener( 'click', function( e )
+                {
+                    e.preventDefault();
+                    form.classList.remove( 'is-error', 'is-success' );
+                    input.click();
+                });
+            });
+
+            // Firefox focus bug fix for file input
+            input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
+            input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
+
+        });
+    }( document, window, 0 ));
+
+
+</script>
 	</body>
 </html>
