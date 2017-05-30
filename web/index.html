@@ -170,10 +170,10 @@
                     {
                         display: block;
                         position: absolute;
-                        top: 50%;
+                        top: 75%;
                         right: 0;
                         left: 0;
-
+                        color: #553E3E;
                         -webkit-transform: translateY( -50% );
                         transform: translateY( -50% );
                     }
@@ -239,7 +239,7 @@
                     .filebox__file:focus + label strong,
                     .filebox__file.has-focus + label strong
                     {
-                        color: #39bfd3;
+                        color: #553E3E;
                     }
                     .js .filebox__file:focus + label,
                     .js .filebox__file.has-focus + label
@@ -329,6 +329,7 @@
                     <div class="filecontainer" role="main">
                         <form class="filebox" method="post" action="receiver.php" enctype="multipart/form-data" novalidate class="filebox has-advanced-upload">
                           <br><img id="previewFile" height="100" width="200"/></br>
+                          <div id="imageContainer"></div>
                           <div class="filebox__input">
                             <input type="file" name="file" id="file" class="file" data-multiple-caption="{count} files selected" multiple accept="image/*">
                             <label for="file"><strong>Choose a image</strong><span class=""> or drag it here</span>.</label>
@@ -637,7 +638,7 @@
             {
                 // preventing the duplicate submissions if the current one is in progress
                 if( form.classList.contains( 'is-uploading' ) ) return false;
-
+                $('#imageContainer').empty();
                 form.classList.add( 'is-uploading' );
                 form.classList.remove( 'is-error' );
 
@@ -666,7 +667,12 @@
                         if( xhr.status >= 200 && xhr.status < 400 )
                         {
                             form.classList.remove( 'is-processing' );
-                            alert(xhr.responseText);
+                            var data = JSON.parse(xhr.responseText);
+                            // alert()
+                            //alert(xhr.responseText)
+                            $('#imageContainer').empty();
+                            $('#imageContainer').append("<img src="+'http://140.138.152.207/house/BDProject/upload/' + data['result']['method1'] + ' height="100" width="200"' + " />");
+                            $('#imageContainer').append("<img src="+'http://140.138.152.207/house/BDProject/upload/' + data['result']['method2'] + ' height="100" width="200"' + " />");
                         }
                     };
                     
@@ -676,7 +682,7 @@
                         alert( 'Error. Please, try again!' );
                     };
 
-                    
+                    /*
                     xhr.onreadystatechange = function() {
                         var status;
                         var data;
@@ -692,7 +698,7 @@
                             }
                         }
                     };
-                    
+                    */
                     ajax.onload = function()
                     {
                         form.classList.remove( 'is-uploading' );
@@ -702,7 +708,6 @@
                             if( ajax.responseText == "" )
                                 errorMsg.textContent = data.error;
                             else{
-                                alert("https://plucky-lane-147516.appspot.com/BD_Project/api/v1.0/methods/runAll?path=" + ajax.responseText)
                                 xhr.open("GET", "https://plucky-lane-147516.appspot.com/BD_Project/api/v1.0/methods/runAll?path=" + ajax.responseText, true);
                                 // xhr.setRequestHeader("Authorization", "Basic " + btoa("username:password"));
                                 xhr.send();

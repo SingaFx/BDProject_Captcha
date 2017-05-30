@@ -47,6 +47,8 @@ def get_methods():
 # @auth.login_required
 def runAll():
     error = ''
+    m1 = ''
+    m2 = ''
     try:
         path = request.args.get('path')
         
@@ -56,7 +58,7 @@ def runAll():
         error = e
         print(e)
     # return jsonify({'result': {'method1': m1, 'method2' : m2}})
-    return jsonify({'result': {'path': path, 'method1' : m1, 'method2' : m2, 'error' : error}})
+    return jsonify({'result': {'method1' : m1, 'method2' : m2, 'error' : error}})
 
 @app.route('/BD_Project/api/v1.0/methods/<int:method_id>?<string:path>', methods=['GET'])
 @auth.login_required
@@ -113,8 +115,8 @@ def captcha(url):
     if not os.path.exists('img/' + url):
         os.makedirs('img/' + url)
         
-    img.save('img/' + url + '/1_bright.jpg')
-    r = requests.post('http://140.138.152.207/house/BDProject/receiver.php', files={'1_bright': open('img/' + url + '/1_bright.jpg', 'rb')}, data={'path':url})
+    img.save('img/' + url + '/1_bright.bmp')
+    r = requests.post('http://140.138.152.207/house/BDProject/receiver.php', files={'1_bright': open('img/' + url + '/1_bright.bmp', 'rb')}, data={'path':url})
     print (r.text)
     # for y in range(img.size[1]): 
         # for x in range(img.size[0]): 
@@ -154,8 +156,8 @@ def captcha(url):
             if count >= 7:
                 pixdata[i,j] = (255 , 255 , 255 , 255)    
      
-    img.save('img/' + url + '/1_black.jpg')
-    r = requests.post('http://140.138.152.207/house/BDProject/receiver.php', files={'1_black': open('img/' + url + '/1_black.jpg', 'rb')}, data={'path':url})
+    img.save('img/' + url + '/1_black.bmp')
+    r = requests.post('http://140.138.152.207/house/BDProject/receiver.php', files={'1_black': open('img/' + url + '/1_black.bmp', 'rb')}, data={'path':url})
     print (r.text)
 
     # im = cv2.imread(path + '_black.bmp' , 0)
@@ -198,13 +200,13 @@ def cannyDetection(url):
         if not os.path.exists('img/' + url):
             os.makedirs('img/' + url)
         # cv2.imshow('Canny', canny)  
-        cv2.imwrite('img/' + url + '/2_canny.jpg', canny)
-        r = requests.post('http://140.138.152.207/house/BDProject/receiver.php', files={'2_canny': open('img/' + url + '/2_canny.jpg', 'rb')}, data={'path':url})
+        cv2.imwrite('img/' + url + '/2_canny.bmp', canny)
+        r = requests.post('http://140.138.152.207/house/BDProject/receiver.php', files={'2_canny': open('img/' + url + '/2_canny.bmp', 'rb')}, data={'path':url})
         print (r.text)
         # cv2.waitKey(0)  
         # cv2.destroyAllWindows()
         return url + '/2_canny.jpg'
-    return None
+    return ''
 def url_to_image(url):
     # download the image, convert it to a NumPy array, and then read
     # it into OpenCV format
