@@ -149,6 +149,7 @@
                     }
 
                     .filebox.is-uploading .filebox__input,
+                    .filebox.is-processing .filebox__input,
                     .filebox.is-success .filebox__input,
                     .filebox.is-error .filebox__input
                     {
@@ -156,12 +157,14 @@
                     }
 
                     .filebox__uploading,
+                    .filebox__processing,
                     .filebox__success,
                     .filebox__error
                     {
                         display: none;
                     }
                     .filebox.is-uploading .filebox__uploading,
+                    .filebox.is-processing .filebox__processing,
                     .filebox.is-success .filebox__success,
                     .filebox.is-error .filebox__error
                     {
@@ -175,6 +178,10 @@
                         transform: translateY( -50% );
                     }
                     .filebox__uploading
+                    {
+                        font-style: italic;
+                    }
+                    .filebox__processing
                     {
                         font-style: italic;
                     }
@@ -321,13 +328,14 @@
                     -->
                     <div class="filecontainer" role="main">
                         <form class="filebox" method="post" action="receiver.php" enctype="multipart/form-data" novalidate class="filebox has-advanced-upload">
+                          <br><img id="previewFile" height="100" width="200"/></br>
                           <div class="filebox__input">
-                            <br><img id="previewFile" height="100" width="200"/></br>
-                            <input type="file" name="file" id="file" class="file" data-multiple-caption="{count} files selected" multiple>
-                            <label for="file"><strong>Choose a file</strong><span class=""> or drag it here</span>.</label>
+                            <input type="file" name="file" id="file" class="file" data-multiple-caption="{count} files selected" multiple accept="image/*">
+                            <label for="file"><strong>Choose a image</strong><span class=""> or drag it here</span>.</label>
                             <!--<button class="" type="submit">Upload</button>-->
                           </div>
                           <div class="filebox__uploading">Uploading&hellip;</div>
+                          <div class="filebox__processing">Processing&hellip;</div>
                           <div class="filebox__success">Done!</div>
                           <div class="filebox__error">Error! <span></span>.</div>
                           <input type="hidden" name="ajax" value="1"></form>
@@ -650,15 +658,56 @@
                     // ajax request
                     var ajax = new XMLHttpRequest();
                     ajax.open( form.getAttribute( 'method' ), form.getAttribute( 'action' ), true );
+                    var xhr = new XMLHttpRequest();
 
+                    
+                    xhr.onload = function()
+                    {
+                        if( xhr.status >= 200 && xhr.status < 400 )
+                        {
+                            form.classList.remove( 'is-processing' );
+                            alert(xhr.responseText);
+                        }
+                    };
+                    
+                    xhr.onerror = function()
+                    {
+                        form.classList.remove( 'is-uploading' );
+                        alert( 'Error. Please, try again!' );
+                    };
+
+                    
+                    xhr.onreadystatechange = function() {
+                        var status;
+                        var data;
+                        // https://xhr.spec.whatwg.org/#dom-xmlhttprequest-readystate
+                        if (xhr.readyState == 4) { // `DONE`
+                            form.classList.remove( 'is-processing' );
+                            status = xhr.status;
+                            if (status == 200) {
+                                data = JSON.parse(xhr.responseText);
+                                alert(data['methods'][0]['description']);
+                            } else {
+                                alert('http error ' + status);
+                            }
+                        }
+                    };
+                    
                     ajax.onload = function()
                     {
                         form.classList.remove( 'is-uploading' );
                         if( ajax.status >= 200 && ajax.status < 400 )
                         {
-                            var data = JSON.parse( ajax.responseText );
-                            form.classList.add( data.success == true ? 'is-success' : 'is-error' );
-                            if( !data.success ) errorMsg.textContent = data.error;
+                            form.classList.add( ajax.responseText != "" ? 'is-processing' : 'is-error' );
+                            if( ajax.responseText == "" )
+                                errorMsg.textContent = data.error;
+                            else{
+                                alert("https://plucky-lane-147516.appspot.com/BD_Project/api/v1.0/methods/runAll?path=" + ajax.responseText)
+                                xhr.open("GET", "https://plucky-lane-147516.appspot.com/BD_Project/api/v1.0/methods/runAll?path=" + ajax.responseText, true);
+                                // xhr.setRequestHeader("Authorization", "Basic " + btoa("username:password"));
+                                xhr.send();
+                            }
+                                
                         }
                         else alert( 'Error. Please, contact the webmaster!' );
                     };
@@ -668,6 +717,7 @@
                         form.classList.remove( 'is-uploading' );
                         alert( 'Error. Please, try again!' );
                     };
+
 
                     ajax.send( ajaxData );
                 }
