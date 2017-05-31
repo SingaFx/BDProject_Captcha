@@ -12,8 +12,9 @@ import sys
 import numpy as np
 import cv2
 import urllib
+import pytesseract
 from PIL import Image, ImageEnhance
-
+from StringIO import StringIO
 # from google.appengine.api import urlfetch
 
 auth = HTTPBasicAuth()
@@ -49,16 +50,33 @@ def runAll():
     error = ''
     m1 = ''
     m2 = ''
+    m1_result = ''
+    m2_result = ''
     try:
         path = request.args.get('path')
         
         m1 = captcha(path)
         m2 = cannyDetection(path)
+        m1_result = process_image('http://140.138.152.207/house/BDProject/upload/' + m1)
+        m2_result = process_image('http://140.138.152.207/house/BDProject/upload/' + m1)
     except Exception as e:
         error = e
         print(e)
     # return jsonify({'result': {'method1': m1, 'method2' : m2}})
-    return jsonify({'result': {'method1' : m1, 'method2' : m2, 'error' : error}})
+    return jsonify(
+        {
+            'error' : error,
+            'method1' : 
+            {
+                'path' : m1, 
+                'result' : m1_result
+            }, 
+            'method2' : 
+            {
+                'path' : m2, 
+                'result' : m2_result
+            }
+        })
 
 @app.route('/BD_Project/api/v1.0/methods/<int:method_id>?<string:path>', methods=['GET'])
 @auth.login_required
@@ -96,13 +114,7 @@ def unauthorized():
 
 
 def captcha(url):
-
-    with urllib.request.urlopen('http://140.138.152.207/house/BDProject/upload/' + url + '/src.jpg') as imageUrl:
-        f = io.BytesIO(imageUrl.read())
-
-
-    img = Image.open(f)
-   
+    img = url_to_image(url)
     enhancer = ImageEnhance.Contrast(img)
     img = enhancer.enhance(5.0)
     enhancer = ImageEnhance.Brightness(img)
@@ -207,7 +219,7 @@ def cannyDetection(url):
         # cv2.destroyAllWindows()
         return url + '/2_canny.jpg'
     return ''
-def url_to_image(url):
+def cv_url_to_image(url):
     # download the image, convert it to a NumPy array, and then read
     # it into OpenCV format
     # resp = urlfetch.fetch(url)
@@ -217,6 +229,23 @@ def url_to_image(url):
  
     # return the image
     return image
+
+def url_to_image(url):
+    with urllib.request.urlopen('http://140.138.152.207/house/BDProject/upload/' + url + '/src.jpg') as imageUrl:
+        f = io.BytesIO(imageUrl.read())
+
+
+    img = Image.open(f)
+    return img
+
+def process_image(url):
+    image = _get_image(url)
+    return pytesseract.image_to_string(image)
+
+
+def _get_image(url):
+    return Image.open(StringIO(requests.get(url).content))
+
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
