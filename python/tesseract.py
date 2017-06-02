@@ -1,3 +1,7 @@
+#coding=utf-8  
+
+# OCR引擎套用
+
 import os
 import subprocess
 

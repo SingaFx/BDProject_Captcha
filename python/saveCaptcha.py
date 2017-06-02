@@ -1,3 +1,8 @@
+#coding=utf-8  
+
+# 批量儲存驗證碼
+
+
 import requests
 HEADER = {'Connection': 'keep-alive',
           'Cache-Control': 'max-age=0',

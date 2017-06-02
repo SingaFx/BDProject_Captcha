@@ -1,10 +1,13 @@
 #coding=utf-8  
+
+# canny detection演算法 先去除噪點再進行邊緣偵測
+
 import cv2  
 import numpy as np    
 import os
 
 folder = 'railway'
-
+# 讀檔
 pwd = os.path.split(os.path.realpath(__file__))[0]
 for t in range(0,100):
     img = cv2.imread(os.path.join(pwd, 'img\\' + folder + '\\' + str(t) + '.bmp'))

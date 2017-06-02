@@ -1,3 +1,7 @@
+#coding=utf-8  
+
+# 去噪點演算法 測試用 不大好用
+
 import numpy as np
 import cv2
 import os

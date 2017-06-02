@@ -1,6 +1,12 @@
+#coding=utf-8  
+
+# 分割recaptcha的圖片九宮格
+
+
 from PIL import Image
 import os
 
+# divide image into crops
 def crop(infile, height, width):
     im = Image.open(infile)
     imgwidth, imgheight = im.size

@@ -1,4 +1,6 @@
 #coding=utf-8  
+
+# 針對9x9驗證碼的演算法
 from PIL import Image, ImageTk, ImageEnhance
 import numpy as np
 import cv2

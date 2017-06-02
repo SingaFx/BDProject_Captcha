@@ -1,3 +1,7 @@
+#coding=utf-8  
+
+# Flask API
+
 #!flask/bin/python
 from flask import Flask, jsonify
 from flask import abort

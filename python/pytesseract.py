@@ -1,3 +1,6 @@
+#coding=utf-8  
+# 一種OCR引擎
+
 import pytesseract
 import requests
 from PIL import Image

@@ -1,4 +1,6 @@
 #coding=utf-8  
+# 目前的主要演算法
+
 from PIL import Image, ImageTk, ImageEnhance
 import numpy as np
 import cv2
