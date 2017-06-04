@@ -5,7 +5,7 @@ import pytesseract
 import requests
 from PIL import Image
 from PIL import ImageFilter
-from StringIO import StringIO
+from io import StringIO
 
 
 def process_image(url):

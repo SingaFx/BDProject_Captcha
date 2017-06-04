@@ -18,7 +18,7 @@ import cv2
 import urllib
 import pytesseract
 from PIL import Image, ImageEnhance
-from StringIO import StringIO
+from io import StringIO
 # from google.appengine.api import urlfetch
 
 auth = HTTPBasicAuth()
