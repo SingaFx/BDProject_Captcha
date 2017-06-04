@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Road Trip by TEMPLATED</title>
+		<title>BDProject</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
@@ -671,8 +671,9 @@
                             // alert()
                             //alert(xhr.responseText)
                             $('#imageContainer').empty();
-                            $('#imageContainer').append("<img src="+'http://140.138.152.207/house/BDProject/upload/' + data['result']['method1'] + ' height="100" width="200"' + " />");
-                            $('#imageContainer').append("<img src="+'http://140.138.152.207/house/BDProject/upload/' + data['result']['method2'] + ' height="100" width="200"' + " />");
+                            $('#imageContainer').append("<img src="+'http://140.138.152.207/house/BDProject/upload/' + data['method1']['path'] + ' height="100" width="200"' + " />");
+                            $('#imageContainer').append("<img src="+'http://140.138.152.207/house/BDProject/upload/' + data['method2']['path'] + ' height="100" width="200"' + " />");
+                            $('#imageContainer').append("<img src="+'http://140.138.152.207/house/BDProject/upload/' + data['method3']['path'] + ' height="100" width="200"' + " />");
                         }
                     };
                     
@@ -708,7 +709,7 @@
                             if( ajax.responseText == "" )
                                 errorMsg.textContent = data.error;
                             else{
-                                xhr.open("GET", "https://plucky-lane-147516.appspot.com/BD_Project/api/v1.0/methods/runAll?path=" + ajax.responseText, true);
+                                xhr.open("GET", "http://140.138.225.10:8080/BD_Project/api/v1.0/methods/runAll?path=" + ajax.responseText, true);
                                 // xhr.setRequestHeader("Authorization", "Basic " + btoa("username:password"));
                                 xhr.send();
                             }

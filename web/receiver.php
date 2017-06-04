@@ -1,5 +1,5 @@
 <?php
- 	// header('Access-Control-Allow-Origin: *');
+ 	header('Access-Control-Allow-Origin: *');
 	error_reporting(E_ALL || ~E_NOTICE);
 	$datetime= date("YmdHis");
 	$random = rand();
@@ -10,11 +10,13 @@
 	if($_FILES["file"]["error"] > 0){
 		echo "Error: ".$_FILES["file"]["error"];
 	}else{
-		if(!is_file($_SERVER['HTTP_HOST']."/upload/".$filepath))
-			mkdir("upload/".$filepath);
-		move_uploaded_file($_FILES["file"]["tmp_name"],"upload/".$datetime."_".$random."/src.jpg");
-		//echo("<meta http-equiv=refresh content=0;url=index.html>");
-		echo $datetime."_".$random;
+		if($_FILES["file"]["size"] != 0){
+			if(!is_file($_SERVER['HTTP_HOST']."/upload/".$filepath))
+				mkdir("upload/".$filepath);
+			move_uploaded_file($_FILES["file"]["tmp_name"],"upload/".$datetime."_".$random."/src.jpg");
+			//echo("<meta http-equiv=refresh content=0;url=index.html>");
+			echo $datetime."_".$random;
+		}
 	}
 	
 	if($_FILES["1_bright"]["error"] > 0){
@@ -47,6 +49,15 @@
 			move_uploaded_file($_FILES["2_canny"]["tmp_name"],"upload/".$path."/2_canny.jpg");
 			//echo("<meta http-equiv=refresh content=0;url=index.html>");
 			//echo $_SERVER['HTTP_HOST']."/upload/".$path."/2_canny.jpg";
+		}
+	}
+
+	if($_FILES["3_test"]["error"] > 0){
+		echo "Error: ".$_FILES["3_test"]["error"];
+	}else{
+		$path = $_POST['path'];
+		if($path){
+			move_uploaded_file($_FILES["3_test"]["tmp_name"],"upload/".$path."/3_test.jpg");
 		}
 	}
 ?>

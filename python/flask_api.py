@@ -54,13 +54,16 @@ def runAll():
     error = ''
     m1 = ''
     m2 = ''
+    m3 = ''
     m1_result = ''
     m2_result = ''
+    m3_result = ''
     try:
         path = request.args.get('path')
         
         m1 = captcha(path)
         m2 = cannyDetection(path)
+        m3 = testCaptcha(path)
         # m1_result = process_image('http://140.138.152.207/house/BDProject/upload/' + m1)
         # m2_result = process_image('http://140.138.152.207/house/BDProject/upload/' + m1)
     except Exception as e:
@@ -79,6 +82,11 @@ def runAll():
             {
                 'path' : m2, 
                 'result' : m2_result
+            }, 
+            'method3' : 
+            {
+                'path' : m3, 
+                'result' : m3_result
             }
         })
 
@@ -222,7 +230,98 @@ def cannyDetection(url):
         # cv2.waitKey(0)  
         # cv2.destroyAllWindows()
         return url + '/2_canny.jpg'
-        
+
+def testCaptcha(url):
+    im = cv_url_to_image('http://140.138.152.207/house/BDProject/upload/' + url + '/src.jpg')
+    if im is not None:
+        #Convert image file to gray map
+        #OpenCv Get Image Channels
+        channels = len(im.shape)
+        if channels == 3:
+            #Give image width to width and image height to height 
+            width, height = im.shape[:2]
+            #print('Size width : ' + str(width))
+            #print('Size height : ' + str(height))
+            img = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
+            #print('The file has been converted to gray map successfully')
+        else:
+            print('The image file is not a RGB file.')
+
+        #暫存閥值
+        ucThre = 0
+        #初始閥值
+        ucThre_new = 127
+        #print('Initial Threshold is:' + str(ucThre_new))
+        #尋找自適應閥值
+        while(ucThre != ucThre_new):
+            nBack_sum = nData_sum = 0
+            nBack_count = nData_count = 0
+            for i in range(len(img)):
+                for j in range(len(img[i])):
+                    nValue = img[i,j]
+                    if nValue > ucThre_new:
+                        nBack_sum += nValue
+                        nBack_count += 1
+                    else:
+                        nData_sum += nValue
+                        nData_count += 1
+            nBack_sum = nBack_sum/nBack_count
+            nData_sum = nData_sum/nData_count
+            ucThre = ucThre_new
+            ucThre_new = int((nBack_sum + nData_sum)/2)
+        #print('After Binarization threshold is :' + str(ucThre_new))
+
+        nBlack = 0
+        nWhite = 0
+        for i in range(len(img)):
+            for j in range(len(img[i])):
+                nValue = img[i,j]
+                if nValue > ucThre_new:
+                    img[i,j] = 255
+                    nWhite += 1
+                else:
+                    img[i,j] = 0
+                    nBlack += 1
+        #Background is black, swap black and white
+        if nBlack > nWhite:
+            for i in range(len(img)):
+                for j in range(len(img[i])):
+                    nValue = img[i,j]
+                    if not nValue:
+                        img[i,j] = 0
+                    else:
+                        img[i,j] = 255
+        img = denoise(img)
+        cv2.imwrite('img/' + url + '/3_test.bmp', img)
+        r = requests.post('http://140.138.152.207/house/BDProject/receiver.php', files={'3_test': open('img/' + url + '/3_test.bmp', 'rb')}, data={'path':url})
+        print (r.text)
+        return url + '/3_test.jpg'
+
+def denoise(cvimg):
+    count = 0
+    width = len(cvimg)
+    for i in range(width):
+        height = len(cvimg[i])
+        for j in range(height):
+            count = 0 
+            for k in range(1, -2, -1):
+                for l in range(1, -2, -1):
+                    try:
+                        if i + k >= 0 and i + k < width and j + l >= 0 and j + l < height:
+                            if cvimg[i+k,j+l] == 255:
+                                count += 1
+                    except TypeError:
+                        pass
+            if count >= 7:
+                cvimg[i,j] = 255
+    return cvimg
+
+def convertCVToPIL(cvimg):
+    _,cv2_im = cvimg.read()
+    cv2_im = cv2.cvtColor(cv2_im,cv2.COLOR_BGR2RGB)
+    pil_im = Image.fromarray(cv2_im)
+    return pil_im
+
 def cv_url_to_image(url):
     # download the image, convert it to a NumPy array, and then read
     # it into OpenCV format
@@ -241,14 +340,6 @@ def url_to_image(url):
 
     img = Image.open(f)
     return img
-
-def process_image(url):
-    image = _get_image(url)
-    return pytesseract.image_to_string(image)
-
-
-def _get_image(url):
-    return Image.open(StringIO(requests.get(url).content))
 
 
 if __name__ == '__main__':
