@@ -61,15 +61,15 @@ def runAll():
         
         m1 = captcha(path)
         m2 = cannyDetection(path)
-        m1_result = process_image('http://140.138.152.207/house/BDProject/upload/' + m1)
-        m2_result = process_image('http://140.138.152.207/house/BDProject/upload/' + m1)
+        # m1_result = process_image('http://140.138.152.207/house/BDProject/upload/' + m1)
+        # m2_result = process_image('http://140.138.152.207/house/BDProject/upload/' + m1)
     except Exception as e:
         error = e
         print(e)
-    # return jsonify({'result': {'method1': m1, 'method2' : m2}})
+    
+    
     return jsonify(
         {
-            'error' : error,
             'method1' : 
             {
                 'path' : m1, 
@@ -187,7 +187,7 @@ def captcha(url):
     return url + '/1_black.jpg'
 
 def cannyDetection(url):
-    img = url_to_image('http://140.138.152.207/house/BDProject/upload/' + url + '/src.jpg')
+    img = cv_url_to_image('http://140.138.152.207/house/BDProject/upload/' + url + '/src.jpg')
     if img is not None:
         height, width = img.shape[:2]
 
@@ -222,7 +222,7 @@ def cannyDetection(url):
         # cv2.waitKey(0)  
         # cv2.destroyAllWindows()
         return url + '/2_canny.jpg'
-    return ''
+        
 def cv_url_to_image(url):
     # download the image, convert it to a NumPy array, and then read
     # it into OpenCV format
@@ -252,4 +252,4 @@ def _get_image(url):
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=8080, debug=True)
+    app.run(host='0.0.0.0', port=8080, debug=True)
