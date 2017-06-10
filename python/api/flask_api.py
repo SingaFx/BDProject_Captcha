@@ -26,7 +26,7 @@ from methods.url.canny_captcha import canny_captcha
 from methods.url.benny_captcha import benny_captcha
 sys.path.append('../../')
 from util.convertImage import convertImage
-
+from googleVision import googleVision
 
 auth = HTTPBasicAuth()
 app = Flask(__name__)
@@ -38,15 +38,19 @@ methods = [
     },
     {
         'id': 2,
-        'description': u'Canny edge detection'
+        'description': u'Our anoter algorithm'
     },
     {
         'id': 3,
-        'description': u'clarifai API'
+        'description': u'Canny Detection algorithm'
     },
     {
         'id': 4,
         'description': u'google cloud vision API'
+    },
+    {
+        'id': 5,
+        'description': u'clarifai API'
     }
 ]
 
@@ -57,45 +61,42 @@ def get_methods():
 @app.route('/BD_Project/api/v1.0/methods/runAll', methods=['GET'])
 # @auth.login_required
 def runAll():
-    error = ''
-    m1 = ''
-    m2 = ''
-    m3 = ''
-    m1_result = ''
-    m2_result = ''
-    m3_result = ''
-    try:
-        path = request.args.get('path')
-        main = main_captcha()
-        canny = canny_captcha()
-        benny = benny_captcha()
-        m1 = main.captcha(path)
-        m2 = canny.cannyDetection(path)
-        m3 = benny.captcha(path)
-        m1_result = ocr_text('http://140.138.152.207/house/BDProject/upload/' + m1)
-        m2_result = ocr_text('http://140.138.152.207/house/BDProject/upload/' + m2)
-        m3_result = ocr_text('http://140.138.152.207/house/BDProject/upload/' + m3)
-    except Exception as e:
-        error = e
-        print(e)
+    vision = googleVision()
+    uri = 'http://140.138.152.207/house/BDProject/upload/'
+    path = request.args.get('path')
+    main = main_captcha()
+    canny = canny_captcha()
+    benny = benny_captcha()
+    m1 = main.captcha(path)
+    m2 = benny.captcha(path)
+    m3 = canny.cannyDetection(path)
+    m1_result = ocr_text(uri + m1)
+    m2_result = ocr_text(uri + m2)
+    m3_result = ocr_text(uri + m3)
     
     
     return jsonify(
         {
             'method1' : 
             {
+                'name' : 'Our algorithm',
                 'path' : m1, 
-                'result' : m1_result
+                'tesseract_result' : m1_result,
+                'googleVision_result' : vision.detect_text_uri(uri+m1)
             }, 
             'method2' : 
             {
+                'name' : 'Our anoter algorithm',
                 'path' : m2, 
-                'result' : m2_result
+                'tesseract_result' : m2_result,
+                'googleVision_result' : vision.detect_text_uri(uri+m2)
             }, 
             'method3' : 
             {
+                'name' : 'Canny Detection algorithm',
                 'path' : m3, 
-                'result' : m3_result
+                'tesseract_result' : m3_result,
+                'googleVision_result' : vision.detect_text_uri(uri+m3)
             }
         })
 

@@ -10,7 +10,7 @@ class googleVision:
     def __init__(self):
 
         # Instantiates a client
-        self.vision_client = vision.Client()
+        self.vision_client = vision.Client('plucky-lane-147516')
 
     def detectLabel(self):
         # The name of the image file to annotate
