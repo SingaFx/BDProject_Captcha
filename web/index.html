@@ -275,6 +275,17 @@
                         {
                             background-color: #0f3c4b;
                         }
+        .method1{
+            position: relative;
+        }
+        .method2{
+            position: relative;
+            left: 200x;
+        }
+        .method3{
+            position: relative;
+            left: 200x;
+        }
 
     </style>
 	<body>
@@ -330,6 +341,7 @@
                         <form class="filebox" method="post" action="receiver.php" enctype="multipart/form-data" novalidate class="filebox has-advanced-upload">
                           <br><img id="previewFile" height="100" width="200"/></br>
                           <div id="imageContainer"></div>
+                          <div id="resultContainer"></div>
                           <div class="filebox__input">
                             <input type="file" name="file" id="file" class="file" data-multiple-caption="{count} files selected" multiple accept="image/*">
                             <label for="file"><strong>Choose a image</strong><span class=""> or drag it here</span>.</label>
@@ -639,6 +651,7 @@
                 // preventing the duplicate submissions if the current one is in progress
                 if( form.classList.contains( 'is-uploading' ) ) return false;
                 $('#imageContainer').empty();
+                $('#resultContainer').empty();
                 form.classList.add( 'is-uploading' );
                 form.classList.remove( 'is-error' );
 
@@ -671,9 +684,13 @@
                             // alert()
                             //alert(xhr.responseText)
                             $('#imageContainer').empty();
+                            $('#resultContainer').empty();
                             $('#imageContainer').append("<img src="+'http://140.138.152.207/house/BDProject/upload/' + data['method1']['path'] + ' height="100" width="200"' + " />");
                             $('#imageContainer').append("<img src="+'http://140.138.152.207/house/BDProject/upload/' + data['method2']['path'] + ' height="100" width="200"' + " />");
                             $('#imageContainer').append("<img src="+'http://140.138.152.207/house/BDProject/upload/' + data['method3']['path'] + ' height="100" width="200"' + " />");
+                            $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method1']['result'] + " </span>");
+                            $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method2']['result'] + " </span>");
+                            $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method3']['result'] + " </span>");
                         }
                     };
                     
@@ -709,6 +726,7 @@
                             if( ajax.responseText == "" )
                                 errorMsg.textContent = data.error;
                             else{
+                                // xhr.open("GET", "http://27.105.220.179:8080/BD_Project/api/v1.0/methods/runAll?path=" + ajax.responseText, true);
                                 xhr.open("GET", "http://140.138.225.10:8080/BD_Project/api/v1.0/methods/runAll?path=" + ajax.responseText, true);
                                 // xhr.setRequestHeader("Authorization", "Basic " + btoa("username:password"));
                                 xhr.send();

@@ -15,7 +15,7 @@ import os
 import sys
 import numpy as np
 import cv2
-import urllib
+import urllib.request
 import pytesseract
 from PIL import Image, ImageEnhance
 from io import StringIO
@@ -64,8 +64,9 @@ def runAll():
         m1 = captcha(path)
         m2 = cannyDetection(path)
         m3 = testCaptcha(path)
-        # m1_result = process_image('http://140.138.152.207/house/BDProject/upload/' + m1)
-        # m2_result = process_image('http://140.138.152.207/house/BDProject/upload/' + m1)
+        m1_result = ocr_text('http://140.138.152.207/house/BDProject/upload/' + m1)
+        m2_result = ocr_text('http://140.138.152.207/house/BDProject/upload/' + m2)
+        m3_result = ocr_text('http://140.138.152.207/house/BDProject/upload/' + m3)
     except Exception as e:
         error = e
         print(e)
@@ -126,7 +127,9 @@ def unauthorized():
 
 
 def captcha(url):
-    img = url_to_image(url)
+    img = url_to_image('http://140.138.152.207/house/BDProject/upload/' + url + '/src.png')
+
+    # 影像加強
     enhancer = ImageEnhance.Contrast(img)
     img = enhancer.enhance(5.0)
     enhancer = ImageEnhance.Brightness(img)
@@ -139,8 +142,8 @@ def captcha(url):
     if not os.path.exists('img/' + url):
         os.makedirs('img/' + url)
         
-    img.save('img/' + url + '/1_bright.bmp')
-    r = requests.post('http://140.138.152.207/house/BDProject/receiver.php', files={'1_bright': open('img/' + url + '/1_bright.bmp', 'rb')}, data={'path':url})
+    img.save('img/' + url + '/1_bright.png')
+    r = requests.post('http://140.138.152.207/house/BDProject/receiver.php', files={'1_bright': open('img/' + url + '/1_bright.png', 'rb')}, data={'path':url})
     print (r.text)
     # for y in range(img.size[1]): 
         # for x in range(img.size[0]): 
@@ -163,7 +166,14 @@ def captcha(url):
     #         else:
     #             pixdata[x , y] = (255 , 255 , 255 , 255)
 
+    # 去外框
+    for i in range(img.width):
+        for j in range(img.height):
+            if i == 0 or i == img.width - 1 or j == 0 or j == img.height -1:
+                pixdata[i,j] = (255 , 255 , 255 , 255)
 
+
+    # 8鄰域降噪
     count = 0
     for i in range(img.width):
         for j in range(img.height):
@@ -176,28 +186,36 @@ def captcha(url):
                             if pixdata[i+k,j+l][0] == 255 and pixdata[i+k,j+l][1] == 255 and pixdata[i+k,j+l][2] == 255:
                                 count += 1
                     except TypeError:
+                        pixdata[i,j] = (255 , 255 , 255 , 255)
                         pass
             if count >= 7:
                 pixdata[i,j] = (255 , 255 , 255 , 255)    
      
-    img.save('img/' + url + '/1_black.bmp')
-    r = requests.post('http://140.138.152.207/house/BDProject/receiver.php', files={'1_black': open('img/' + url + '/1_black.bmp', 'rb')}, data={'path':url})
+    img.save('img/' + url + '/1_black.png')
+    r = requests.post('http://140.138.152.207/house/BDProject/receiver.php', files={'1_black': open('img/' + url + '/1_black.png', 'rb')}, data={'path':url})
     print (r.text)
 
-    # im = cv2.imread(path + '_black.bmp' , 0)
+    # 平滑補強
+    # im = cv2.imread(path + '_black.png' , 0)
 
     # kernel = np.ones((2 , 2) , np.uint8)
     # opening = cv2.morphologyEx(im, cv2.MORPH_OPEN, kernel)
 
     # #opening = cv2.blur(opening , (2, 2))
     # #opening = cv2.dilate(opening, (1, 1), iterations=1)
-    # cv2.imwrite(path +'_black2.bmp', opening)
-    return url + '/1_black.jpg'
+    # cv2.imwrite(path +'_black2.png', opening)
+    return url + '/1_black.png'
 
 def cannyDetection(url):
-    img = cv_url_to_image('http://140.138.152.207/house/BDProject/upload/' + url + '/src.jpg')
+    img = cv_url_to_image('http://140.138.152.207/house/BDProject/upload/' + url + '/src.png')
     if img is not None:
         height, width = img.shape[:2]
+
+        # 去外框
+        for i in range(len(img)):
+            for j in range(len(img[i])):
+                if i == 0 or i == len(img) - 1 or j == 0 or j == len(img[i]) -1:
+                    img[i,j] = 255
 
         count = 0
         for i in range(width):
@@ -224,15 +242,15 @@ def cannyDetection(url):
         if not os.path.exists('img/' + url):
             os.makedirs('img/' + url)
         # cv2.imshow('Canny', canny)  
-        cv2.imwrite('img/' + url + '/2_canny.bmp', canny)
-        r = requests.post('http://140.138.152.207/house/BDProject/receiver.php', files={'2_canny': open('img/' + url + '/2_canny.bmp', 'rb')}, data={'path':url})
+        cv2.imwrite('img/' + url + '/2_canny.png', canny)
+        r = requests.post('http://140.138.152.207/house/BDProject/receiver.php', files={'2_canny': open('img/' + url + '/2_canny.png', 'rb')}, data={'path':url})
         print (r.text)
         # cv2.waitKey(0)  
         # cv2.destroyAllWindows()
-        return url + '/2_canny.jpg'
+        return url + '/2_canny.png'
 
 def testCaptcha(url):
-    im = cv_url_to_image('http://140.138.152.207/house/BDProject/upload/' + url + '/src.jpg')
+    im = cv_url_to_image('http://140.138.152.207/house/BDProject/upload/' + url + '/src.png')
     if im is not None:
         #Convert image file to gray map
         #OpenCv Get Image Channels
@@ -246,6 +264,12 @@ def testCaptcha(url):
             #print('The file has been converted to gray map successfully')
         else:
             print('The image file is not a RGB file.')
+
+        # 去外框
+        for i in range(len(img)):
+            for j in range(len(img[i])):
+                if i == 0 or i == len(img) - 1 or j == 0 or j == len(img[i]) -1:
+                    img[i,j] = 255
 
         #暫存閥值
         ucThre = 0
@@ -292,10 +316,10 @@ def testCaptcha(url):
                     else:
                         img[i,j] = 255
         img = denoise(img)
-        cv2.imwrite('img/' + url + '/3_test.bmp', img)
-        r = requests.post('http://140.138.152.207/house/BDProject/receiver.php', files={'3_test': open('img/' + url + '/3_test.bmp', 'rb')}, data={'path':url})
+        cv2.imwrite('img/' + url + '/3_test.png', img)
+        r = requests.post('http://140.138.152.207/house/BDProject/receiver.php', files={'3_test': open('img/' + url + '/3_test.png', 'rb')}, data={'path':url})
         print (r.text)
-        return url + '/3_test.jpg'
+        return url + '/3_test.png'
 
 def denoise(cvimg):
     count = 0
@@ -334,13 +358,19 @@ def cv_url_to_image(url):
     return image
 
 def url_to_image(url):
-    with urllib.request.urlopen('http://140.138.152.207/house/BDProject/upload/' + url + '/src.jpg') as imageUrl:
+    with urllib.request.urlopen(url) as imageUrl:
         f = io.BytesIO(imageUrl.read())
-
-
     img = Image.open(f)
     return img
 
+def ocr_text(url):
+    text = ''
+    img = url_to_image(url)
+    img.load()
+    text = pytesseract.image_to_string(img, lang='eng')
+    text = text.replace(' ', '')
+    print(url + '     ' + text)
+    return text
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)
