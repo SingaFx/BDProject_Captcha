@@ -20,14 +20,14 @@ import pytesseract
 from PIL import Image, ImageEnhance
 from io import StringIO
 
+from googleVision import googleVision
 sys.path.append('../')
 from methods.url.main_captcha import main_captcha
 from methods.url.canny_captcha import canny_captcha
 from methods.url.benny_captcha import benny_captcha
 from methods.url.recaptcha import recaptcha
-sys.path.append('../../')
+sys.path.append('../')
 from util.convertImage import convertImage
-from googleVision import googleVision
 
 auth = HTTPBasicAuth()
 app = Flask(__name__)

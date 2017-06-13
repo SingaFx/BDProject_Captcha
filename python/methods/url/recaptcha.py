@@ -6,8 +6,8 @@ import os
 import sys
 import json
 import fnmatch
-
-from convertImage import convertImage
+sys.path.append('../../')
+from util.convertImage import convertImage
 sys.path.append('../')
 from api.clarifai_api import clarifai_api
 from api.googleVision import googleVision
@@ -42,8 +42,7 @@ class recaptcha:
         return resultArr
 
     def vision_process(self, uri, keyword):
-        # 從網路上得到圖片
-        img = self.converter.url_to_image(uri)
+
         path = '../../img/recaptcha/' + keyword + '/'
         if not os.path.exists(path):
             os.makedirs(path)

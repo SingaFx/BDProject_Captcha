@@ -356,38 +356,38 @@
                     </nav>
                     <div class="filecontainer" role="main">
                         <div id="tab1" style="display: block;">
-                            <form class="filebox" method="post" action="receiver.php" enctype="multipart/form-data" novalidate class="filebox has-advanced-upload">
-                              <br><img id="previewFile" height="100" width="200"/></br>
-                              <div id="imageContainer"></div>
-                              <div id="resultContainer"></div>
-                              <div class="filebox__input">
-                                <input type="file" name="file" id="file" class="file" data-multiple-caption="{count} files selected" multiple accept="image/*">
-                                <label for="file"><strong>Choose a image</strong><span class=""> or drag it here</span>.</label>
-                                <!--<button class="" type="submit">Upload</button>-->
-                              </div>
-                              <div class="filebox__uploading">Uploading&hellip;</div>
-                              <div class="filebox__processing">Processing&hellip;</div>
-                              <div class="filebox__success">Done!</div>
-                              <div class="filebox__error">Error! <span></span>.</div>
-                              <input type="hidden" name="ajax" value="1"></form>
+                            <form class="filebox" id="captcha" method="post" action="receiver.php" enctype="multipart/form-data" novalidate class="filebox has-advanced-upload">
+                                <br><img id="previewFile" height="100" width="200"/></br>
+                                <div id="imageContainer"></div>
+                                <div id="resultContainer"></div>
+                                <div class="filebox__input">
+                                    <input type="file" name="file" id="file" class="file" data-multiple-caption="{count} files selected" multiple accept="image/*">
+                                    <label for="file"><strong>Choose a image</strong><span class=""> or drag it here</span>.</label>
+                                    <!--<button class="" type="submit">Upload</button>-->
+                                </div>
+                                <div class="filebox__uploading">Uploading&hellip;</div>
+                                <div class="filebox__processing">Processing&hellip;</div>
+                                <div class="filebox__success">Done!</div>
+                                <div class="filebox__error">Error! <span></span>.</div>
+                                <input type="hidden" name="ajax" value="1"></form>
                             </form>
                         </div>
 
                         <div id="tab2" style="display: none;">
-                            <form class="filebox" method="post" action="receiver.php" enctype="multipart/form-data" novalidate class="filebox has-advanced-upload">
-                              <br><img id="previewFile2" height="300" width="300"/></br>
-                              <div id="imageContainer2"></div>
-                              <div id="resultContainer2"></div>
-                              <div class="filebox__input">
+                            <form class="filebox" id="reCaptcha" method="post" action="receiver.php" enctype="multipart/form-data" novalidate class="filebox has-advanced-upload">
+                            <br><img id="previewFile2" height="300" width="300"/></br>
+                            <div id="imageContainer2"></div>
+                            <div id="resultContainer2"></div>
+                            <div class="filebox__input">
                                 <input type="file" name="file" id="file2" class="file" data-multiple-caption="{count} files selected" multiple accept="image/*">
                                 <label for="file"><strong>Choose a reCAPTCHA image</strong><span class=""> or drag it here</span>.</label>
                                 <!--<button class="" type="submit">Upload</button>-->
-                              </div>
-                              <div class="filebox__uploading">Uploading&hellip;</div>
-                              <div class="filebox__processing">Processing&hellip;</div>
-                              <div class="filebox__success">Done!</div>
-                              <div class="filebox__error">Error! <span></span>.</div>
-                              <input type="hidden" name="ajax" value="1"></form>
+                            </div>
+                            <div class="filebox__uploading">Uploading&hellip;</div>
+                            <div class="filebox__processing">Processing&hellip;</div>
+                            <div class="filebox__success">Done!</div>
+                            <div class="filebox__error">Error! <span></span>.</div>
+                            <input type="hidden" name="ajax" value="1"></form>
                             </form>
                         </div>
                     </div>
@@ -668,8 +668,16 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 <script>
-    var loadFile = function(file) {
-        var output = document.getElementById('previewFile');
+    var loadFile = function(file, formid) {
+        if(formid == 'captcha')
+        {
+            id = 'previewFile'
+        }
+        else if(formid == 'reCaptcha')
+        {
+            id = 'previewFile2'
+        }
+        var output = document.getElementById(id);
         output.src = URL.createObjectURL(file);
     };
       
@@ -724,7 +732,7 @@
                 showFiles    = function( files )
                 {
                     label.textContent = files.length > 1 ? ( input.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', files.length ) : files[ 0 ].name;
-                    loadFile(files[0]);
+                    loadFile(files[0], form.id);
                 },
                 triggerFormSubmit = function()
                 {
@@ -744,11 +752,7 @@
             input.addEventListener( 'change', function( e )
             {
                 showFiles( e.target.files );
-
-                
                 triggerFormSubmit();
-
-                
             });
 
             // drag&drop files if the feature is available
@@ -779,15 +783,11 @@
                         form.classList.remove( 'is-dragover' );
                     });
                 });
-                form.addEventListener( 'drop', function( e )
-                {
+                form.addEventListener( 'drop', function( e ){
                     droppedFiles = e.dataTransfer.files; // the files that were dropped
                     showFiles( droppedFiles );
-
-                    
                     triggerFormSubmit();
-
-                                    });
+                });
             }
 
             
@@ -796,8 +796,18 @@
             {
                 // preventing the duplicate submissions if the current one is in progress
                 if( form.classList.contains( 'is-uploading' ) ) return false;
-                $('#imageContainer').empty();
-                $('#resultContainer').empty();
+                if(form.id == 'captcha')
+                {
+                    $('#imageContainer').empty();
+                    $('#resultContainer').empty();
+                }
+                else if(form.id == 'reCaptcha')
+                {
+                    $('#imageContainer2').empty();
+                    $('#resultContainer2').empty();
+                }
+
+                
                 form.classList.add( 'is-uploading' );
                 form.classList.remove( 'is-error' );
 
@@ -820,37 +830,64 @@
                     ajax.open( form.getAttribute( 'method' ), form.getAttribute( 'action' ), true );
                     var xhr = new XMLHttpRequest();
 
-                    
-                    xhr.onload = function()
+                    if(form.id == 'captcha')
                     {
-                        if( xhr.status >= 200 && xhr.status < 400 )
+                        xhr.onload = function()
                         {
-                            form.classList.remove( 'is-processing' );
-                            var data = JSON.parse(xhr.responseText);
-                            // alert()
-                            //alert(xhr.responseText)
-                            $('#imageContainer').empty();
-                            $('#resultContainer').empty();
-                            $('#imageContainer').append("<img src="+'http://140.138.152.207/house/BDProject/upload/' + data['method1']['path'] + ' height="100" width="200"' + " />");
-                            $('#imageContainer').append("<img src="+'http://140.138.152.207/house/BDProject/upload/' + data['method2']['path'] + ' height="100" width="200"' + " />");
-                            $('#imageContainer').append("<img src="+'http://140.138.152.207/house/BDProject/upload/' + data['method3']['path'] + ' height="100" width="200"' + " />");
-                            $('#resultContainer').append("<div><span style='color:red;'>Tesseract result:</span><div>");
-                            $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method1']['tesseract_result'] + " </span>");
-                            $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method2']['tesseract_result'] + " </span>");
-                            $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method3']['tesseract_result'] + " </span>");
-                            $('#resultContainer').append("<div><span style='color:red;'>GoogleVision result:</span><div>");
-                            $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method1']['googleVision_result'] + " </span>");
-                            $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method2']['googleVision_result'] + " </span>");
-                            $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method3']['googleVision_result'] + " </span>");
-                        }
-                    };
-                    
-                    xhr.onerror = function()
+                            if( xhr.status >= 200 && xhr.status < 400 )
+                            {
+                                form.classList.remove( 'is-processing' );
+                                var data = JSON.parse(xhr.responseText);
+                                // alert()
+                                //alert(xhr.responseText)
+                                $('#imageContainer').empty();
+                                $('#resultContainer').empty();
+                                $('#imageContainer').append("<img src="+'http://140.138.152.207/house/BDProject/upload/' + data['method1']['path'] + ' height="100" width="200"' + " />");
+                                $('#imageContainer').append("<img src="+'http://140.138.152.207/house/BDProject/upload/' + data['method2']['path'] + ' height="100" width="200"' + " />");
+                                $('#imageContainer').append("<img src="+'http://140.138.152.207/house/BDProject/upload/' + data['method3']['path'] + ' height="100" width="200"' + " />");
+                                $('#resultContainer').append("<div><span style='color:red;'>Tesseract result:</span><div>");
+                                $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method1']['tesseract_result'] + " </span>");
+                                $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method2']['tesseract_result'] + " </span>");
+                                $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method3']['tesseract_result'] + " </span>");
+                                $('#resultContainer').append("<div><span style='color:red;'>GoogleVision result:</span><div>");
+                                $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method1']['googleVision_result'] + " </span>");
+                                $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method2']['googleVision_result'] + " </span>");
+                                $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method3']['googleVision_result'] + " </span>");
+                            }
+                        };
+                        
+                        xhr.onerror = function()
+                        {
+                            form.classList.remove( 'is-uploading' );
+                            alert( 'Error. Please, try again!' );
+                        };
+                    }
+                    else if(form.id == 'reCaptcha')
                     {
-                        form.classList.remove( 'is-uploading' );
-                        alert( 'Error. Please, try again!' );
-                    };
-
+                        xhr.onload = function()
+                        {
+                            if( xhr.status >= 200 && xhr.status < 400 )
+                            {
+                                form.classList.remove( 'is-processing' );
+                                var data = JSON.parse(xhr.responseText);
+                                // alert()
+                                //alert(xhr.responseText)
+                                $('#imageContainer2').empty();
+                                $('#resultContainer2').empty();
+                                $('#resultContainer2').append("<div><span style='color:red;'>GoogleVision result:</span><div>");
+                                $('#resultContainer2').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method1']['result'] + " </span>");
+                                $('#resultContainer2').append("<div><span style='color:red;'>Clarifai result:</span><div>");
+                                $('#resultContainer2').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method1']['result'] + " </span>");
+                            }
+                        };
+                        
+                        xhr.onerror = function()
+                        {
+                            form.classList.remove( 'is-uploading' );
+                            alert( 'Error. Please, try again!' );
+                        };
+                    }
+                    
                     /*
                     xhr.onreadystatechange = function() {
                         var status;
@@ -878,7 +915,10 @@
                             if( ajax.responseText == "" )
                                 errorMsg.textContent = data.error;
                             else{
-                                xhr.open("GET", host + ":8080/BD_Project/api/v1.0/methods/runAll?path=" + ajax.responseText, true);
+                                if(form.id == 'captcha')
+                                    xhr.open("GET", host + ":8080/BD_Project/api/v1.0/methods/runAll?path=" + ajax.responseText, true);
+                                else
+                                    xhr.open("GET", host + ":8080/BD_Project/api/v1.0/methods/reCaptcha?path=" + ajax.responseText + "&keyword=" + 'car', true);
                                 // xhr.open("GET", "http://140.138.225.10:8080/BD_Project/api/v1.0/methods/runAll?path=" + ajax.responseText, true);
                                 // xhr.setRequestHeader("Authorization", "Basic " + btoa("username:password"));
                                 xhr.send();
