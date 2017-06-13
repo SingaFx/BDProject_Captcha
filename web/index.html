@@ -11,6 +11,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/data.js"></script>
+		<script src="https://code.highcharts.com/modules/drilldown.js"></script>
 	</head>
     <style>
         canvas {
@@ -20,6 +23,15 @@
             margin-right: auto;
             display: block;
         }
+
+        nav.tabs a.active  {
+            background: #fff;
+            border-bottom: 1px solid #fff;
+        }
+        nav.tabs a.active a:hover {
+            background: #fff;
+        }
+
         /*
 		.file {
 			position: relative;
@@ -337,22 +349,47 @@
                      
                     </form>
                     -->
+                    
+                    <nav role="navigation" class="tabs">
+                        <a href="#tab1" class="active">文字驗證碼</a>
+                        <a href="#tab2" class="">reCAPTCHA</a>
+                    </nav>
                     <div class="filecontainer" role="main">
-                        <form class="filebox" method="post" action="receiver.php" enctype="multipart/form-data" novalidate class="filebox has-advanced-upload">
-                          <br><img id="previewFile" height="100" width="200"/></br>
-                          <div id="imageContainer"></div>
-                          <div id="resultContainer"></div>
-                          <div class="filebox__input">
-                            <input type="file" name="file" id="file" class="file" data-multiple-caption="{count} files selected" multiple accept="image/*">
-                            <label for="file"><strong>Choose a image</strong><span class=""> or drag it here</span>.</label>
-                            <!--<button class="" type="submit">Upload</button>-->
-                          </div>
-                          <div class="filebox__uploading">Uploading&hellip;</div>
-                          <div class="filebox__processing">Processing&hellip;</div>
-                          <div class="filebox__success">Done!</div>
-                          <div class="filebox__error">Error! <span></span>.</div>
-                          <input type="hidden" name="ajax" value="1"></form>
-                        </form>
+                        <div id="tab1" style="display: block;">
+                            <form class="filebox" method="post" action="receiver.php" enctype="multipart/form-data" novalidate class="filebox has-advanced-upload">
+                              <br><img id="previewFile" height="100" width="200"/></br>
+                              <div id="imageContainer"></div>
+                              <div id="resultContainer"></div>
+                              <div class="filebox__input">
+                                <input type="file" name="file" id="file" class="file" data-multiple-caption="{count} files selected" multiple accept="image/*">
+                                <label for="file"><strong>Choose a image</strong><span class=""> or drag it here</span>.</label>
+                                <!--<button class="" type="submit">Upload</button>-->
+                              </div>
+                              <div class="filebox__uploading">Uploading&hellip;</div>
+                              <div class="filebox__processing">Processing&hellip;</div>
+                              <div class="filebox__success">Done!</div>
+                              <div class="filebox__error">Error! <span></span>.</div>
+                              <input type="hidden" name="ajax" value="1"></form>
+                            </form>
+                        </div>
+
+                        <div id="tab2" style="display: none;">
+                            <form class="filebox" method="post" action="receiver.php" enctype="multipart/form-data" novalidate class="filebox has-advanced-upload">
+                              <br><img id="previewFile2" height="300" width="300"/></br>
+                              <div id="imageContainer2"></div>
+                              <div id="resultContainer2"></div>
+                              <div class="filebox__input">
+                                <input type="file" name="file" id="file2" class="file" data-multiple-caption="{count} files selected" multiple accept="image/*">
+                                <label for="file"><strong>Choose a reCAPTCHA image</strong><span class=""> or drag it here</span>.</label>
+                                <!--<button class="" type="submit">Upload</button>-->
+                              </div>
+                              <div class="filebox__uploading">Uploading&hellip;</div>
+                              <div class="filebox__processing">Processing&hellip;</div>
+                              <div class="filebox__success">Done!</div>
+                              <div class="filebox__error">Error! <span></span>.</div>
+                              <input type="hidden" name="ajax" value="1"></form>
+                            </form>
+                        </div>
                     </div>
                    
                 </article>
@@ -366,51 +403,67 @@
 							<h2>方法一</h2>
 						</header>
 						<div class="content">
-                            <canvas id="barChart01" width="400" height="400"></canvas>
-                            <script>
-                            <!--Bar Chart-->
-                            var barData = {
-                                labels: ["執行50次", "執行100次", "執行200次"],
-                                datasets: [
-                                    {
-                                        label: "成功率(%)",
-                                        backgroundColor: "rgba(255, 99, 132, 1)",
-                                        strokeColor: "rgba(220, 220, 220, 1)",
-                                        highlightFill: "rgba(220, 220, 220, 1)",
-                                        highlightStroke: "rgba(220, 220, 220, 1)",
-                                        data: [65, 59, 80]
-                                    },
-                                ]
-                            };
-                            
-                            //return chart
-                                var ctx = document.getElementById("barChart01");
-                                var myRadarChart = new Chart(ctx, {
-                                    type: 'bar',
-                                    data: barData,
-                                    options:{
-                                        responsive: false,
-                                    }
-                                });
-                            </script>
-                            <script>
-                            //initilaize 
-                              var sidebar;
-                              $('body').css({
-                                'padding-left': '350px'
-                              });
-                              sidebar = $("<div id='one'></div>");
-                              sidebar.css({
-                                'position': 'fixed',
-                                'left': '0px',
-                                'top': '0px',
-                                'z-index': 9999,
-                                'width': '290px',
-                                'height': '100%',
-                                'background-color': 'blue'  // Confirm it shows up
-                              });
-                              $('body').append(sidebar);
-                            </script>
+                            <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+							<script type="text/javascript">
+							// Create the chart
+								Highcharts.chart('container', {
+								  chart: {
+								    type: 'column'
+								  },
+								  title: {
+								    text: '方法一分析結果(測試20次)'
+								  },
+								  xAxis: {
+								    type: 'category'
+								  },
+								  yAxis: {
+								    title: {
+								      text: '成功率(%)'
+								    }
+
+								  },
+								  legend: {
+								    enabled: false
+								  },
+								  plotOptions: {
+								    series: {
+								      borderWidth: 0,
+								      dataLabels: {
+								        enabled: true,
+								      }
+								    }
+								  },
+
+								  tooltip: {
+								    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+								    pointFormat: '<span style="color:{point.color}"></span><b>{point.y}</b>%<br/>'
+								  },
+
+								  series: [{
+								    name: '成功率',
+								    colorByPoint: true,
+								    data: [{
+								      name: '9乘9購物網',
+								      y: 0,
+								    }, {
+								      name: '清大南大校區登入系統',
+								      y: 90,
+								    }, {
+								      name: '交大選課系統',
+								      y: 5,
+								    }, {
+								      name: '大氣水文資料庫',
+								      y: 5,
+								    }, {
+								      name: 'OB嚴選',
+								      y: 15,
+								    }, {
+								      name: '元智選課系統',
+								      y: 5,
+								    }]
+								}]
+							});
+							</script>
 						</div>
 					</article>
 				</div>
@@ -425,33 +478,67 @@
 							<h2>方法二</h2>
 						</header>
 						<div class="content">
-							<canvas id="barChart02" width="400" height="400"></canvas>
-                            <script>
-                            <!--Bar Chart-->
-                            var barData = {
-                                labels: ["執行50次", "執行100次", "執行200次"],
-                                datasets: [
-                                    {
-                                        label: "成功率(%)",
-                                        backgroundColor: "rgba(255, 99, 132, 1)",
-                                        strokeColor: "rgba(220, 220, 220, 1)",
-                                        highlightFill: "rgba(220, 220, 220, 1)",
-                                        highlightStroke: "rgba(220, 220, 220, 1)",
-                                        data: [81, 56, 55]
-                                    },
-                                ]
-                            };
-                            
-                            //return chart
-                                var ctx = document.getElementById("barChart02");
-                                var myRadarChart = new Chart(ctx, {
-                                    type: 'bar',
-                                    data: barData,
-                                    options:{
-                                        responsive: false,
-                                    }
-                                });
-                            </script>
+							<div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+							<script type="text/javascript">
+							// Create the chart
+								Highcharts.chart('container1', {
+								  chart: {
+								    type: 'column'
+								  },
+								  title: {
+								    text: '方法二分析結果(測試20次)'
+								  },
+								  xAxis: {
+								    type: 'category'
+								  },
+								  yAxis: {
+								    title: {
+								      text: '成功率(%)'
+								    }
+
+								  },
+								  legend: {
+								    enabled: false
+								  },
+								  plotOptions: {
+								    series: {
+								      borderWidth: 0,
+								      dataLabels: {
+								        enabled: true,
+								      }
+								    }
+								  },
+
+								  tooltip: {
+								    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+								    pointFormat: '<span style="color:{point.color}"></span><b>{point.y}</b>%<br/>'
+								  },
+
+								  series: [{
+								    name: '成功率',
+								    colorByPoint: true,
+								    data: [{
+								      name: '9乘9購物網',
+								      y: 30,
+								    }, {
+								      name: '清大南大校區登入系統',
+								      y: 90,
+								    }, {
+								      name: '交大選課系統',
+								      y: 0,
+								    }, {
+								      name: '大氣水文資料庫',
+								      y: 0,
+								    }, {
+								      name: 'OB嚴選',
+								      y: 20,
+								    }, {
+								      name: '元智選課系統',
+								      y: 0,
+								    }]
+								}]
+							});
+							</script>
 						</div>
 					</article>
 				</div>
@@ -466,33 +553,67 @@
 							<h2>方法三</h2>
 						</header>
 						<div class="content">
-							<canvas id="barChart03" width="400" height="400"></canvas>
-                            <script>
-                            <!--Bar Chart-->
-                            var barData = {
-                                labels: ["執行50次", "執行100次", "執行200次"],
-                                datasets: [
-                                    {
-                                        label: "成功率(%)",
-                                        backgroundColor: "rgba(255, 99, 132, 1)",
-                                        strokeColor: "rgba(220, 220, 220, 1)",
-                                        highlightFill: "rgba(220, 220, 220, 1)",
-                                        highlightStroke: "rgba(220, 220, 220, 1)",
-                                        data: [100, 28, 48]
-                                    },
-                                ]
-                            };
-                            
-                            //return chart
-                                var ctx = document.getElementById("barChart03");
-                                var myRadarChart = new Chart(ctx, {
-                                    type: 'bar',
-                                    data: barData,
-                                    options:{
-                                        responsive: false,
-                                    }
-                                });
-                            </script>
+							<div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+							<script type="text/javascript">
+							// Create the chart
+								Highcharts.chart('container2', {
+								  chart: {
+								    type: 'column'
+								  },
+								  title: {
+								    text: '方法二分析結果(測試20次)'
+								  },
+								  xAxis: {
+								    type: 'category'
+								  },
+								  yAxis: {
+								    title: {
+								      text: '成功率(%)'
+								    }
+
+								  },
+								  legend: {
+								    enabled: false
+								  },
+								  plotOptions: {
+								    series: {
+								      borderWidth: 0,
+								      dataLabels: {
+								        enabled: true,
+								      }
+								    }
+								  },
+
+								  tooltip: {
+								    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+								    pointFormat: '<span style="color:{point.color}"></span><b>{point.y}</b>%<br/>'
+								  },
+
+								  series: [{
+								    name: '成功率',
+								    colorByPoint: true,
+								    data: [{
+								      name: '9乘9購物網',
+								      y: 0,
+								    }, {
+								      name: '清大南大校區登入系統',
+								      y: 0,
+								    }, {
+								      name: '交大選課系統',
+								      y: 0,
+								    }, {
+								      name: '大氣水文資料庫',
+								      y: 0,
+								    }, {
+								      name: 'OB嚴選',
+								      y: 0,
+								    }, {
+								      name: '元智選課系統',
+								      y: 0,
+								    }]
+								}]
+							});
+							</script>
 						</div>
 					</article>
 				</div>
@@ -555,6 +676,31 @@
 </script>
 <script>
     'use strict';
+
+    $(function(){
+        // 預設顯示第一個 Tab
+        var _showTab = 0;
+        var $defaultLi = $('nav.tabs a').eq(_showTab).addClass('active');
+        $($defaultLi.find('a').attr('href')).siblings().hide();
+        
+        // 當 li 頁籤被點擊時...
+        // 若要改成滑鼠移到 li 頁籤就切換時, 把 click 改成 mouseover
+        $('nav.tabs a').click(function() {
+            // 找出 li 中的超連結 href(#id)
+            var $this = $(this),
+                _clickTab = $this.attr('href');
+            // 把目前點擊到的 li 頁籤加上 .active
+            // 並把兄弟元素中有 .active 的都移除 class
+            $this.addClass('active').siblings('.active').removeClass('active');
+            // 淡入相對應的內容並隱藏兄弟元素
+            $(_clickTab).stop(false, true).fadeIn().siblings().hide();
+
+            return false;
+        }).find('a').focus(function(){
+            this.blur();
+        });
+    });
+
 
     ;( function ( document, window, index )
     {
@@ -688,9 +834,14 @@
                             $('#imageContainer').append("<img src="+'http://140.138.152.207/house/BDProject/upload/' + data['method1']['path'] + ' height="100" width="200"' + " />");
                             $('#imageContainer').append("<img src="+'http://140.138.152.207/house/BDProject/upload/' + data['method2']['path'] + ' height="100" width="200"' + " />");
                             $('#imageContainer').append("<img src="+'http://140.138.152.207/house/BDProject/upload/' + data['method3']['path'] + ' height="100" width="200"' + " />");
-                            $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method1']['result'] + " </span>");
-                            $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method2']['result'] + " </span>");
-                            $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method3']['result'] + " </span>");
+                            $('#resultContainer').append("<div><span style='color:red;'>Tesseract result:</span><div>");
+                            $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method1']['tesseract_result'] + " </span>");
+                            $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method2']['tesseract_result'] + " </span>");
+                            $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method3']['tesseract_result'] + " </span>");
+                            $('#resultContainer').append("<div><span style='color:red;'>GoogleVision result:</span><div>");
+                            $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method1']['googleVision_result'] + " </span>");
+                            $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method2']['googleVision_result'] + " </span>");
+                            $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method3']['googleVision_result'] + " </span>");
                         }
                     };
                     
@@ -719,6 +870,7 @@
                     */
                     ajax.onload = function()
                     {
+                        var host = "http://27.105.217.10"
                         form.classList.remove( 'is-uploading' );
                         if( ajax.status >= 200 && ajax.status < 400 )
                         {
@@ -726,8 +878,8 @@
                             if( ajax.responseText == "" )
                                 errorMsg.textContent = data.error;
                             else{
-                                // xhr.open("GET", "http://27.105.220.179:8080/BD_Project/api/v1.0/methods/runAll?path=" + ajax.responseText, true);
-                                xhr.open("GET", "http://140.138.225.10:8080/BD_Project/api/v1.0/methods/runAll?path=" + ajax.responseText, true);
+                                xhr.open("GET", host + ":8080/BD_Project/api/v1.0/methods/runAll?path=" + ajax.responseText, true);
+                                // xhr.open("GET", "http://140.138.225.10:8080/BD_Project/api/v1.0/methods/runAll?path=" + ajax.responseText, true);
                                 // xhr.setRequestHeader("Authorization", "Basic " + btoa("username:password"));
                                 xhr.send();
                             }

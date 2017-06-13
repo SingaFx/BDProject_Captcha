@@ -24,6 +24,7 @@ sys.path.append('../')
 from methods.url.main_captcha import main_captcha
 from methods.url.canny_captcha import canny_captcha
 from methods.url.benny_captcha import benny_captcha
+from methods.url.recaptcha import recaptcha
 sys.path.append('../../')
 from util.convertImage import convertImage
 from googleVision import googleVision
@@ -54,6 +55,12 @@ methods = [
     }
 ]
 
+
+# init
+vision = googleVision()
+reCaptcha = recaptcha()
+uri = 'http://140.138.152.207/house/BDProject/upload/'
+
 @app.route('/BD_Project/api/v1.0/methods', methods=['GET'])
 def get_methods():
     return jsonify({'methods': methods})
@@ -61,8 +68,8 @@ def get_methods():
 @app.route('/BD_Project/api/v1.0/methods/runAll', methods=['GET'])
 # @auth.login_required
 def runAll():
-    vision = googleVision()
-    uri = 'http://140.138.152.207/house/BDProject/upload/'
+    
+    
     path = request.args.get('path')
     main = main_captcha()
     canny = canny_captcha()
@@ -82,23 +89,48 @@ def runAll():
                 'name' : 'Our algorithm',
                 'path' : m1, 
                 'tesseract_result' : m1_result,
-                'googleVision_result' : vision.detect_text_uri(uri+m1)
+                'googleVision_result' : vision.detect_text_uri(uri+m1).replace(' ', '')
+                # 'googleVision_result' : ''
             }, 
             'method2' : 
             {
                 'name' : 'Our anoter algorithm',
                 'path' : m2, 
                 'tesseract_result' : m2_result,
-                'googleVision_result' : vision.detect_text_uri(uri+m2)
+                'googleVision_result' : vision.detect_text_uri(uri+m2).replace(' ', '')
+                # 'googleVision_result' : ''
             }, 
             'method3' : 
             {
                 'name' : 'Canny Detection algorithm',
                 'path' : m3, 
                 'tesseract_result' : m3_result,
-                'googleVision_result' : vision.detect_text_uri(uri+m3)
+                'googleVision_result' : vision.detect_text_uri(uri+m3).replace(' ', '')
+                # 'googleVision_result' : ''
             }
         })
+
+@app.route('/BD_Project/api/v1.0/methods/reCaptcha', methods=['GET'])
+# @auth.login_required
+def googleReCaptcha():
+
+    path = request.args.get('path')
+    result = reCaptcha.process(uri+path+'/src.png')
+
+    return jsonify(
+        {
+            'method1' : 
+            {
+                'name' : 'GoogleVision',
+                'result' : result
+            }, 
+            'method2' : 
+            {
+                'name' : 'Clarifai',
+                'result' : result
+            }
+        })
+
 
 @app.route('/BD_Project/api/v1.0/methods/<int:method_id>?<string:path>', methods=['GET'])
 @auth.login_required

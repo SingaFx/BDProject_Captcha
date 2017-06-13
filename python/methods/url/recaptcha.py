@@ -8,7 +8,7 @@ import json
 import fnmatch
 
 from convertImage import convertImage
-sys.path.append('../../')
+sys.path.append('../')
 from api.clarifai_api import clarifai_api
 from api.googleVision import googleVision
 
@@ -20,7 +20,7 @@ class recaptcha:
     def process(self, uri, keyword):
         # 從網路上得到圖片
         img = self.converter.url_to_image(uri)
-        path = '../../img/recaptcha/' + keyword + '/'
+        path = '../img/recaptcha/' + keyword + '/'
         # 依序存檔
         fileNum = len(fnmatch.filter(os.listdir(path), '*.jpg'))
         img.save(path + str(fileNum + 1) + '.jpg')
@@ -85,15 +85,15 @@ class recaptcha:
         pathArr = []
         for i in range(1, num+1):
             pathArr.append([])
-            infile = '../../img/recaptcha/' + folder + '/' + str(i) +'.jpg'
+            infile = '../img/recaptcha/' + folder + '/' + str(i) +'.jpg'
             
-            directory = '../../img/recaptcha/' + folder + '/' + str(i)
+            directory = '../img/recaptcha/' + folder + '/' + str(i)
             for k,piece in enumerate(self.crop(infile, height, width),start_num):
                 img = Image.new('RGB', (height,width), 255)
                 img.paste(piece)
                 if not os.path.exists(directory):
                     os.makedirs(directory)
-                path = '../../img/recaptcha/' + folder + '/' + str(i) + '/' + str(k) + '.jpg'
+                path = '../img/recaptcha/' + folder + '/' + str(i) + '/' + str(k) + '.jpg'
                 img.save(path)
                 pathArr[i-1].append(path)
         return pathArr
