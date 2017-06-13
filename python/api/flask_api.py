@@ -115,19 +115,20 @@ def runAll():
 def googleReCaptcha():
 
     path = request.args.get('path')
-    result = reCaptcha.process(uri+path+'/src.png')
-
+    keyword = request.args.get('keyword')
+    ClarifaiResult = reCaptcha.clarifai_process(uri+path+'/src.png', keyword)
+    VisionResult = reCaptcha.vision_process(uri+path+'/src.png', keyword)
     return jsonify(
         {
             'method1' : 
             {
                 'name' : 'GoogleVision',
-                'result' : result
+                'result' : VisionResult
             }, 
             'method2' : 
             {
                 'name' : 'Clarifai',
-                'result' : result
+                'result' : ClarifaiResult
             }
         })
 

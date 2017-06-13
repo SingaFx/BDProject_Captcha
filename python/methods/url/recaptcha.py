@@ -17,10 +17,13 @@ class recaptcha:
         self.vision = googleVision()
         self.clarifai = clarifai_api()
         self.converter = convertImage()
-    def process(self, uri, keyword):
+
+    def clarifai_process(self, uri, keyword):
         # 從網路上得到圖片
         img = self.converter.url_to_image(uri)
-        path = '../img/recaptcha/' + keyword + '/'
+        path = '../../img/recaptcha/' + keyword + '/'
+        if not os.path.exists(path):
+            os.makedirs(path)
         # 依序存檔
         fileNum = len(fnmatch.filter(os.listdir(path), '*.jpg'))
         img.save(path + str(fileNum + 1) + '.jpg')
@@ -38,6 +41,31 @@ class recaptcha:
 
         return resultArr
 
+    def vision_process(self, uri, keyword):
+        # 從網路上得到圖片
+        img = self.converter.url_to_image(uri)
+        path = '../../img/recaptcha/' + keyword + '/'
+        if not os.path.exists(path):
+            os.makedirs(path)
+        # 依序存檔
+        fileNum = len(fnmatch.filter(os.listdir(path), '*.jpg'))
+        img.save(path + str(fileNum + 1) + '.jpg')
+        # 驗證碼切塊
+        pathArr = self.cropCaptcha(path, str(fileNum + 1))
+        resultArr = []
+        for index, blockPath in enumerate(pathArr):
+            labels = self.vision.detectLabel(blockPath, blockPath.replace('.jpg', '_labels.txt'))
+            if self.isContain(labels, keyword):
+                resultArr.append(index+1)
+
+        f = open(path + str(fileNum + 1) + '_result.txt','w')
+        for result in resultArr:
+            f.write(str(result) + '\n')
+
+        return resultArr
+
+
+        
     # divide image into crops
     def crop(self, infile, height, width):
         im = Image.open(infile)
@@ -65,8 +93,8 @@ class recaptcha:
 
     def isContain(self, labels, keyword):
         for label in labels:
-            print(label['name'] + '-----' + keyword)
-            if keyword == label['name']:
+            print(label + '-----' + keyword)
+            if keyword == label:
                 return True
         return False
 
@@ -85,15 +113,15 @@ class recaptcha:
         pathArr = []
         for i in range(1, num+1):
             pathArr.append([])
-            infile = '../img/recaptcha/' + folder + '/' + str(i) +'.jpg'
+            infile = '../../img/recaptcha/' + folder + '/' + str(i) +'.jpg'
             
-            directory = '../img/recaptcha/' + folder + '/' + str(i)
+            directory = '../../img/recaptcha/' + folder + '/' + str(i)
             for k,piece in enumerate(self.crop(infile, height, width),start_num):
                 img = Image.new('RGB', (height,width), 255)
                 img.paste(piece)
                 if not os.path.exists(directory):
                     os.makedirs(directory)
-                path = '../img/recaptcha/' + folder + '/' + str(i) + '/' + str(k) + '.jpg'
+                path = '../../img/recaptcha/' + folder + '/' + str(i) + '/' + str(k) + '.jpg'
                 img.save(path)
                 pathArr[i-1].append(path)
         return pathArr

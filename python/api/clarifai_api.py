@@ -25,11 +25,14 @@ class clarifai_api:
         result = self.model.predict([image])
         print()
         labels = result['outputs'][0]['data']['concepts']
+        labelArr = []
         # file.write(json.dumps(result, indent=4, sort_keys=True))
         for label in labels:
             file.write(label['name'] + '\n')
-        
-        return labels
+            labelArr.append(label['name'])
+
+
+        return labelArr
 
 if __name__ == "__main__":
     folder = 'road'

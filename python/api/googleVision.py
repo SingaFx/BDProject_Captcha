@@ -1,5 +1,6 @@
 import io
 import os
+import sys
 
 # Imports the Google Cloud client library
 from google.cloud import vision
@@ -12,10 +13,8 @@ class googleVision:
         # Instantiates a client
         self.vision_client = vision.Client('plucky-lane-147516')
 
-    def detectLabel(self):
-        # The name of the image file to annotate
-        file_name = 'demo-010.jpg'
-
+    def detectLabel(self, file_name):
+        file = open(resultPath,'w')
         # Loads the image into memory
         with io.open(file_name, 'rb') as image_file:
             content = image_file.read()
@@ -23,10 +22,11 @@ class googleVision:
 
         # Performs label detection on the image file
         labels = image.detect_labels()
-
-        print('Labels:')
+        labelArr = []
         for label in labels:
-            print(label.description)
+            file.write(label.description)
+            labelArr.append(label.description)
+        return labelArr
 
     def detect_text_uri(self, uri):
         """Detects text in the file located in Google Cloud Storage or on the Web.
@@ -34,8 +34,11 @@ class googleVision:
         image = self.vision_client.image(source_uri=uri)
 
         texts = image.detect_text()
-        print('Text:' + texts[0].description.replace('\n', ''))
-        return texts[0].description.replace('\n', '')
+        if len(texts) > 0:
+            print('Text:' + texts[0].description.replace('\n', '').encode(sys.stdin.encoding, "replace").decode(sys.stdin.encoding))
+            return texts[0].description.replace('\n', '')
+        else:
+            return ''
         # for text in texts:
         #     print(text)
         #     print('\n"{}"'.format(text.description))
