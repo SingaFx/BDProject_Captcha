@@ -1,0 +1,168 @@
+{
+    "outputs": [
+        {
+            "created_at": "2017-06-12T12:34:33.038977216Z",
+            "data": {
+                "concepts": [
+                    {
+                        "app_id": "main",
+                        "id": "ai_K1ntqFzK",
+                        "name": "security",
+                        "value": 0.9821707
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_zFnPQdgB",
+                        "name": "wood",
+                        "value": 0.96843505
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Zmhsv0Ch",
+                        "name": "outdoors",
+                        "value": 0.9615839
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_786Zr311",
+                        "name": "no person",
+                        "value": 0.9475336
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_kKszJrhP",
+                        "name": "safety",
+                        "value": 0.9458777
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_FWCjC8jZ",
+                        "name": "architecture",
+                        "value": 0.9446434
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_rsX6XWc2",
+                        "name": "building",
+                        "value": 0.93730724
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_xDBZXVs6",
+                        "name": "panoramic",
+                        "value": 0.92249656
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_VRmbGVWh",
+                        "name": "travel",
+                        "value": 0.9175853
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_ggQlMG6W",
+                        "name": "industry",
+                        "value": 0.91317886
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_GjVpxXrs",
+                        "name": "street",
+                        "value": 0.9076097
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_9Dcdh0PK",
+                        "name": "house",
+                        "value": 0.8904818
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_S0rvLGPz",
+                        "name": "old",
+                        "value": 0.88869256
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_6lhccv44",
+                        "name": "business",
+                        "value": 0.88340193
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_dCGTWvms",
+                        "name": "signalise",
+                        "value": 0.87463325
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_M2R4G9RK",
+                        "name": "fence",
+                        "value": 0.87408733
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_6pRrC0WT",
+                        "name": "danger",
+                        "value": 0.85782385
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_cTv1BBXG",
+                        "name": "expression",
+                        "value": 0.85547936
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_WBQfVV0p",
+                        "name": "city",
+                        "value": 0.85221255
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_8rNgfppJ",
+                        "name": "symbol",
+                        "value": 0.8521186
+                    }
+                ]
+            },
+            "id": "dd86829c10ba4318a3b826eb5c39f550",
+            "input": {
+                "data": {
+                    "image": {
+                        "base64": "true",
+                        "url": "https://s3.amazonaws.com/clarifai-api/img/prod/d309d541c5a147cab44fb8f00349a067/f00a4bd2d5a14c369a929156587f16fc.jpeg"
+                    }
+                },
+                "id": "d677612457d04c96a852bdb9f8c46e17"
+            },
+            "model": {
+                "app_id": "main",
+                "created_at": "2016-03-09T17:11:39.608845Z",
+                "id": "aaa03c23b3724a16a56b629203edc62c",
+                "model_version": {
+                    "created_at": "2016-07-13T01:19:12.147644Z",
+                    "id": "aa9ca48295b37401f8af92ad1af0d91d",
+                    "status": {
+                        "code": 21100,
+                        "description": "Model trained successfully"
+                    }
+                },
+                "name": "general-v1.3",
+                "output_info": {
+                    "message": "Show output_info with: GET /models/{model_id}/output_info",
+                    "type": "concept",
+                    "type_ext": "concept"
+                }
+            },
+            "status": {
+                "code": 10000,
+                "description": "Ok"
+            }
+        }
+    ],
+    "status": {
+        "code": 10000,
+        "description": "Ok"
+    }
+}

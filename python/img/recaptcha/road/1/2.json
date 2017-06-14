@@ -1,0 +1,168 @@
+{
+    "outputs": [
+        {
+            "created_at": "2017-06-12T12:33:56.000204166Z",
+            "data": {
+                "concepts": [
+                    {
+                        "app_id": "main",
+                        "id": "ai_mp9KG5QH",
+                        "name": "grass",
+                        "value": 0.99398416
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_tBcWlsCp",
+                        "name": "nature",
+                        "value": 0.9909966
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_TjbmxC6B",
+                        "name": "tree",
+                        "value": 0.9883821
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_FsT0Zqdb",
+                        "name": "summer",
+                        "value": 0.9875761
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_TZ3C79C6",
+                        "name": "road",
+                        "value": 0.9860549
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Zmhsv0Ch",
+                        "name": "outdoors",
+                        "value": 0.9825187
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Xxjc3MhT",
+                        "name": "transportation system",
+                        "value": 0.9809729
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_lNsKfmXb",
+                        "name": "sky",
+                        "value": 0.9799992
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_VRmbGVWh",
+                        "name": "travel",
+                        "value": 0.9745358
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_8xrjRNnl",
+                        "name": "horizontal plane",
+                        "value": 0.9719598
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_MTvKbKJv",
+                        "name": "landscape",
+                        "value": 0.9705529
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_W1zlPRs1",
+                        "name": "field",
+                        "value": 0.964202
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_PBTpj0kl",
+                        "name": "park",
+                        "value": 0.95927006
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_hsG8bzf6",
+                        "name": "drive",
+                        "value": 0.9560057
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_q1LLwMsD",
+                        "name": "country",
+                        "value": 0.9442894
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_RzrbbnhM",
+                        "name": "guidance",
+                        "value": 0.9436766
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_xDBZXVs6",
+                        "name": "panoramic",
+                        "value": 0.93911695
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_DFvZTXj3",
+                        "name": "trip (journey)",
+                        "value": 0.92981404
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_R6dzMxKV",
+                        "name": "rural",
+                        "value": 0.9279624
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_9k62PDS6",
+                        "name": "hayfield",
+                        "value": 0.9223068
+                    }
+                ]
+            },
+            "id": "e1428478ff3043839cf880ead163ed0f",
+            "input": {
+                "data": {
+                    "image": {
+                        "base64": "true",
+                        "url": "https://s3.amazonaws.com/clarifai-api/img/prod/d309d541c5a147cab44fb8f00349a067/a06bc1d2e2a141b8bcb6513be07acddc.jpeg"
+                    }
+                },
+                "id": "dd581b2bb4134e7a9a395d5b9732802f"
+            },
+            "model": {
+                "app_id": "main",
+                "created_at": "2016-03-09T17:11:39.608845Z",
+                "id": "aaa03c23b3724a16a56b629203edc62c",
+                "model_version": {
+                    "created_at": "2016-07-13T01:19:12.147644Z",
+                    "id": "aa9ca48295b37401f8af92ad1af0d91d",
+                    "status": {
+                        "code": 21100,
+                        "description": "Model trained successfully"
+                    }
+                },
+                "name": "general-v1.3",
+                "output_info": {
+                    "message": "Show output_info with: GET /models/{model_id}/output_info",
+                    "type": "concept",
+                    "type_ext": "concept"
+                }
+            },
+            "status": {
+                "code": 10000,
+                "description": "Ok"
+            }
+        }
+    ],
+    "status": {
+        "code": 10000,
+        "description": "Ok"
+    }
+}

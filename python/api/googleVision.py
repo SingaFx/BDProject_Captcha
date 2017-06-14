@@ -13,7 +13,7 @@ class googleVision:
         # Instantiates a client
         self.vision_client = vision.Client('plucky-lane-147516')
 
-    def detectLabel(self, file_name):
+    def detectLabel(self, file_name, resultPath):
         file = open(resultPath,'w')
         # Loads the image into memory
         with io.open(file_name, 'rb') as image_file:
@@ -24,7 +24,7 @@ class googleVision:
         labels = image.detect_labels()
         labelArr = []
         for label in labels:
-            file.write(label.description)
+            file.write(label.description + '\n')
             labelArr.append(label.description)
         return labelArr
 

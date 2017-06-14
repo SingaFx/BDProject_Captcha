@@ -1,0 +1,168 @@
+{
+    "outputs": [
+        {
+            "created_at": "2017-06-12T12:34:29.458160600Z",
+            "data": {
+                "concepts": [
+                    {
+                        "app_id": "main",
+                        "id": "ai_TZ3C79C6",
+                        "name": "road",
+                        "value": 0.99382025
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_h16c4hS0",
+                        "name": "signal",
+                        "value": 0.99291766
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_P2JQxHw9",
+                        "name": "warning",
+                        "value": 0.9869672
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_786Zr311",
+                        "name": "no person",
+                        "value": 0.9823075
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_6pRrC0WT",
+                        "name": "danger",
+                        "value": 0.9760245
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_mp9KG5QH",
+                        "name": "grass",
+                        "value": 0.97336584
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_tBcWlsCp",
+                        "name": "nature",
+                        "value": 0.9677664
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Zmhsv0Ch",
+                        "name": "outdoors",
+                        "value": 0.96576786
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_RzrbbnhM",
+                        "name": "guidance",
+                        "value": 0.95878667
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_8rNgfppJ",
+                        "name": "symbol",
+                        "value": 0.9372151
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_dCGTWvms",
+                        "name": "signalise",
+                        "value": 0.9328035
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_kP2nBjcZ",
+                        "name": "roadside",
+                        "value": 0.9276929
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_kKszJrhP",
+                        "name": "safety",
+                        "value": 0.9241539
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_VRmbGVWh",
+                        "name": "travel",
+                        "value": 0.92321974
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_N4nkps1d",
+                        "name": "sign",
+                        "value": 0.9155602
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_lNsKfmXb",
+                        "name": "sky",
+                        "value": 0.905443
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_SrTKCKBL",
+                        "name": "public notice",
+                        "value": 0.89953077
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_7434TJTt",
+                        "name": "endanger",
+                        "value": 0.8993795
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_zFnPQdgB",
+                        "name": "wood",
+                        "value": 0.8931965
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_FsT0Zqdb",
+                        "name": "summer",
+                        "value": 0.8887597
+                    }
+                ]
+            },
+            "id": "b1fbc2be9eb14f26924d8ce01d1a8e9d",
+            "input": {
+                "data": {
+                    "image": {
+                        "base64": "true",
+                        "url": "https://s3.amazonaws.com/clarifai-api/img/prod/d309d541c5a147cab44fb8f00349a067/b59bc544300746ec9328d09a05687edc.jpeg"
+                    }
+                },
+                "id": "ee4daf9f24af431f8d5f3c0710ed14a6"
+            },
+            "model": {
+                "app_id": "main",
+                "created_at": "2016-03-09T17:11:39.608845Z",
+                "id": "aaa03c23b3724a16a56b629203edc62c",
+                "model_version": {
+                    "created_at": "2016-07-13T01:19:12.147644Z",
+                    "id": "aa9ca48295b37401f8af92ad1af0d91d",
+                    "status": {
+                        "code": 21100,
+                        "description": "Model trained successfully"
+                    }
+                },
+                "name": "general-v1.3",
+                "output_info": {
+                    "message": "Show output_info with: GET /models/{model_id}/output_info",
+                    "type": "concept",
+                    "type_ext": "concept"
+                }
+            },
+            "status": {
+                "code": 10000,
+                "description": "Ok"
+            }
+        }
+    ],
+    "status": {
+        "code": 10000,
+        "description": "Ok"
+    }
+}

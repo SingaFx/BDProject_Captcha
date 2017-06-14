@@ -1,0 +1,168 @@
+{
+    "outputs": [
+        {
+            "created_at": "2017-06-12T12:34:11.440949545Z",
+            "data": {
+                "concepts": [
+                    {
+                        "app_id": "main",
+                        "id": "ai_h16c4hS0",
+                        "name": "signal",
+                        "value": 0.99794143
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_TZ3C79C6",
+                        "name": "road",
+                        "value": 0.99784636
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_GjVpxXrs",
+                        "name": "street",
+                        "value": 0.9963351
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_zX8RQMxl",
+                        "name": "signpost",
+                        "value": 0.99507535
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_dCGTWvms",
+                        "name": "signalise",
+                        "value": 0.9941704
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_RzrbbnhM",
+                        "name": "guidance",
+                        "value": 0.99006677
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_tr0MBp64",
+                        "name": "traffic",
+                        "value": 0.98825717
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_M78jFpM2",
+                        "name": "text",
+                        "value": 0.98418605
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_N4nkps1d",
+                        "name": "sign",
+                        "value": 0.9827345
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_S0ZSWchr",
+                        "name": "billboard",
+                        "value": 0.97867364
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_h284LkKC",
+                        "name": "direction",
+                        "value": 0.9755453
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_SrTKCKBL",
+                        "name": "public notice",
+                        "value": 0.9744419
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_VRmbGVWh",
+                        "name": "travel",
+                        "value": 0.9667077
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_4250DWCs",
+                        "name": "highway",
+                        "value": 0.96614873
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Xxjc3MhT",
+                        "name": "transportation system",
+                        "value": 0.96602875
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_8ZV4TG7z",
+                        "name": "send message",
+                        "value": 0.96407676
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_7nv4hD0N",
+                        "name": "poles",
+                        "value": 0.9628704
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_FgL8fq22",
+                        "name": "notice",
+                        "value": 0.96198857
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_TjbmxC6B",
+                        "name": "tree",
+                        "value": 0.9562148
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Zmhsv0Ch",
+                        "name": "outdoors",
+                        "value": 0.9530326
+                    }
+                ]
+            },
+            "id": "c981f2ada1294c968b8b30e950afcdae",
+            "input": {
+                "data": {
+                    "image": {
+                        "base64": "true",
+                        "url": "https://s3.amazonaws.com/clarifai-api/img/prod/d309d541c5a147cab44fb8f00349a067/ae82397290b84c1c9807f82f1198bee4.jpeg"
+                    }
+                },
+                "id": "f09317f58d0449298b992497eed06161"
+            },
+            "model": {
+                "app_id": "main",
+                "created_at": "2016-03-09T17:11:39.608845Z",
+                "id": "aaa03c23b3724a16a56b629203edc62c",
+                "model_version": {
+                    "created_at": "2016-07-13T01:19:12.147644Z",
+                    "id": "aa9ca48295b37401f8af92ad1af0d91d",
+                    "status": {
+                        "code": 21100,
+                        "description": "Model trained successfully"
+                    }
+                },
+                "name": "general-v1.3",
+                "output_info": {
+                    "message": "Show output_info with: GET /models/{model_id}/output_info",
+                    "type": "concept",
+                    "type_ext": "concept"
+                }
+            },
+            "status": {
+                "code": 10000,
+                "description": "Ok"
+            }
+        }
+    ],
+    "status": {
+        "code": 10000,
+        "description": "Ok"
+    }
+}

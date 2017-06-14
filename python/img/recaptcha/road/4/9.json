@@ -1,0 +1,168 @@
+{
+    "outputs": [
+        {
+            "created_at": "2017-06-12T12:49:17.462407951Z",
+            "data": {
+                "concepts": [
+                    {
+                        "app_id": "main",
+                        "id": "ai_62K34TR4",
+                        "name": "technology",
+                        "value": 0.9810797
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_TWdnTf45",
+                        "name": "air",
+                        "value": 0.9763048
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_jcThrrq5",
+                        "name": "airplane",
+                        "value": 0.9706763
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_QpHCqfz9",
+                        "name": "flight",
+                        "value": 0.9644191
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_lNsKfmXb",
+                        "name": "sky",
+                        "value": 0.9615066
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_tTvC9vRv",
+                        "name": "flying",
+                        "value": 0.95476395
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_gB2hr2wN",
+                        "name": "jet",
+                        "value": 0.95157415
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_ggQlMG6W",
+                        "name": "industry",
+                        "value": 0.9505918
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_xh4vNZQL",
+                        "name": "power",
+                        "value": 0.9395697
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_786Zr311",
+                        "name": "no person",
+                        "value": 0.9368958
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_GkhKcPVj",
+                        "name": "airport",
+                        "value": 0.9336133
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_dXMqcd7K",
+                        "name": "wing",
+                        "value": 0.9301354
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_VRmbGVWh",
+                        "name": "travel",
+                        "value": 0.9263685
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_z2zRmT5F",
+                        "name": "propeller",
+                        "value": 0.9058819
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_WBppcrZM",
+                        "name": "turbine",
+                        "value": 0.903702
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_DCqDd99k",
+                        "name": "cockpit",
+                        "value": 0.8957163
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_MlJWbCH6",
+                        "name": "aircraft",
+                        "value": 0.8885904
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_0SL2mdXt",
+                        "name": "military",
+                        "value": 0.8819721
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Kq5T0N87",
+                        "name": "engine",
+                        "value": 0.8649017
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_6lhccv44",
+                        "name": "business",
+                        "value": 0.8645848
+                    }
+                ]
+            },
+            "id": "ec83fd7e95894a12b8d49f250fd4f95a",
+            "input": {
+                "data": {
+                    "image": {
+                        "base64": "true",
+                        "url": "https://s3.amazonaws.com/clarifai-api/img/prod/d309d541c5a147cab44fb8f00349a067/b4f65a2a6dd042d98c5f04d7462e1ff9.jpeg"
+                    }
+                },
+                "id": "c1a8c8772c0343e0a311cbac8d893a66"
+            },
+            "model": {
+                "app_id": "main",
+                "created_at": "2016-03-09T17:11:39.608845Z",
+                "id": "aaa03c23b3724a16a56b629203edc62c",
+                "model_version": {
+                    "created_at": "2016-07-13T01:19:12.147644Z",
+                    "id": "aa9ca48295b37401f8af92ad1af0d91d",
+                    "status": {
+                        "code": 21100,
+                        "description": "Model trained successfully"
+                    }
+                },
+                "name": "general-v1.3",
+                "output_info": {
+                    "message": "Show output_info with: GET /models/{model_id}/output_info",
+                    "type": "concept",
+                    "type_ext": "concept"
+                }
+            },
+            "status": {
+                "code": 10000,
+                "description": "Ok"
+            }
+        }
+    ],
+    "status": {
+        "code": 10000,
+        "description": "Ok"
+    }
+}

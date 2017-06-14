@@ -1,0 +1,168 @@
+{
+    "outputs": [
+        {
+            "created_at": "2017-06-12T12:34:03.755934340Z",
+            "data": {
+                "concepts": [
+                    {
+                        "app_id": "main",
+                        "id": "ai_Zmhsv0Ch",
+                        "name": "outdoors",
+                        "value": 0.98671794
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_tBcWlsCp",
+                        "name": "nature",
+                        "value": 0.9864884
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_VRmbGVWh",
+                        "name": "travel",
+                        "value": 0.98526025
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_lNsKfmXb",
+                        "name": "sky",
+                        "value": 0.9803501
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_786Zr311",
+                        "name": "no person",
+                        "value": 0.97543
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_xDBZXVs6",
+                        "name": "panoramic",
+                        "value": 0.9582367
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_DFvZTXj3",
+                        "name": "trip (journey)",
+                        "value": 0.9456761
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_9tsK0tsn",
+                        "name": "weather",
+                        "value": 0.9406158
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_GjVpxXrs",
+                        "name": "street",
+                        "value": 0.9398323
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_2FHPKk9B",
+                        "name": "winter",
+                        "value": 0.93955994
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_lN6KXkcl",
+                        "name": "dawn",
+                        "value": 0.93746686
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_vfV1Zf9w",
+                        "name": "horizontal",
+                        "value": 0.92187035
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_41s912fX",
+                        "name": "fair weather",
+                        "value": 0.9059247
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_TbGNfjXx",
+                        "name": "time",
+                        "value": 0.8965064
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_7f5WXJZQ",
+                        "name": "blue sky",
+                        "value": 0.8908144
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_2hGN5HMx",
+                        "name": "cloud",
+                        "value": 0.8903296
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_n5n0c9cN",
+                        "name": "wide",
+                        "value": 0.8863323
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_6lhccv44",
+                        "name": "business",
+                        "value": 0.88492113
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_TZ3C79C6",
+                        "name": "road",
+                        "value": 0.8723533
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_hlbBknxP",
+                        "name": "space",
+                        "value": 0.8663594
+                    }
+                ]
+            },
+            "id": "ff7cfb9040d24fbd92bf4ca419a6914a",
+            "input": {
+                "data": {
+                    "image": {
+                        "base64": "true",
+                        "url": "https://s3.amazonaws.com/clarifai-api/img/prod/d309d541c5a147cab44fb8f00349a067/a58f555b26db43c388b26da5a6ca8cbb.jpeg"
+                    }
+                },
+                "id": "abf70f6a662945938ef88323c2bce031"
+            },
+            "model": {
+                "app_id": "main",
+                "created_at": "2016-03-09T17:11:39.608845Z",
+                "id": "aaa03c23b3724a16a56b629203edc62c",
+                "model_version": {
+                    "created_at": "2016-07-13T01:19:12.147644Z",
+                    "id": "aa9ca48295b37401f8af92ad1af0d91d",
+                    "status": {
+                        "code": 21100,
+                        "description": "Model trained successfully"
+                    }
+                },
+                "name": "general-v1.3",
+                "output_info": {
+                    "message": "Show output_info with: GET /models/{model_id}/output_info",
+                    "type": "concept",
+                    "type_ext": "concept"
+                }
+            },
+            "status": {
+                "code": 10000,
+                "description": "Ok"
+            }
+        }
+    ],
+    "status": {
+        "code": 10000,
+        "description": "Ok"
+    }
+}

@@ -1,0 +1,168 @@
+{
+    "outputs": [
+        {
+            "created_at": "2017-06-12T12:34:39.079805441Z",
+            "data": {
+                "concepts": [
+                    {
+                        "app_id": "main",
+                        "id": "ai_TZ3C79C6",
+                        "name": "road",
+                        "value": 0.99051166
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_tBcWlsCp",
+                        "name": "nature",
+                        "value": 0.977862
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_GjVpxXrs",
+                        "name": "street",
+                        "value": 0.9679445
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_TjbmxC6B",
+                        "name": "tree",
+                        "value": 0.9624992
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Zmhsv0Ch",
+                        "name": "outdoors",
+                        "value": 0.9602561
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_RzrbbnhM",
+                        "name": "guidance",
+                        "value": 0.94767857
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_mp9KG5QH",
+                        "name": "grass",
+                        "value": 0.94324946
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Qp0fHhgG",
+                        "name": "season",
+                        "value": 0.93116367
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_786Zr311",
+                        "name": "no person",
+                        "value": 0.92898047
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_4WQx8fHH",
+                        "name": "asphalt",
+                        "value": 0.92822194
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_6jpGRJmm",
+                        "name": "flora",
+                        "value": 0.919778
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_xDBZXVs6",
+                        "name": "panoramic",
+                        "value": 0.9055542
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_FsT0Zqdb",
+                        "name": "summer",
+                        "value": 0.89343035
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_VRmbGVWh",
+                        "name": "travel",
+                        "value": 0.8925351
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_4250DWCs",
+                        "name": "highway",
+                        "value": 0.8890766
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_h16c4hS0",
+                        "name": "signal",
+                        "value": 0.8741467
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_f3fsJS61",
+                        "name": "pavement",
+                        "value": 0.8739296
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Glmf6jMC",
+                        "name": "lane",
+                        "value": 0.8709434
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_WvHmQsC0",
+                        "name": "line",
+                        "value": 0.8697996
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Xxjc3MhT",
+                        "name": "transportation system",
+                        "value": 0.86356777
+                    }
+                ]
+            },
+            "id": "e46609afb0c3431cae00aa4edf35fc13",
+            "input": {
+                "data": {
+                    "image": {
+                        "base64": "true",
+                        "url": "https://s3.amazonaws.com/clarifai-api/img/prod/d309d541c5a147cab44fb8f00349a067/d6c9a5e0003e4234842379404f2849b6.jpeg"
+                    }
+                },
+                "id": "b96cb2e09f0a4a9ebae8ae04b9232286"
+            },
+            "model": {
+                "app_id": "main",
+                "created_at": "2016-03-09T17:11:39.608845Z",
+                "id": "aaa03c23b3724a16a56b629203edc62c",
+                "model_version": {
+                    "created_at": "2016-07-13T01:19:12.147644Z",
+                    "id": "aa9ca48295b37401f8af92ad1af0d91d",
+                    "status": {
+                        "code": 21100,
+                        "description": "Model trained successfully"
+                    }
+                },
+                "name": "general-v1.3",
+                "output_info": {
+                    "message": "Show output_info with: GET /models/{model_id}/output_info",
+                    "type": "concept",
+                    "type_ext": "concept"
+                }
+            },
+            "status": {
+                "code": 10000,
+                "description": "Ok"
+            }
+        }
+    ],
+    "status": {
+        "code": 10000,
+        "description": "Ok"
+    }
+}

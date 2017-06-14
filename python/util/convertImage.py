@@ -10,14 +10,21 @@ class convertImage:
         pil_im = Image.fromarray(cv2_im)
         return pil_im
 
+    def convertPILToCV(self, img):
+        pil_image = img.convert('RGB') 
+        open_cv_image = np.array(pil_image) 
+        # Convert RGB to BGR 
+        open_cv_image = open_cv_image[:, :, ::-1].copy() 
+        return open_cv_image
+
     def cv_url_to_image(self, url):
         # download the image, convert it to a NumPy array, and then read
         # it into OpenCV format
         # resp = urlfetch.fetch(url)
         resp = urllib.request.urlopen(url)
         image = np.asarray(bytearray(resp.read()), dtype="uint8")
+        # image = cv2.imdecode(image, cv2.IMREAD_COLOR)
         image = cv2.imdecode(image, cv2.IMREAD_COLOR)
-     
         # return the image
         return image
 

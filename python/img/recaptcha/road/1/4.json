@@ -1,0 +1,168 @@
+{
+    "outputs": [
+        {
+            "created_at": "2017-06-12T12:33:58.540731751Z",
+            "data": {
+                "concepts": [
+                    {
+                        "app_id": "main",
+                        "id": "ai_ggQlMG6W",
+                        "name": "industry",
+                        "value": 0.9736973
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_FWCjC8jZ",
+                        "name": "architecture",
+                        "value": 0.96121466
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_786Zr311",
+                        "name": "no person",
+                        "value": 0.9565902
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_pCnxWJZh",
+                        "name": "contemporary",
+                        "value": 0.9495973
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Zmhsv0Ch",
+                        "name": "outdoors",
+                        "value": 0.9401301
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_6lhccv44",
+                        "name": "business",
+                        "value": 0.9388082
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_S1qBKn3x",
+                        "name": "stock",
+                        "value": 0.9257676
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_zFnPQdgB",
+                        "name": "wood",
+                        "value": 0.92217994
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_HpvT5hjp",
+                        "name": "door",
+                        "value": 0.91929424
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Pf2b7clG",
+                        "name": "indoors",
+                        "value": 0.9179029
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Bk6bZXqC",
+                        "name": "entrance",
+                        "value": 0.91099286
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_9Dcdh0PK",
+                        "name": "house",
+                        "value": 0.9057779
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_TQXLSgPF",
+                        "name": "fossil fuel",
+                        "value": 0.90118694
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_lbkj2ffx",
+                        "name": "wall",
+                        "value": 0.88332933
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_dCGTWvms",
+                        "name": "signalise",
+                        "value": 0.8806315
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_wZCn67qV",
+                        "name": "style",
+                        "value": 0.8798096
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_l2vWw8mr",
+                        "name": "empty",
+                        "value": 0.8760654
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_cMfj16kJ",
+                        "name": "design",
+                        "value": 0.87106246
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_gB5qwrpr",
+                        "name": "glass items",
+                        "value": 0.8703145
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_ZSKpCCHD",
+                        "name": "vertical",
+                        "value": 0.86919594
+                    }
+                ]
+            },
+            "id": "f632d68252e740b4a945a4b46070c156",
+            "input": {
+                "data": {
+                    "image": {
+                        "base64": "true",
+                        "url": "https://s3.amazonaws.com/clarifai-api/img/prod/d309d541c5a147cab44fb8f00349a067/f5f97b7347f54f63bc29ef826856b7ad.jpeg"
+                    }
+                },
+                "id": "a93503f327644d6ab04b07a0be80a7be"
+            },
+            "model": {
+                "app_id": "main",
+                "created_at": "2016-03-09T17:11:39.608845Z",
+                "id": "aaa03c23b3724a16a56b629203edc62c",
+                "model_version": {
+                    "created_at": "2016-07-13T01:19:12.147644Z",
+                    "id": "aa9ca48295b37401f8af92ad1af0d91d",
+                    "status": {
+                        "code": 21100,
+                        "description": "Model trained successfully"
+                    }
+                },
+                "name": "general-v1.3",
+                "output_info": {
+                    "message": "Show output_info with: GET /models/{model_id}/output_info",
+                    "type": "concept",
+                    "type_ext": "concept"
+                }
+            },
+            "status": {
+                "code": 10000,
+                "description": "Ok"
+            }
+        }
+    ],
+    "status": {
+        "code": 10000,
+        "description": "Ok"
+    }
+}

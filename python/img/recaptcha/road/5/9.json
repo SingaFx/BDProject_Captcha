@@ -1,0 +1,168 @@
+{
+    "outputs": [
+        {
+            "created_at": "2017-06-12T12:49:18.696039138Z",
+            "data": {
+                "concepts": [
+                    {
+                        "app_id": "main",
+                        "id": "ai_GjVpxXrs",
+                        "name": "street",
+                        "value": 0.98200226
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_xDBZXVs6",
+                        "name": "panoramic",
+                        "value": 0.9812856
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_FWCjC8jZ",
+                        "name": "architecture",
+                        "value": 0.97659695
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_WBQfVV0p",
+                        "name": "city",
+                        "value": 0.9746051
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_CpFBRWzD",
+                        "name": "urban",
+                        "value": 0.95926946
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_rsX6XWc2",
+                        "name": "building",
+                        "value": 0.9558109
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Zmhsv0Ch",
+                        "name": "outdoors",
+                        "value": 0.95054173
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_VRmbGVWh",
+                        "name": "travel",
+                        "value": 0.9502406
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_nfd9DXhN",
+                        "name": "tourism",
+                        "value": 0.94481945
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_djRqCRT8",
+                        "name": "culture",
+                        "value": 0.9252011
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_m8rrtkhG",
+                        "name": "town",
+                        "value": 0.9090694
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_S0rvLGPz",
+                        "name": "old",
+                        "value": 0.88913465
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_M2R4G9RK",
+                        "name": "fence",
+                        "value": 0.8852767
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_QrLqMsH9",
+                        "name": "bridge",
+                        "value": 0.87553215
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_8xrjRNnl",
+                        "name": "horizontal plane",
+                        "value": 0.87059534
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_6lhccv44",
+                        "name": "business",
+                        "value": 0.86925876
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_0JbWBDPd",
+                        "name": "color",
+                        "value": 0.8660568
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_FG5057gF",
+                        "name": "panorama",
+                        "value": 0.8653896
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_TZ3C79C6",
+                        "name": "road",
+                        "value": 0.86402994
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_ggQlMG6W",
+                        "name": "industry",
+                        "value": 0.8629608
+                    }
+                ]
+            },
+            "id": "bb86569784a147a2a22509537e741912",
+            "input": {
+                "data": {
+                    "image": {
+                        "base64": "true",
+                        "url": "https://s3.amazonaws.com/clarifai-api/img/prod/d309d541c5a147cab44fb8f00349a067/a8df6c9687da4d88bc5d6d02144db37f.jpeg"
+                    }
+                },
+                "id": "bcbbf8b6bdd34c07820c0bee39b9f57a"
+            },
+            "model": {
+                "app_id": "main",
+                "created_at": "2016-03-09T17:11:39.608845Z",
+                "id": "aaa03c23b3724a16a56b629203edc62c",
+                "model_version": {
+                    "created_at": "2016-07-13T01:19:12.147644Z",
+                    "id": "aa9ca48295b37401f8af92ad1af0d91d",
+                    "status": {
+                        "code": 21100,
+                        "description": "Model trained successfully"
+                    }
+                },
+                "name": "general-v1.3",
+                "output_info": {
+                    "message": "Show output_info with: GET /models/{model_id}/output_info",
+                    "type": "concept",
+                    "type_ext": "concept"
+                }
+            },
+            "status": {
+                "code": 10000,
+                "description": "Ok"
+            }
+        }
+    ],
+    "status": {
+        "code": 10000,
+        "description": "Ok"
+    }
+}

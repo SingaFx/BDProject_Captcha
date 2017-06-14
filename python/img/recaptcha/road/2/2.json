@@ -1,0 +1,168 @@
+{
+    "outputs": [
+        {
+            "created_at": "2017-06-12T12:34:06.339905641Z",
+            "data": {
+                "concepts": [
+                    {
+                        "app_id": "main",
+                        "id": "ai_786Zr311",
+                        "name": "no person",
+                        "value": 0.9909814
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_VRmbGVWh",
+                        "name": "travel",
+                        "value": 0.9345374
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_zFnPQdgB",
+                        "name": "wood",
+                        "value": 0.93307734
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_FWCjC8jZ",
+                        "name": "architecture",
+                        "value": 0.9102839
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Zmhsv0Ch",
+                        "name": "outdoors",
+                        "value": 0.9089549
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_cMfj16kJ",
+                        "name": "design",
+                        "value": 0.9052608
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_6lhccv44",
+                        "name": "business",
+                        "value": 0.88875556
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_ZSKpCCHD",
+                        "name": "vertical",
+                        "value": 0.87680656
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_phDKFgpM",
+                        "name": "textile",
+                        "value": 0.86993045
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_FsT0Zqdb",
+                        "name": "summer",
+                        "value": 0.86580443
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_9bHlLt8r",
+                        "name": "paper",
+                        "value": 0.865198
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_2KXVGp9Z",
+                        "name": "hanging",
+                        "value": 0.8616403
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_S0rvLGPz",
+                        "name": "old",
+                        "value": 0.84412193
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_xDBZXVs6",
+                        "name": "panoramic",
+                        "value": 0.8358783
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_VJBpGKVr",
+                        "name": "rope",
+                        "value": 0.83350605
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Lq00FggW",
+                        "name": "desktop",
+                        "value": 0.8318776
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_pCnxWJZh",
+                        "name": "contemporary",
+                        "value": 0.82964575
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_LxrzLJmf",
+                        "name": "bright",
+                        "value": 0.8268989
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_lpzCZCGQ",
+                        "name": "wind",
+                        "value": 0.81681323
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_1p2zMmqb",
+                        "name": "retro",
+                        "value": 0.8102332
+                    }
+                ]
+            },
+            "id": "d97a3fbf42104d329885c9ec2c99686b",
+            "input": {
+                "data": {
+                    "image": {
+                        "base64": "true",
+                        "url": "https://s3.amazonaws.com/clarifai-api/img/prod/d309d541c5a147cab44fb8f00349a067/b85cd7c51af54af88a42b1f2db83ddbc.jpeg"
+                    }
+                },
+                "id": "e29ca2cc3b8f49379738cc1964b96666"
+            },
+            "model": {
+                "app_id": "main",
+                "created_at": "2016-03-09T17:11:39.608845Z",
+                "id": "aaa03c23b3724a16a56b629203edc62c",
+                "model_version": {
+                    "created_at": "2016-07-13T01:19:12.147644Z",
+                    "id": "aa9ca48295b37401f8af92ad1af0d91d",
+                    "status": {
+                        "code": 21100,
+                        "description": "Model trained successfully"
+                    }
+                },
+                "name": "general-v1.3",
+                "output_info": {
+                    "message": "Show output_info with: GET /models/{model_id}/output_info",
+                    "type": "concept",
+                    "type_ext": "concept"
+                }
+            },
+            "status": {
+                "code": 10000,
+                "description": "Ok"
+            }
+        }
+    ],
+    "status": {
+        "code": 10000,
+        "description": "Ok"
+    }
+}

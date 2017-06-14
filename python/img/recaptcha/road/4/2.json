@@ -1,0 +1,168 @@
+{
+    "outputs": [
+        {
+            "created_at": "2017-06-12T12:34:26.997870278Z",
+            "data": {
+                "concepts": [
+                    {
+                        "app_id": "main",
+                        "id": "ai_LplXDDZ2",
+                        "name": "car",
+                        "value": 0.99965125
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_TZ3C79C6",
+                        "name": "road",
+                        "value": 0.9983783
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_GjVpxXrs",
+                        "name": "street",
+                        "value": 0.9957434
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_tr0MBp64",
+                        "name": "traffic",
+                        "value": 0.99079686
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Xxjc3MhT",
+                        "name": "transportation system",
+                        "value": 0.9900601
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_WTrlNkqM",
+                        "name": "vehicle",
+                        "value": 0.9766462
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_WBQfVV0p",
+                        "name": "city",
+                        "value": 0.9752589
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Fw0sS1Fk",
+                        "name": "public show",
+                        "value": 0.9715023
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_hsG8bzf6",
+                        "name": "drive",
+                        "value": 0.9702003
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_wzD3wsQV",
+                        "name": "stop moving",
+                        "value": 0.966836
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_gRZHdRD7",
+                        "name": "wheel",
+                        "value": 0.9648466
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_wZCn67qV",
+                        "name": "style",
+                        "value": 0.96361494
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_djRqCRT8",
+                        "name": "culture",
+                        "value": 0.96323365
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_n9vjC1jB",
+                        "name": "light",
+                        "value": 0.95895326
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_CpFBRWzD",
+                        "name": "urban",
+                        "value": 0.9552592
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_VRmbGVWh",
+                        "name": "travel",
+                        "value": 0.9501741
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_l8TKp2h5",
+                        "name": "people",
+                        "value": 0.9437655
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_6HDtKSP7",
+                        "name": "event",
+                        "value": 0.91496015
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_jvwJ2H7f",
+                        "name": "sight",
+                        "value": 0.9014463
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_MTvKbKJv",
+                        "name": "landscape",
+                        "value": 0.8972044
+                    }
+                ]
+            },
+            "id": "a0cb268500024176adaf2490a0fe3a4f",
+            "input": {
+                "data": {
+                    "image": {
+                        "base64": "true",
+                        "url": "https://s3.amazonaws.com/clarifai-api/img/prod/d309d541c5a147cab44fb8f00349a067/d951c7eb8fa44f3f8a55189aaf3d6df2.jpeg"
+                    }
+                },
+                "id": "cbe75b62bf2742af8fe2867df3a2bc6c"
+            },
+            "model": {
+                "app_id": "main",
+                "created_at": "2016-03-09T17:11:39.608845Z",
+                "id": "aaa03c23b3724a16a56b629203edc62c",
+                "model_version": {
+                    "created_at": "2016-07-13T01:19:12.147644Z",
+                    "id": "aa9ca48295b37401f8af92ad1af0d91d",
+                    "status": {
+                        "code": 21100,
+                        "description": "Model trained successfully"
+                    }
+                },
+                "name": "general-v1.3",
+                "output_info": {
+                    "message": "Show output_info with: GET /models/{model_id}/output_info",
+                    "type": "concept",
+                    "type_ext": "concept"
+                }
+            },
+            "status": {
+                "code": 10000,
+                "description": "Ok"
+            }
+        }
+    ],
+    "status": {
+        "code": 10000,
+        "description": "Ok"
+    }
+}

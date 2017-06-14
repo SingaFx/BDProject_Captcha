@@ -1,0 +1,168 @@
+{
+    "outputs": [
+        {
+            "created_at": "2017-06-12T12:34:35.389245245Z",
+            "data": {
+                "concepts": [
+                    {
+                        "app_id": "main",
+                        "id": "ai_h16c4hS0",
+                        "name": "signal",
+                        "value": 0.9947802
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_dCGTWvms",
+                        "name": "signalise",
+                        "value": 0.9940504
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_P2JQxHw9",
+                        "name": "warning",
+                        "value": 0.9780816
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_TZ3C79C6",
+                        "name": "road",
+                        "value": 0.9759107
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_8rNgfppJ",
+                        "name": "symbol",
+                        "value": 0.971079
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_N4nkps1d",
+                        "name": "sign",
+                        "value": 0.9629027
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_kP2nBjcZ",
+                        "name": "roadside",
+                        "value": 0.961728
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_7nv4hD0N",
+                        "name": "poles",
+                        "value": 0.959772
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_SrTKCKBL",
+                        "name": "public notice",
+                        "value": 0.95938593
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_RzrbbnhM",
+                        "name": "guidance",
+                        "value": 0.95918876
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_GjVpxXrs",
+                        "name": "street",
+                        "value": 0.9509218
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Fs7VTgF2",
+                        "name": "mailbox",
+                        "value": 0.9429001
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_tr0MBp64",
+                        "name": "traffic",
+                        "value": 0.94196725
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_tBcWlsCp",
+                        "name": "nature",
+                        "value": 0.9394152
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Zmhsv0Ch",
+                        "name": "outdoors",
+                        "value": 0.9326883
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_ZSKpCCHD",
+                        "name": "vertical",
+                        "value": 0.9305887
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_kKszJrhP",
+                        "name": "safety",
+                        "value": 0.92680466
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Ww3zQxQN",
+                        "name": "right",
+                        "value": 0.9173374
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_786Zr311",
+                        "name": "no person",
+                        "value": 0.9164803
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_zX8RQMxl",
+                        "name": "signpost",
+                        "value": 0.90352654
+                    }
+                ]
+            },
+            "id": "a9a6e3d57dc0484e92c9fe5b996036bb",
+            "input": {
+                "data": {
+                    "image": {
+                        "base64": "true",
+                        "url": "https://s3.amazonaws.com/clarifai-api/img/prod/d309d541c5a147cab44fb8f00349a067/a0762008f755430bb3f2fb037d5b7982.jpeg"
+                    }
+                },
+                "id": "a7301cc44d5c4783b7c7fd31bc58ae30"
+            },
+            "model": {
+                "app_id": "main",
+                "created_at": "2016-03-09T17:11:39.608845Z",
+                "id": "aaa03c23b3724a16a56b629203edc62c",
+                "model_version": {
+                    "created_at": "2016-07-13T01:19:12.147644Z",
+                    "id": "aa9ca48295b37401f8af92ad1af0d91d",
+                    "status": {
+                        "code": 21100,
+                        "description": "Model trained successfully"
+                    }
+                },
+                "name": "general-v1.3",
+                "output_info": {
+                    "message": "Show output_info with: GET /models/{model_id}/output_info",
+                    "type": "concept",
+                    "type_ext": "concept"
+                }
+            },
+            "status": {
+                "code": 10000,
+                "description": "Ok"
+            }
+        }
+    ],
+    "status": {
+        "code": 10000,
+        "description": "Ok"
+    }
+}

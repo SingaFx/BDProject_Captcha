@@ -1,0 +1,168 @@
+{
+    "outputs": [
+        {
+            "created_at": "2017-06-12T12:34:36.628046343Z",
+            "data": {
+                "concepts": [
+                    {
+                        "app_id": "main",
+                        "id": "ai_9bHlLt8r",
+                        "name": "paper",
+                        "value": 0.983436
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_7Jh2t5nT",
+                        "name": "currency",
+                        "value": 0.9740524
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_7QgvzQjc",
+                        "name": "wealth",
+                        "value": 0.973732
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_6lhccv44",
+                        "name": "business",
+                        "value": 0.9598135
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_HnxfsJMQ",
+                        "name": "bank",
+                        "value": 0.951234
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_CXnDXkLz",
+                        "name": "money",
+                        "value": 0.9411069
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_4Q1c7WFm",
+                        "name": "finance",
+                        "value": 0.9359254
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_0sK7PTQs",
+                        "name": "savings",
+                        "value": 0.9302559
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Lq00FggW",
+                        "name": "desktop",
+                        "value": 0.92638296
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Cp1cv7mC",
+                        "name": "investment",
+                        "value": 0.92596793
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_7WFF2HQK",
+                        "name": "pay",
+                        "value": 0.91380715
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_VRmbGVWh",
+                        "name": "travel",
+                        "value": 0.9122691
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_MZzrX8vP",
+                        "name": "achievement",
+                        "value": 0.8969226
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_fV5mdw70",
+                        "name": "cash",
+                        "value": 0.8955893
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_CDQ5kS6G",
+                        "name": "financial",
+                        "value": 0.894184
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_786Zr311",
+                        "name": "no person",
+                        "value": 0.8930396
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_M78jFpM2",
+                        "name": "text",
+                        "value": 0.8908891
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_8rNgfppJ",
+                        "name": "symbol",
+                        "value": 0.87591684
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_MPf6z727",
+                        "name": "dollar",
+                        "value": 0.87086153
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Q1ccLf8B",
+                        "name": "loan",
+                        "value": 0.8526778
+                    }
+                ]
+            },
+            "id": "f08a00dd0d72459f86e77ffda81de5f1",
+            "input": {
+                "data": {
+                    "image": {
+                        "base64": "true",
+                        "url": "https://s3.amazonaws.com/clarifai-api/img/prod/d309d541c5a147cab44fb8f00349a067/c0211026d26d497c9c71e8567dab9a6f.jpeg"
+                    }
+                },
+                "id": "abe6bf2df0fd4c2b8c7de27a5fc4e039"
+            },
+            "model": {
+                "app_id": "main",
+                "created_at": "2016-03-09T17:11:39.608845Z",
+                "id": "aaa03c23b3724a16a56b629203edc62c",
+                "model_version": {
+                    "created_at": "2016-07-13T01:19:12.147644Z",
+                    "id": "aa9ca48295b37401f8af92ad1af0d91d",
+                    "status": {
+                        "code": 21100,
+                        "description": "Model trained successfully"
+                    }
+                },
+                "name": "general-v1.3",
+                "output_info": {
+                    "message": "Show output_info with: GET /models/{model_id}/output_info",
+                    "type": "concept",
+                    "type_ext": "concept"
+                }
+            },
+            "status": {
+                "code": 10000,
+                "description": "Ok"
+            }
+        }
+    ],
+    "status": {
+        "code": 10000,
+        "description": "Ok"
+    }
+}

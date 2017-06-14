@@ -1,0 +1,168 @@
+{
+    "outputs": [
+        {
+            "created_at": "2017-06-12T12:34:19.415413414Z",
+            "data": {
+                "concepts": [
+                    {
+                        "app_id": "main",
+                        "id": "ai_GjVpxXrs",
+                        "name": "street",
+                        "value": 0.983914
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_FWCjC8jZ",
+                        "name": "architecture",
+                        "value": 0.98350626
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_6lhccv44",
+                        "name": "business",
+                        "value": 0.96975666
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Zmhsv0Ch",
+                        "name": "outdoors",
+                        "value": 0.967151
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_ggQlMG6W",
+                        "name": "industry",
+                        "value": 0.96679145
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_bwrRvlpn",
+                        "name": "facade",
+                        "value": 0.96388614
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_9Dcdh0PK",
+                        "name": "house",
+                        "value": 0.96200716
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_7f5WXJZQ",
+                        "name": "blue sky",
+                        "value": 0.95868146
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_S1qBKn3x",
+                        "name": "stock",
+                        "value": 0.9500866
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_VTlCx2f2",
+                        "name": "window",
+                        "value": 0.942444
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_m8rrtkhG",
+                        "name": "town",
+                        "value": 0.92788863
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_twxg1s4s",
+                        "name": "lease",
+                        "value": 0.92321193
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_4Qjv5PTH",
+                        "name": "modern",
+                        "value": 0.9192623
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_BJP7PBvG",
+                        "name": "apartment",
+                        "value": 0.90924513
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_WBQfVV0p",
+                        "name": "city",
+                        "value": 0.90539175
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_8xrjRNnl",
+                        "name": "horizontal plane",
+                        "value": 0.89946485
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_VRmbGVWh",
+                        "name": "travel",
+                        "value": 0.89392173
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_h16c4hS0",
+                        "name": "signal",
+                        "value": 0.88464874
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_pCnxWJZh",
+                        "name": "contemporary",
+                        "value": 0.88036215
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_TZ3C79C6",
+                        "name": "road",
+                        "value": 0.88023365
+                    }
+                ]
+            },
+            "id": "caf07872ad6d49579075cb4c59c2cbd7",
+            "input": {
+                "data": {
+                    "image": {
+                        "base64": "true",
+                        "url": "https://s3.amazonaws.com/clarifai-api/img/prod/d309d541c5a147cab44fb8f00349a067/ffb0d60f9e52413db065f0a797d3ff8e.jpeg"
+                    }
+                },
+                "id": "f272af6cd9a84fb3a0cb727d8fd7e39c"
+            },
+            "model": {
+                "app_id": "main",
+                "created_at": "2016-03-09T17:11:39.608845Z",
+                "id": "aaa03c23b3724a16a56b629203edc62c",
+                "model_version": {
+                    "created_at": "2016-07-13T01:19:12.147644Z",
+                    "id": "aa9ca48295b37401f8af92ad1af0d91d",
+                    "status": {
+                        "code": 21100,
+                        "description": "Model trained successfully"
+                    }
+                },
+                "name": "general-v1.3",
+                "output_info": {
+                    "message": "Show output_info with: GET /models/{model_id}/output_info",
+                    "type": "concept",
+                    "type_ext": "concept"
+                }
+            },
+            "status": {
+                "code": 10000,
+                "description": "Ok"
+            }
+        }
+    ],
+    "status": {
+        "code": 10000,
+        "description": "Ok"
+    }
+}

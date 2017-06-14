@@ -15,6 +15,7 @@ import os
 import sys
 import numpy as np
 import cv2
+import re
 import urllib.request
 import pytesseract
 from PIL import Image, ImageEnhance
@@ -77,11 +78,30 @@ def runAll():
     m1 = main.captcha(path)
     m2 = benny.captcha(path)
     m3 = canny.cannyDetection(path)
-    m1_result = ocr_text(uri + m1)
-    m2_result = ocr_text(uri + m2)
-    m3_result = ocr_text(uri + m3)
-    
-    
+    m1_result = ''
+    m2_result = ''
+    m3_result = ''
+    m1_visionResult = ''
+    m2_visionResult = ''
+    m3_visionResult = ''
+    if m1 != '':
+        m1_result = ocr_text(uri + m1)
+        m1_visionResult = vision.detect_text_uri(uri+m1).replace(' ', '')
+        m1_result = re.sub('[^a-zA-Z0-9]', '', m1_result)
+        m1_visionResult = re.sub('[^a-zA-Z0-9]', '', m1_visionResult)
+        
+    if m2 != '':
+        m2_result = ocr_text(uri + m2)
+        m2_visionResult = vision.detect_text_uri(uri+m2).replace(' ', '')
+        m2_result = re.sub('[^a-zA-Z0-9]', '', m2_result)
+        m2_visionResult = re.sub('[^a-zA-Z0-9]', '', m2_visionResult)
+
+    if m3 != '':
+        m3_result = ocr_text(uri + m3)
+        m3_visionResult = vision.detect_text_uri(uri+m3).replace(' ', '')
+        m3_result = re.sub('[^a-zA-Z0-9]', '', m3_result)
+        m3_visionResult = re.sub('[^a-zA-Z0-9]', '', m3_visionResult)
+
     return jsonify(
         {
             'method1' : 
@@ -89,7 +109,7 @@ def runAll():
                 'name' : 'Our algorithm',
                 'path' : m1, 
                 'tesseract_result' : m1_result,
-                'googleVision_result' : vision.detect_text_uri(uri+m1).replace(' ', '')
+                'googleVision_result' : m1_visionResult
                 # 'googleVision_result' : ''
             }, 
             'method2' : 
@@ -97,7 +117,7 @@ def runAll():
                 'name' : 'Our anoter algorithm',
                 'path' : m2, 
                 'tesseract_result' : m2_result,
-                'googleVision_result' : vision.detect_text_uri(uri+m2).replace(' ', '')
+                'googleVision_result' : m2_visionResult
                 # 'googleVision_result' : ''
             }, 
             'method3' : 
@@ -105,7 +125,7 @@ def runAll():
                 'name' : 'Canny Detection algorithm',
                 'path' : m3, 
                 'tesseract_result' : m3_result,
-                'googleVision_result' : vision.detect_text_uri(uri+m3).replace(' ', '')
+                'googleVision_result' : m3_visionResult
                 # 'googleVision_result' : ''
             }
         })
@@ -114,6 +134,8 @@ def runAll():
 # @auth.login_required
 def googleReCaptcha():
 
+    ClarifaiResult = ''
+    VisionResult = ''
     path = request.args.get('path')
     keyword = request.args.get('keyword')
     ClarifaiResult = reCaptcha.clarifai_process(uri+path+'/src.png', keyword)
@@ -174,7 +196,7 @@ def ocr_text(url):
     img.load()
     text = pytesseract.image_to_string(img, lang='eng')
     text = text.replace(' ', '')
-    print(url + '     ' + text)
+    print(url + '     ' + text.encode(sys.stdin.encoding, "replace").decode(sys.stdin.encoding))
     return text
 
 if __name__ == '__main__':

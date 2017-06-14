@@ -1,0 +1,168 @@
+{
+    "outputs": [
+        {
+            "created_at": "2017-06-12T12:33:54.814936244Z",
+            "data": {
+                "concepts": [
+                    {
+                        "app_id": "main",
+                        "id": "ai_FWCjC8jZ",
+                        "name": "architecture",
+                        "value": 0.9643288
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Zmhsv0Ch",
+                        "name": "outdoors",
+                        "value": 0.9533966
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_9Dcdh0PK",
+                        "name": "house",
+                        "value": 0.9454355
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_GjVpxXrs",
+                        "name": "street",
+                        "value": 0.9449153
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_VTlCx2f2",
+                        "name": "window",
+                        "value": 0.9400364
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_lbkj2ffx",
+                        "name": "wall",
+                        "value": 0.9135939
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_gB5qwrpr",
+                        "name": "glass items",
+                        "value": 0.9097549
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_786Zr311",
+                        "name": "no person",
+                        "value": 0.8992959
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_6lhccv44",
+                        "name": "business",
+                        "value": 0.89539707
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_VRmbGVWh",
+                        "name": "travel",
+                        "value": 0.8932525
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_L92T2QtK",
+                        "name": "decoration",
+                        "value": 0.88946545
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_bwrRvlpn",
+                        "name": "facade",
+                        "value": 0.88258183
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_S0rvLGPz",
+                        "name": "old",
+                        "value": 0.87954986
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_HpvT5hjp",
+                        "name": "door",
+                        "value": 0.8772447
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_WBQfVV0p",
+                        "name": "city",
+                        "value": 0.8739165
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_rsX6XWc2",
+                        "name": "building",
+                        "value": 0.860662
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_cMfj16kJ",
+                        "name": "design",
+                        "value": 0.8589555
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_ggQlMG6W",
+                        "name": "industry",
+                        "value": 0.85303515
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_zFnPQdgB",
+                        "name": "wood",
+                        "value": 0.8510764
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Lq00FggW",
+                        "name": "desktop",
+                        "value": 0.8475988
+                    }
+                ]
+            },
+            "id": "cd92226fcd25476b947c628daa65d475",
+            "input": {
+                "data": {
+                    "image": {
+                        "base64": "true",
+                        "url": "https://s3.amazonaws.com/clarifai-api/img/prod/d309d541c5a147cab44fb8f00349a067/e1925a2942c54bf7ae2e6545667829c4.jpeg"
+                    }
+                },
+                "id": "d8dd589798c1412d8cec5ed9bc9c1a15"
+            },
+            "model": {
+                "app_id": "main",
+                "created_at": "2016-03-09T17:11:39.608845Z",
+                "id": "aaa03c23b3724a16a56b629203edc62c",
+                "model_version": {
+                    "created_at": "2016-07-13T01:19:12.147644Z",
+                    "id": "aa9ca48295b37401f8af92ad1af0d91d",
+                    "status": {
+                        "code": 21100,
+                        "description": "Model trained successfully"
+                    }
+                },
+                "name": "general-v1.3",
+                "output_info": {
+                    "message": "Show output_info with: GET /models/{model_id}/output_info",
+                    "type": "concept",
+                    "type_ext": "concept"
+                }
+            },
+            "status": {
+                "code": 10000,
+                "description": "Ok"
+            }
+        }
+    ],
+    "status": {
+        "code": 10000,
+        "description": "Ok"
+    }
+}

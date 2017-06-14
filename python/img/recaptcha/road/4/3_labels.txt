@@ -1,0 +1,20 @@
+street
+urban
+safety
+architecture
+house
+wall
+equipment
+vertical
+city
+light
+old
+no person
+building
+sky
+desktop
+outdoors
+panoramic
+travel
+town
+family

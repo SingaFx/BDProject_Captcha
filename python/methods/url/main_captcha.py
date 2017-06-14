@@ -4,6 +4,8 @@
 import sys
 import os
 import requests
+import numpy as np
+import cv2
 from PIL import Image, ImageEnhance
 
 
@@ -13,9 +15,12 @@ from util.convertImage import convertImage
 class main_captcha:
     def __init__(self):
         self.converter = convertImage()
-
+        self.threshold = 3
     def captcha(self, rand):
         img = self.converter.url_to_image('http://140.138.152.207/house/BDProject/upload/' + rand + '/src.png')
+        # Convert to RGB mode
+        if img.mode != "RGB":
+            img = img.convert("RGB")
 
         # 影像加強
         enhancer = ImageEnhance.Contrast(img)
@@ -58,7 +63,7 @@ class main_captcha:
         for i in range(img.width):
             for j in range(img.height):
                 if i == 0 or i == img.width - 1 or j == 0 or j == img.height -1:
-                    pixdata[i,j] = (255 , 255 , 255 , 255)
+                    pixdata[i,j] = (255 , 255 , 255)
 
 
         # 8鄰域降噪
@@ -74,26 +79,29 @@ class main_captcha:
                                 if pixdata[i+k,j+l][0] == 255 and pixdata[i+k,j+l][1] == 255 and pixdata[i+k,j+l][2] == 255:
                                     count += 1
                         except TypeError:
-                            pixdata[i,j] = (255 , 255 , 255 , 255)
+                            pixdata[i,j] = (255 , 255 , 255)
                             pass
                 if count >= 7:
-                    pixdata[i,j] = (255 , 255 , 255 , 255)    
-         
+                    pixdata[i,j] = (255 , 255 , 255)    
+        
+        
+
         img.save('img/' + rand + '/1_black.png')
         r = requests.post('http://140.138.152.207/house/BDProject/receiver.php', files={'1_black': open('img/' + rand + '/1_black.png', 'rb')}, data={'path':rand})
         print (r.text)
 
         # 平滑補強
-        # im = cv2.imread(path + '_black.png' , 0)
-
+        # im = cv2.imread('img/' + rand + '/1_black.png' , 0)
+        # # im = self.converter.convertPILToCV(img)
+        # im = self.NoiseReduce_Burst(im, self.threshold)
         # kernel = np.ones((2 , 2) , np.uint8)
         # opening = cv2.morphologyEx(im, cv2.MORPH_OPEN, kernel)
 
-        # #opening = cv2.blur(opening , (2, 2))
-        # #opening = cv2.dilate(opening, (1, 1), iterations=1)
-        # cv2.imwrite(path +'_black2.png', opening)
+        # opening = cv2.dilate(im, (1, 1), iterations=1)
+        # opening = cv2.blur(im, (2, 2))
+        # cv2.imwrite('img/' + rand + '/1_black2.png', opening)
         return rand + '/1_black.png'
 
 if __name__ == "__main__":
     main = main_captcha()
-    main.captcha('20170610153454_9241')
+    main.captcha('20170614063115_19753')

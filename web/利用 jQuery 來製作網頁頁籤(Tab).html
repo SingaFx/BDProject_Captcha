@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0053)http://demonstration.abgne.tw/jquery/0020/0020_1.html -->
+<html lang="zh-tw"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="Generator" content="EditPlus">
+<meta name="Author" content="男丁格爾&#39;s 脫殼玩">
+<meta name="Keywords" content="">
+<meta name="Description" content="">
+
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<script type="text/javascript" src="./利用 jQuery 來製作網頁頁籤(Tab)_files/jquery-latest.min.js.下載"></script>
+<title>利用 jQuery 來製作網頁頁籤(Tab)</title>
+<style type="text/css">
+	ul, li {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	
+	ul.tabs li.active  {
+		background: #fff;
+		border-bottom: 1px solid #fff;
+	}
+	ul.tabs li.active a:hover {
+		background: #fff;
+	}
+	
+</style>
+<script type="text/javascript">
+	$(function(){
+		// 預設顯示第一個 Tab
+		var _showTab = 0;
+		var $defaultLi = $('ul.tabs li').eq(_showTab).addClass('active');
+		$($defaultLi.find('a').attr('href')).siblings().hide();
+		
+		// 當 li 頁籤被點擊時...
+		// 若要改成滑鼠移到 li 頁籤就切換時, 把 click 改成 mouseover
+		$('ul.tabs li').click(function() {
+			// 找出 li 中的超連結 href(#id)
+			var $this = $(this),
+				_clickTab = $this.find('a').attr('href');
+			// 把目前點擊到的 li 頁籤加上 .active
+			// 並把兄弟元素中有 .active 的都移除 class
+			$this.addClass('active').siblings('.active').removeClass('active');
+			// 淡入相對應的內容並隱藏兄弟元素
+			$(_clickTab).stop(false, true).fadeIn().siblings().hide();
+
+			return false;
+		}).find('a').focus(function(){
+			this.blur();
+		});
+	});
+</script>
+</head>
+
+<body>
+	<div class="abgne_tab">
+		<ul class="tabs">
+			<li class="active"><a href="#tab1">男丁格爾</a></li>
+			<li class=""><a href="#tab2">jQuery</a></li>
+		</ul>
+
+		<div class="tab_container">
+			<div id="tab1" class="tab_content" style="display: block;">
+				<h2>關於作者</h2>
+				<p>目前工作是網頁開發為主，因此針對了 HTML, JavaScript, CSS 等知識特別深入研究。若有任何問題，歡迎直接留言或是透過 Mail 討論。</p>
+			</div>
+			<div id="tab2" class="tab_content" style="display: none;">
+				<h2>jQuery is a new kind of JavaScript Library.</h2>
+				<p>jQuery is a fast and concise JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development. jQuery is designed to change the way that you write JavaScript</p>
+			</div>
+		</div>
+	</div>
+
+</body></html>

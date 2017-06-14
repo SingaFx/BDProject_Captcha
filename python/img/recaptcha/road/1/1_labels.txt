@@ -1,0 +1,20 @@
+architecture
+outdoors
+house
+street
+window
+wall
+glass items
+no person
+business
+travel
+decoration
+facade
+old
+door
+city
+building
+design
+industry
+wood
+desktop

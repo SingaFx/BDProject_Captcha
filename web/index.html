@@ -11,294 +11,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 		<link rel="stylesheet" href="assets/css/main.css" />
+        <link rel=stylesheet type="text/css" href="assets/css/BDProject.css">
 		<script src="https://code.highcharts.com/highcharts.js"></script>
 		<script src="https://code.highcharts.com/modules/data.js"></script>
 		<script src="https://code.highcharts.com/modules/drilldown.js"></script>
 	</head>
     <style>
-        canvas {
-            padding-left: 0;
-            padding-right: 0;
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
-        }
-
-        nav.tabs a.active  {
-            background: #fff;
-            border-bottom: 1px solid #fff;
-        }
-        nav.tabs a.active a:hover {
-            background: #fff;
-        }
-
-        /*
-		.file {
-			position: relative;
-			display: inline-block;
-			background: #D0EEFF;
-			border: 1px solid #99D3F5;
-			border-radius: 4px;
-			padding: 4px 12px;
-			overflow: hidden;
-			color: #1E88C7;
-			text-decoration: none;
-			text-indent: 0;
-			line-height: 30px;
-		}
-		
-		.file input {
-			position: absolute;
-			font-size: 100px;
-			right: 0;
-			top: 0;
-			opacity: 0;
-		}
-		.file:hover {
-			background: #AADFFD;
-			border-color: #78C3F3;
-			color: #004974;
-			text-decoration: none;
-		}
-		*/
-
-		.filecontainer
-            {
-                width: 100%;
-                max-width: 680px; /* 800 */
-                text-align: center;
-                margin: 0 auto;
-            }
-
-                .filecontainer h1
-                {
-                    font-size: 42px;
-                    font-weight: 300;
-                    color: #0f3c4b;
-                    margin-bottom: 40px;
-                }
-                .filecontainer h1 a:hover,
-                .filecontainer h1 a:focus
-                {
-                    color: #39bfd3;
-                }
-
-                .filecontainer nav
-                {
-                    margin-bottom: 40px;
-                }
-                    .filecontainer nav a
-                    {
-                        border-bottom: 2px solid #c8dadf;
-                        display: inline-block;
-                        padding: 4px 8px;
-                        margin: 0 5px;
-                    }
-                    .filecontainer nav a.is-selected
-                    {
-                        font-weight: 700;
-                        color: #39bfd3;
-                        border-bottom-color: currentColor;
-                    }
-                    .filecontainer nav a:not( .is-selected ):hover,
-                    .filecontainer nav a:not( .is-selected ):focus
-                    {
-                        border-bottom-color: #0f3c4b;
-                    }
-
-                .filecontainer footer
-                {
-                    color: #92b0b3;
-                    margin-top: 40px;
-                }
-                    .filecontainer footer p + p
-                    {
-                        margin-top: 1em;
-                    }
-                    .filecontainer footer a:hover,
-                    .filecontainer footer a:focus
-                    {
-                        color: #39bfd3;
-                    }
-
-                .filebox
-                {
-                    font-size: 1.25rem; /* 20 */
-                    background-color: #c8dadf;
-                    position: relative;
-                    padding: 100px 20px;
-                }
-                .filebox.has-advanced-upload
-                {
-                    outline: 2px dashed #92b0b3;
-                    outline-offset: -10px;
-
-                    -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
-                    transition: outline-offset .15s ease-in-out, background-color .15s linear;
-                }
-                .filebox.is-dragover
-                {
-                    outline-offset: -20px;
-                    outline-color: #c8dadf;
-                    background-color: #fff;
-                }
-                    .filebox__dragndrop,
-                    .filebox__icon
-                    {
-                        display: none;
-                    }
-                    .filebox.has-advanced-upload .filebox__dragndrop
-                    {
-                        display: inline;
-                    }
-                    .filebox.has-advanced-upload .filebox__icon
-                    {
-                        width: 100%;
-                        height: 80px;
-                        fill: #92b0b3;
-                        display: block;
-                        margin-bottom: 40px;
-                    }
-
-                    .filebox.is-uploading .filebox__input,
-                    .filebox.is-processing .filebox__input,
-                    .filebox.is-success .filebox__input,
-                    .filebox.is-error .filebox__input
-                    {
-                        visibility: hidden;
-                    }
-
-                    .filebox__uploading,
-                    .filebox__processing,
-                    .filebox__success,
-                    .filebox__error
-                    {
-                        display: none;
-                    }
-                    .filebox.is-uploading .filebox__uploading,
-                    .filebox.is-processing .filebox__processing,
-                    .filebox.is-success .filebox__success,
-                    .filebox.is-error .filebox__error
-                    {
-                        display: block;
-                        position: absolute;
-                        top: 75%;
-                        right: 0;
-                        left: 0;
-                        color: #553E3E;
-                        -webkit-transform: translateY( -50% );
-                        transform: translateY( -50% );
-                    }
-                    .filebox__uploading
-                    {
-                        font-style: italic;
-                    }
-                    .filebox__processing
-                    {
-                        font-style: italic;
-                    }
-                    .filebox__success
-                    {
-                        -webkit-animation: appear-from-inside .25s ease-in-out;
-                        animation: appear-from-inside .25s ease-in-out;
-                    }
-                        @-webkit-keyframes appear-from-inside
-                        {
-                            from    { -webkit-transform: translateY( -50% ) scale( 0 ); }
-                            75%     { -webkit-transform: translateY( -50% ) scale( 1.1 ); }
-                            to      { -webkit-transform: translateY( -50% ) scale( 1 ); }
-                        }
-                        @keyframes appear-from-inside
-                        {
-                            from    { transform: translateY( -50% ) scale( 0 ); }
-                            75%     { transform: translateY( -50% ) scale( 1.1 ); }
-                            to      { transform: translateY( -50% ) scale( 1 ); }
-                        }
-
-                    .filebox__restart
-                    {
-                        font-weight: 700;
-                    }
-                    .filebox__restart:focus,
-                    .filebox__restart:hover
-                    {
-                        color: #39bfd3;
-                    }
-
-                    .file{
-                        display: none;
-                    }
-
-                    .js .filebox__file
-                    {
-                        width: 0.1px;
-                        height: 0.1px;
-                        opacity: 0;
-                        overflow: hidden;
-                        position: absolute;
-                        z-index: -1;
-                    }
-                    .js .filebox__file + label
-                    {
-                        max-width: 80%;
-                        text-overflow: ellipsis;
-                        white-space: nowrap;
-                        cursor: pointer;
-                        display: inline-block;
-                        overflow: hidden;
-                    }
-                    .js .filebox__file + label:hover strong,
-                    .filebox__file:focus + label strong,
-                    .filebox__file.has-focus + label strong
-                    {
-                        color: #553E3E;
-                    }
-                    .js .filebox__file:focus + label,
-                    .js .filebox__file.has-focus + label
-                    {
-                        outline: 1px dotted #000;
-                        outline: -webkit-focus-ring-color auto 5px;
-                    }
-                        .js .filebox__file + label *
-                        {
-                            /* pointer-events: none; */ /* in case of FastClick lib use */
-                        }
-
-                    .no-js .filebox__file + label
-                    {
-                        display: none;
-                    }
-
-                    .no-js .filebox__button
-                    {
-                        display: block;
-                    }
-                    .filebox__button
-                    {
-                        font-weight: 700;
-                        color: #e5edf1;
-                        background-color: #39bfd3;
-                        display: none;
-                        padding: 8px 16px;
-                        margin: 40px auto 0;
-                    }
-                        .filebox__button:hover,
-                        .filebox__button:focus
-                        {
-                            background-color: #0f3c4b;
-                        }
-        .method1{
-            position: relative;
-        }
-        .method2{
-            position: relative;
-            left: 200x;
-        }
-        .method3{
-            position: relative;
-            left: 200x;
-        }
-
     </style>
 	<body>
 		<!-- Header -->
@@ -351,20 +69,20 @@
                     -->
                     
                     <nav role="navigation" class="tabs">
-                        <a href="#tab1" class="active">文字驗證碼</a>
-                        <a href="#tab2" class="">reCAPTCHA</a>
+                        <a href="#tab1" style="color:#82CAFA;" class="active animBtn themeD">文字驗證碼</a>
+                        <a href="#tab2" style="color:#82CAFA;" class="animBtn themeD">reCAPTCHA</a>
                     </nav>
                     <div class="filecontainer" role="main">
                         <div id="tab1" style="display: block;">
                             <form class="filebox" id="captcha" method="post" action="receiver.php" enctype="multipart/form-data" novalidate class="filebox has-advanced-upload">
                                 <br><img id="previewFile" height="100" width="200"/></br>
-                                <div id="imageContainer"></div>
-                                <div id="resultContainer"></div>
                                 <div class="filebox__input">
                                     <input type="file" name="file" id="file" class="file" data-multiple-caption="{count} files selected" multiple accept="image/*">
                                     <label for="file"><strong>Choose a image</strong><span class=""> or drag it here</span>.</label>
                                     <!--<button class="" type="submit">Upload</button>-->
                                 </div>
+                                <div id="imageContainer"></div>
+                                <div id="resultContainer"></div>
                                 <div class="filebox__uploading">Uploading&hellip;</div>
                                 <div class="filebox__processing">Processing&hellip;</div>
                                 <div class="filebox__success">Done!</div>
@@ -374,15 +92,22 @@
                         </div>
 
                         <div id="tab2" style="display: none;">
+
                             <form class="filebox" id="reCaptcha" method="post" action="receiver.php" enctype="multipart/form-data" novalidate class="filebox has-advanced-upload">
+                            <div style="margin: 0px auto;">
+                                <input class="effect-1" id="keyword" type="text" placeholder="Please input keyword">
+                                <span class="focus-border"></span>
+                            </div>
                             <br><img id="previewFile2" height="300" width="300"/></br>
-                            <div id="imageContainer2"></div>
-                            <div id="resultContainer2"></div>
                             <div class="filebox__input">
                                 <input type="file" name="file" id="file2" class="file" data-multiple-caption="{count} files selected" multiple accept="image/*">
                                 <label for="file"><strong>Choose a reCAPTCHA image</strong><span class=""> or drag it here</span>.</label>
                                 <!--<button class="" type="submit">Upload</button>-->
                             </div>
+                            <div id="imageContainer2"></div>
+                            <div id="resultContainer2"></div>
+                            <p></p>
+                            <p></p>
                             <div class="filebox__uploading">Uploading&hellip;</div>
                             <div class="filebox__processing">Processing&hellip;</div>
                             <div class="filebox__success">Done!</div>
@@ -399,70 +124,59 @@
 			<section id="one" class="wrapper post bg-img" data-bg="banner2.jpg">
 				<div class="inner">
 					<article class="box">
-						<header>
-							<h2>方法一</h2>
-						</header>
+                        <header>
+                            <h2>方法一</h2>
+                        </header>
 						<div class="content">
                             <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 							<script type="text/javascript">
-							// Create the chart
-								Highcharts.chart('container', {
-								  chart: {
-								    type: 'column'
-								  },
-								  title: {
-								    text: '方法一分析結果(測試20次)'
-								  },
-								  xAxis: {
-								    type: 'category'
-								  },
-								  yAxis: {
+							Highcharts.chart('container', {
+								    chart: {
+								        type: 'column'
+								    },
 								    title: {
-								      text: '成功率(%)'
-								    }
+								        text: '測試結果(20次)'
+								    },
+								    xAxis: {
+								        categories: [
+								            '9乘9購物網',
+								            '清大南大校區登入系統',
+								            '交大選課系統',
+								            '大氣水文資料庫',
+								            'OB嚴選',
+								            '元智選課系統'
+								        ],
+								        crosshair: true
+								    },
+								    yAxis: {
+								        min: 0,
+								        title: {
+								            text: '成功率(%)'
+								        }
+								    },
+								    tooltip: {
+								        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+								        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+								            '<td style="padding:0"><a>{point.y} %</a></td></tr>',
+								        footerFormat: '</table>',
+								        shared: true,
+								        useHTML: true
+								    },
+								    plotOptions: {
+								        column: {
+								            pointPadding: 0,
+								            borderWidth: 0
+								        }
+								    },
+								    series: [{
+								        name: 'Tesseract',
+								        data: [0, 95, 10, 10, 55, 0]
 
-								  },
-								  legend: {
-								    enabled: false
-								  },
-								  plotOptions: {
-								    series: {
-								      borderWidth: 0,
-								      dataLabels: {
-								        enabled: true,
-								      }
-								    }
-								  },
-
-								  tooltip: {
-								    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-								    pointFormat: '<span style="color:{point.color}"></span><b>{point.y}</b>%<br/>'
-								  },
-
-								  series: [{
-								    name: '成功率',
-								    colorByPoint: true,
-								    data: [{
-								      name: '9乘9購物網',
-								      y: 0,
 								    }, {
-								      name: '清大南大校區登入系統',
-								      y: 90,
-								    }, {
-								      name: '交大選課系統',
-								      y: 5,
-								    }, {
-								      name: '大氣水文資料庫',
-								      y: 5,
-								    }, {
-								      name: 'OB嚴選',
-								      y: 15,
-								    }, {
-								      name: '元智選課系統',
-								      y: 5,
+								        name: 'Vision',
+								        data: [0, 90, 30, 65, 100, 75]
 								    }]
-								}]
-							});
+								});
 							</script>
 						</div>
 					</article>
@@ -474,71 +188,62 @@
 			<section id="two" class="wrapper post bg-img" data-bg="banner5.jpg">
 				<div class="inner">
 					<article class="box">
-						<header>
-							<h2>方法二</h2>
-						</header>
+                        <header>
+                            <h2>方法二</h2>
+                        </header>
 						<div class="content">
-							<div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+							<div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 							<script type="text/javascript">
-							// Create the chart
-								Highcharts.chart('container1', {
-								  chart: {
-								    type: 'column'
-								  },
-								  title: {
-								    text: '方法二分析結果(測試20次)'
-								  },
-								  xAxis: {
-								    type: 'category'
-								  },
-								  yAxis: {
+							Highcharts.chart('container2', {
+								    chart: {
+								        type: 'column'
+								    },
 								    title: {
-								      text: '成功率(%)'
-								    }
+								        text: '測試結果(20次)'
+								    },
+                                    colors: ['#2f7ed8', '#0d233a', '#8bbc21', '#910000', '#1aadce', 
+   '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a'],
+								    xAxis: {
+								        categories: [
+								            '9乘9購物網',
+								            '清大南大校區登入系統',
+								            '交大選課系統',
+								            '大氣水文資料庫',
+								            'OB嚴選',
+								            '元智選課系統'
+								        ],
+								        crosshair: true
+								    },
+								    yAxis: {
+								        min: 0,
+								        title: {
+								            text: '成功率(%)'
+								        }
+								    },
+								    tooltip: {
+								        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+								        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+								            '<td style="padding:0;"><a>{point.y} %</a></td></tr>',
+								        footerFormat: '</table>',
+								        shared: true,
+								        useHTML: true
+								    },
+								    plotOptions: {
+								        column: {
+								            pointPadding: 0,
+								            borderWidth: 0
+								        }
+								    },
+								    series: [{
+								        name: 'Tesseract',
+								        data: [0, 0, 5, 45, 75, 30]
 
-								  },
-								  legend: {
-								    enabled: false
-								  },
-								  plotOptions: {
-								    series: {
-								      borderWidth: 0,
-								      dataLabels: {
-								        enabled: true,
-								      }
-								    }
-								  },
-
-								  tooltip: {
-								    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-								    pointFormat: '<span style="color:{point.color}"></span><b>{point.y}</b>%<br/>'
-								  },
-
-								  series: [{
-								    name: '成功率',
-								    colorByPoint: true,
-								    data: [{
-								      name: '9乘9購物網',
-								      y: 30,
 								    }, {
-								      name: '清大南大校區登入系統',
-								      y: 90,
-								    }, {
-								      name: '交大選課系統',
-								      y: 0,
-								    }, {
-								      name: '大氣水文資料庫',
-								      y: 0,
-								    }, {
-								      name: 'OB嚴選',
-								      y: 20,
-								    }, {
-								      name: '元智選課系統',
-								      y: 0,
+								        name: 'Vision',
+								        data: [20, 0, 10, 60, 100, 70]
 								    }]
-								}]
-							});
-							</script>
+								});
+								</script>
 						</div>
 					</article>
 				</div>
@@ -553,15 +258,79 @@
 							<h2>方法三</h2>
 						</header>
 						<div class="content">
-							<div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+							<div id="container3" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+							<script type="text/javascript">
+							Highcharts.chart('container3', {
+								    chart: {
+								        type: 'column'
+								    },
+								    title: {
+								        text: '測試結果(20次)'
+								    },
+								    xAxis: {
+								        categories: [
+								            '9乘9購物網',
+								            '清大南大校區登入系統',
+								            '交大選課系統',
+								            '大氣水文資料庫',
+								            'OB嚴選',
+								            '元智選課系統'
+								        ],
+								        crosshair: true
+								    },
+								    yAxis: {
+								        min: 0,
+								        title: {
+								            text: '成功率(%)'
+								        }
+								    },
+								    tooltip: {
+								        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+								        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+								            '<td style="padding:0"><a>{point.y} %</a></td></tr>',
+								        footerFormat: '</table>',
+								        shared: true,
+								        useHTML: true
+								    },
+								    plotOptions: {
+								        column: {
+								            pointPadding: 0,
+								            borderWidth: 0
+								        }
+								    },
+								    series: [{
+								        name: 'Tesseract',
+								        data: [5, 0, 0, 0, 0, 0]
+
+								    }, {
+								        name: 'Vision',
+								        data: [5, 35, 0, 0, 0, 0]
+								    }]
+								});
+							</script>
+						</div>
+					</article>
+				</div>
+				<a href="#four" class="more">Learn More</a>
+			</section>
+
+		<!-- Four -->
+			<section id="four" class="wrapper post bg-img" data-bg="banner3.jpg">
+				<div class="inner">
+					<article class="box">
+						<header>
+							<h2>reCAPTCHA</h2>
+						</header>
+						<div class="content">
+							<div id="container4" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 							<script type="text/javascript">
 							// Create the chart
-								Highcharts.chart('container2', {
+								Highcharts.chart('container4', {
 								  chart: {
 								    type: 'column'
 								  },
 								  title: {
-								    text: '方法二分析結果(測試20次)'
+								    text: '測試結果(20次)'
 								  },
 								  xAxis: {
 								    type: 'category'
@@ -586,75 +355,22 @@
 
 								  tooltip: {
 								    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-								    pointFormat: '<span style="color:{point.color}"></span><b>{point.y}</b>%<br/>'
+								    pointFormat: '<span style="color:{point.color}"></span><a>{point.y}</a>%<br/>'
 								  },
 
 								  series: [{
 								    name: '成功率',
 								    colorByPoint: true,
 								    data: [{
-								      name: '9乘9購物網',
+								      name: 'Google Vision',
 								      y: 0,
 								    }, {
-								      name: '清大南大校區登入系統',
-								      y: 0,
-								    }, {
-								      name: '交大選課系統',
-								      y: 0,
-								    }, {
-								      name: '大氣水文資料庫',
-								      y: 0,
-								    }, {
-								      name: 'OB嚴選',
-								      y: 0,
-								    }, {
-								      name: '元智選課系統',
-								      y: 0,
+								      name: 'Clarifai',
+								      y: 25,
 								    }]
 								}]
 							});
 							</script>
-						</div>
-					</article>
-				</div>
-				<a href="#four" class="more">Learn More</a>
-			</section>
-
-		<!-- Four -->
-			<section id="four" class="wrapper post bg-img" data-bg="banner3.jpg">
-				<div class="inner">
-					<article class="box">
-						<header>
-							<h2>方法四</h2>
-						</header>
-						<div class="content">
-							<canvas id="barChart04" width="400" height="400"></canvas>
-                            <script>
-                            <!--Bar Chart-->
-                            var barData = {
-                                labels: ["執行50次", "執行100次", "執行200次"],
-                                datasets: [
-                                    {
-                                        label: "成功率(%)",
-                                        backgroundColor: "rgba(255, 99, 132, 1)",
-                                        strokeColor: "rgba(220, 220, 220, 1)",
-                                        highlightFill: "rgba(220, 220, 220, 1)",
-                                        highlightStroke: "rgba(220, 220, 220, 1)",
-                                        data: [40, 19, 86]
-                                    },
-                                ]
-                            };
-                            
-                            //return chart
-                                var ctx = document.getElementById("barChart04");
-                                var myRadarChart = new Chart(ctx, {
-                                    type: 'bar',
-                                    data: barData,
-                                    options:{
-                                        responsive: false,
-                                    }
-                                });
-                            </script>
 						</div>
 					</article>
 				</div>
@@ -684,6 +400,17 @@
 </script>
 <script>
     'use strict';
+
+    $(window).load(function(){
+      $(".col-3 input").val("");
+      $(".input-effect input").focusout(function(){
+        if($(this).val() != ""){
+          $(this).addClass("has-content");
+        }else{
+        $(this).removeClass("has-content");
+        }
+      });
+    });   
 
     $(function(){
         // 預設顯示第一個 Tab
@@ -795,7 +522,7 @@
             form.addEventListener( 'submit', function( e )
             {
                 // preventing the duplicate submissions if the current one is in progress
-                if( form.classList.contains( 'is-uploading' ) ) return false;
+                if( form.classList.contains( 'is-uploading' ) || form.classList.contains( 'is-processing' )) return false;
                 if(form.id == 'captcha')
                 {
                     $('#imageContainer').empty();
@@ -845,14 +572,14 @@
                                 $('#imageContainer').append("<img src="+'http://140.138.152.207/house/BDProject/upload/' + data['method1']['path'] + ' height="100" width="200"' + " />");
                                 $('#imageContainer').append("<img src="+'http://140.138.152.207/house/BDProject/upload/' + data['method2']['path'] + ' height="100" width="200"' + " />");
                                 $('#imageContainer').append("<img src="+'http://140.138.152.207/house/BDProject/upload/' + data['method3']['path'] + ' height="100" width="200"' + " />");
-                                $('#resultContainer').append("<div><span style='color:red;'>Tesseract result:</span><div>");
-                                $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method1']['tesseract_result'] + " </span>");
-                                $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method2']['tesseract_result'] + " </span>");
-                                $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method3']['tesseract_result'] + " </span>");
-                                $('#resultContainer').append("<div><span style='color:red;'>GoogleVision result:</span><div>");
-                                $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method1']['googleVision_result'] + " </span>");
-                                $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method2']['googleVision_result'] + " </span>");
-                                $('#resultContainer').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method3']['googleVision_result'] + " </span>");
+                                $('#resultContainer').append("<div><span style='color:#737CA1;'>Tesseract result:</span><div>");
+                                $('#resultContainer').append("<span style='color:#737CA1; width: 200px; display: inline-block;'> " + data['method1']['tesseract_result'] + " </span>");
+                                $('#resultContainer').append("<span style='color:#737CA1; width: 200px; display: inline-block;'> " + data['method2']['tesseract_result'] + " </span>");
+                                $('#resultContainer').append("<span style='color:#737CA1; width: 200px; display: inline-block;'> " + data['method3']['tesseract_result'] + " </span>");
+                                $('#resultContainer').append("<div><span style='color:#737CA1;'>GoogleVision result:</span><div>");
+                                $('#resultContainer').append("<span style='color:#737CA1; width: 200px; display: inline-block;'> " + data['method1']['googleVision_result'] + " </span>");
+                                $('#resultContainer').append("<span style='color:#737CA1; width: 200px; display: inline-block;'> " + data['method2']['googleVision_result'] + " </span>");
+                                $('#resultContainer').append("<span style='color:#737CA1; width: 200px; display: inline-block;'> " + data['method3']['googleVision_result'] + " </span>");
                             }
                         };
                         
@@ -874,10 +601,10 @@
                                 //alert(xhr.responseText)
                                 $('#imageContainer2').empty();
                                 $('#resultContainer2').empty();
-                                $('#resultContainer2').append("<div><span style='color:red;'>GoogleVision result:</span><div>");
-                                $('#resultContainer2').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method1']['result'] + " </span>");
-                                $('#resultContainer2').append("<div><span style='color:red;'>Clarifai result:</span><div>");
-                                $('#resultContainer2').append("<span style='color:red; width: 200px; display: inline-block;'> " + data['method1']['result'] + " </span>");
+                                $('#resultContainer2').append("<div><span style='color:#737CA1;'>GoogleVision result:</span><div>");
+                                $('#resultContainer2').append("<span style='color:#737CA1; width: 200px; display: inline-block;'> " + data['method1']['result'] + " </span>");
+                                $('#resultContainer2').append("<div><span style='color:#737CA1;'>Clarifai result:</span><div>");
+                                $('#resultContainer2').append("<span style='color:#737CA1; width: 200px; display: inline-block;'> " + data['method2']['result'] + " </span>");
                             }
                         };
                         
@@ -917,8 +644,8 @@
                             else{
                                 if(form.id == 'captcha')
                                     xhr.open("GET", host + ":8080/BD_Project/api/v1.0/methods/runAll?path=" + ajax.responseText, true);
-                                else
-                                    xhr.open("GET", host + ":8080/BD_Project/api/v1.0/methods/reCaptcha?path=" + ajax.responseText + "&keyword=" + 'car', true);
+                                else if(form.id == 'reCaptcha')
+                                    xhr.open("GET", host + ":8080/BD_Project/api/v1.0/methods/reCaptcha?path=" + ajax.responseText + "&keyword=" + $('#keyword').val(), true);
                                 // xhr.open("GET", "http://140.138.225.10:8080/BD_Project/api/v1.0/methods/runAll?path=" + ajax.responseText, true);
                                 // xhr.setRequestHeader("Authorization", "Basic " + btoa("username:password"));
                                 xhr.send();

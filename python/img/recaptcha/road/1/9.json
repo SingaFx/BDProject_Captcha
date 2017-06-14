@@ -1,0 +1,168 @@
+{
+    "outputs": [
+        {
+            "created_at": "2017-06-12T12:49:13.801625191Z",
+            "data": {
+                "concepts": [
+                    {
+                        "app_id": "main",
+                        "id": "ai_FWCjC8jZ",
+                        "name": "architecture",
+                        "value": 0.9905449
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_786Zr311",
+                        "name": "no person",
+                        "value": 0.97869956
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_4Qjv5PTH",
+                        "name": "modern",
+                        "value": 0.95884657
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_9Dcdh0PK",
+                        "name": "house",
+                        "value": 0.95384145
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_xDBZXVs6",
+                        "name": "panoramic",
+                        "value": 0.95335567
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_VTlCx2f2",
+                        "name": "window",
+                        "value": 0.9508263
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_GjVpxXrs",
+                        "name": "street",
+                        "value": 0.94333935
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_8xrjRNnl",
+                        "name": "horizontal plane",
+                        "value": 0.93957627
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Zmhsv0Ch",
+                        "name": "outdoors",
+                        "value": 0.93794864
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_6lhccv44",
+                        "name": "business",
+                        "value": 0.93262887
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_WBQfVV0p",
+                        "name": "city",
+                        "value": 0.9218821
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_CpFBRWzD",
+                        "name": "urban",
+                        "value": 0.9204018
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_rsX6XWc2",
+                        "name": "building",
+                        "value": 0.90690684
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_VRmbGVWh",
+                        "name": "travel",
+                        "value": 0.9049568
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_gB5qwrpr",
+                        "name": "glass items",
+                        "value": 0.897686
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_pCnxWJZh",
+                        "name": "contemporary",
+                        "value": 0.8971131
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_ll97lFvS",
+                        "name": "office",
+                        "value": 0.88822544
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_BJP7PBvG",
+                        "name": "apartment",
+                        "value": 0.86484265
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_cTv1BBXG",
+                        "name": "expression",
+                        "value": 0.8617307
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_ggQlMG6W",
+                        "name": "industry",
+                        "value": 0.8574867
+                    }
+                ]
+            },
+            "id": "e1f5250e172d41b383800b71c9b96312",
+            "input": {
+                "data": {
+                    "image": {
+                        "base64": "true",
+                        "url": "https://s3.amazonaws.com/clarifai-api/img/prod/d309d541c5a147cab44fb8f00349a067/d7754c9261054160b281524ebcc9ee15.jpeg"
+                    }
+                },
+                "id": "fdbb002733d845f4aefaf6a59436db2c"
+            },
+            "model": {
+                "app_id": "main",
+                "created_at": "2016-03-09T17:11:39.608845Z",
+                "id": "aaa03c23b3724a16a56b629203edc62c",
+                "model_version": {
+                    "created_at": "2016-07-13T01:19:12.147644Z",
+                    "id": "aa9ca48295b37401f8af92ad1af0d91d",
+                    "status": {
+                        "code": 21100,
+                        "description": "Model trained successfully"
+                    }
+                },
+                "name": "general-v1.3",
+                "output_info": {
+                    "message": "Show output_info with: GET /models/{model_id}/output_info",
+                    "type": "concept",
+                    "type_ext": "concept"
+                }
+            },
+            "status": {
+                "code": 10000,
+                "description": "Ok"
+            }
+        }
+    ],
+    "status": {
+        "code": 10000,
+        "description": "Ok"
+    }
+}

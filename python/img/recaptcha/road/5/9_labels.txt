@@ -1,0 +1,20 @@
+street
+panoramic
+architecture
+city
+urban
+building
+outdoors
+travel
+tourism
+culture
+town
+old
+fence
+bridge
+horizontal plane
+business
+color
+panorama
+road
+industry

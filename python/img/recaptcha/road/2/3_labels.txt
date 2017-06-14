@@ -1,0 +1,20 @@
+industry
+empty
+row
+street
+seat
+bleachers
+urban
+no person
+technology
+line
+pattern
+outdoors
+desktop
+pavement
+panoramic
+expression
+road
+safety
+traffic
+business

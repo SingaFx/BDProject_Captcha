@@ -1,0 +1,168 @@
+{
+    "outputs": [
+        {
+            "created_at": "2017-06-12T12:34:41.519582216Z",
+            "data": {
+                "concepts": [
+                    {
+                        "app_id": "main",
+                        "id": "ai_TjbmxC6B",
+                        "name": "tree",
+                        "value": 0.97700727
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Zmhsv0Ch",
+                        "name": "outdoors",
+                        "value": 0.95685554
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_786Zr311",
+                        "name": "no person",
+                        "value": 0.9566182
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_xDBZXVs6",
+                        "name": "panoramic",
+                        "value": 0.9550241
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_tBcWlsCp",
+                        "name": "nature",
+                        "value": 0.95485425
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_l8TKp2h5",
+                        "name": "people",
+                        "value": 0.95378304
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_GjVpxXrs",
+                        "name": "street",
+                        "value": 0.92872
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_9Dcdh0PK",
+                        "name": "house",
+                        "value": 0.91850066
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_zFnPQdgB",
+                        "name": "wood",
+                        "value": 0.9025312
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_C9qfV4F8",
+                        "name": "garden",
+                        "value": 0.889788
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_6jpGRJmm",
+                        "name": "flora",
+                        "value": 0.88742983
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_FsT0Zqdb",
+                        "name": "summer",
+                        "value": 0.88301146
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_wBCrHPDb",
+                        "name": "leaf",
+                        "value": 0.87642413
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_dxSG2s86",
+                        "name": "man",
+                        "value": 0.848076
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_0HffL2Dp",
+                        "name": "environment",
+                        "value": 0.8391422
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_j09mzT6j",
+                        "name": "family",
+                        "value": 0.83737695
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_gh35wfX4",
+                        "name": "bungalow",
+                        "value": 0.8062701
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_rsX6XWc2",
+                        "name": "building",
+                        "value": 0.8056493
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_mp9KG5QH",
+                        "name": "grass",
+                        "value": 0.8039694
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_ZSKpCCHD",
+                        "name": "vertical",
+                        "value": 0.80371237
+                    }
+                ]
+            },
+            "id": "d812acfd68c345a0a8527d3f6a5cddd7",
+            "input": {
+                "data": {
+                    "image": {
+                        "base64": "true",
+                        "url": "https://s3.amazonaws.com/clarifai-api/img/prod/d309d541c5a147cab44fb8f00349a067/ce4d6d2ecc5c47fcbcc02e08d5d002f7.jpeg"
+                    }
+                },
+                "id": "a6efc612328044f3be53996c638663a4"
+            },
+            "model": {
+                "app_id": "main",
+                "created_at": "2016-03-09T17:11:39.608845Z",
+                "id": "aaa03c23b3724a16a56b629203edc62c",
+                "model_version": {
+                    "created_at": "2016-07-13T01:19:12.147644Z",
+                    "id": "aa9ca48295b37401f8af92ad1af0d91d",
+                    "status": {
+                        "code": 21100,
+                        "description": "Model trained successfully"
+                    }
+                },
+                "name": "general-v1.3",
+                "output_info": {
+                    "message": "Show output_info with: GET /models/{model_id}/output_info",
+                    "type": "concept",
+                    "type_ext": "concept"
+                }
+            },
+            "status": {
+                "code": 10000,
+                "description": "Ok"
+            }
+        }
+    ],
+    "status": {
+        "code": 10000,
+        "description": "Ok"
+    }
+}

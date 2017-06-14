@@ -10,18 +10,20 @@ from util.convertImage import convertImage
 class canny_captcha:
     def __init__(self):
         self.converter = convertImage()
+        self.threshold = 3
 
     def cannyDetection(self, rand):
         img = self.converter.cv_url_to_image('http://140.138.152.207/house/BDProject/upload/' + rand + '/src.png')
         if img is not None:
             height, width = img.shape[:2]
 
-            # 去外框
-            for i in range(len(img)):
-                for j in range(len(img[i])):
-                    if i == 0 or i == len(img) - 1 or j == 0 or j == len(img[i]) -1:
-                        img[i,j] = 255
+            # # 去外框
+            # for i in range(len(img)):
+            #     for j in range(len(img[i])):
+            #         if i == 0 or i == len(img) - 1 or j == 0 or j == len(img[i]) -1:
+            #             img[i,j] = 255
 
+            # 8鄰域降噪
             count = 0
             for i in range(width):
                 for j in range(height):
@@ -40,7 +42,7 @@ class canny_captcha:
                     if count >= 7:
                         img[i,j] = (255 , 255 , 255)   
 
-
+            # img = self.NoiseReduce_Burst(img, self.threshold)
 
             img = cv2.GaussianBlur(img,(3,3),0)  
             canny = cv2.Canny(img, 300, 150)  
@@ -53,7 +55,8 @@ class canny_captcha:
             # cv2.waitKey(0)  
             # cv2.destroyAllWindows()
             return rand + '/2_canny.png'
+        return ''
 
 if __name__ == "__main__":
     canny = canny_captcha()
-    canny.cannyDetection('20170610153454_9241')
+    canny.cannyDetection('20170614063115_19753')

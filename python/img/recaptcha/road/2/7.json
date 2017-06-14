@@ -1,0 +1,168 @@
+{
+    "outputs": [
+        {
+            "created_at": "2017-06-12T12:34:12.494906956Z",
+            "data": {
+                "concepts": [
+                    {
+                        "app_id": "main",
+                        "id": "ai_TZ3C79C6",
+                        "name": "road",
+                        "value": 0.9940189
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_xDBZXVs6",
+                        "name": "panoramic",
+                        "value": 0.9899367
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_786Zr311",
+                        "name": "no person",
+                        "value": 0.98877656
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_tBcWlsCp",
+                        "name": "nature",
+                        "value": 0.98801506
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Zmhsv0Ch",
+                        "name": "outdoors",
+                        "value": 0.9864224
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_VRmbGVWh",
+                        "name": "travel",
+                        "value": 0.98448443
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_tr0MBp64",
+                        "name": "traffic",
+                        "value": 0.97800964
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_GjVpxXrs",
+                        "name": "street",
+                        "value": 0.9735197
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_FsT0Zqdb",
+                        "name": "summer",
+                        "value": 0.9719387
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_DFvZTXj3",
+                        "name": "trip (journey)",
+                        "value": 0.9716706
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_8xrjRNnl",
+                        "name": "horizontal plane",
+                        "value": 0.96676916
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Xxjc3MhT",
+                        "name": "transportation system",
+                        "value": 0.96614444
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_4WQx8fHH",
+                        "name": "asphalt",
+                        "value": 0.9642882
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_lNsKfmXb",
+                        "name": "sky",
+                        "value": 0.9616468
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_n5n0c9cN",
+                        "name": "wide",
+                        "value": 0.9436334
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_4250DWCs",
+                        "name": "highway",
+                        "value": 0.922837
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_R6dzMxKV",
+                        "name": "rural",
+                        "value": 0.9220395
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_l2vWw8mr",
+                        "name": "empty",
+                        "value": 0.91812825
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_kV8FFFvw",
+                        "name": "countryside",
+                        "value": 0.8887928
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_mp9KG5QH",
+                        "name": "grass",
+                        "value": 0.887741
+                    }
+                ]
+            },
+            "id": "f879fe2165f144ab93ee4a892c281460",
+            "input": {
+                "data": {
+                    "image": {
+                        "base64": "true",
+                        "url": "https://s3.amazonaws.com/clarifai-api/img/prod/d309d541c5a147cab44fb8f00349a067/ddf1b9fec01345119e4f0cf5ce979105.jpeg"
+                    }
+                },
+                "id": "b02e38a0e92247b589f1aad2a01d9fc4"
+            },
+            "model": {
+                "app_id": "main",
+                "created_at": "2016-03-09T17:11:39.608845Z",
+                "id": "aaa03c23b3724a16a56b629203edc62c",
+                "model_version": {
+                    "created_at": "2016-07-13T01:19:12.147644Z",
+                    "id": "aa9ca48295b37401f8af92ad1af0d91d",
+                    "status": {
+                        "code": 21100,
+                        "description": "Model trained successfully"
+                    }
+                },
+                "name": "general-v1.3",
+                "output_info": {
+                    "message": "Show output_info with: GET /models/{model_id}/output_info",
+                    "type": "concept",
+                    "type_ext": "concept"
+                }
+            },
+            "status": {
+                "code": 10000,
+                "description": "Ok"
+            }
+        }
+    ],
+    "status": {
+        "code": 10000,
+        "description": "Ok"
+    }
+}

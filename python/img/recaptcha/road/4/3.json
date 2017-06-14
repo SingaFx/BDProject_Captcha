@@ -1,0 +1,168 @@
+{
+    "outputs": [
+        {
+            "created_at": "2017-06-12T12:34:28.185572707Z",
+            "data": {
+                "concepts": [
+                    {
+                        "app_id": "main",
+                        "id": "ai_GjVpxXrs",
+                        "name": "street",
+                        "value": 0.98357534
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_CpFBRWzD",
+                        "name": "urban",
+                        "value": 0.9651868
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_kKszJrhP",
+                        "name": "safety",
+                        "value": 0.96103275
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_FWCjC8jZ",
+                        "name": "architecture",
+                        "value": 0.95199704
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_9Dcdh0PK",
+                        "name": "house",
+                        "value": 0.94417274
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_lbkj2ffx",
+                        "name": "wall",
+                        "value": 0.9413843
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_GzNlpxwb",
+                        "name": "equipment",
+                        "value": 0.94120073
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_ZSKpCCHD",
+                        "name": "vertical",
+                        "value": 0.93669593
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_WBQfVV0p",
+                        "name": "city",
+                        "value": 0.9329014
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_n9vjC1jB",
+                        "name": "light",
+                        "value": 0.931069
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_S0rvLGPz",
+                        "name": "old",
+                        "value": 0.9302442
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_786Zr311",
+                        "name": "no person",
+                        "value": 0.921975
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_rsX6XWc2",
+                        "name": "building",
+                        "value": 0.91703796
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_lNsKfmXb",
+                        "name": "sky",
+                        "value": 0.9019065
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Lq00FggW",
+                        "name": "desktop",
+                        "value": 0.9018415
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Zmhsv0Ch",
+                        "name": "outdoors",
+                        "value": 0.8994898
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_xDBZXVs6",
+                        "name": "panoramic",
+                        "value": 0.8991765
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_VRmbGVWh",
+                        "name": "travel",
+                        "value": 0.89635533
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_m8rrtkhG",
+                        "name": "town",
+                        "value": 0.8906584
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_j09mzT6j",
+                        "name": "family",
+                        "value": 0.88672256
+                    }
+                ]
+            },
+            "id": "e892fd8c2e5d4419a5f7f330010ede69",
+            "input": {
+                "data": {
+                    "image": {
+                        "base64": "true",
+                        "url": "https://s3.amazonaws.com/clarifai-api/img/prod/d309d541c5a147cab44fb8f00349a067/d1d79db27577425ab87f3ba88e228953.jpeg"
+                    }
+                },
+                "id": "c71fc823eb144584aca23e90a160877a"
+            },
+            "model": {
+                "app_id": "main",
+                "created_at": "2016-03-09T17:11:39.608845Z",
+                "id": "aaa03c23b3724a16a56b629203edc62c",
+                "model_version": {
+                    "created_at": "2016-07-13T01:19:12.147644Z",
+                    "id": "aa9ca48295b37401f8af92ad1af0d91d",
+                    "status": {
+                        "code": 21100,
+                        "description": "Model trained successfully"
+                    }
+                },
+                "name": "general-v1.3",
+                "output_info": {
+                    "message": "Show output_info with: GET /models/{model_id}/output_info",
+                    "type": "concept",
+                    "type_ext": "concept"
+                }
+            },
+            "status": {
+                "code": 10000,
+                "description": "Ok"
+            }
+        }
+    ],
+    "status": {
+        "code": 10000,
+        "description": "Ok"
+    }
+}

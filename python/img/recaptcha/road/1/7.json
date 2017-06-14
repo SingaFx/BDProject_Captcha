@@ -1,0 +1,168 @@
+{
+    "outputs": [
+        {
+            "created_at": "2017-06-12T12:34:02.637338740Z",
+            "data": {
+                "concepts": [
+                    {
+                        "app_id": "main",
+                        "id": "ai_tBcWlsCp",
+                        "name": "nature",
+                        "value": 0.9902594
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_786Zr311",
+                        "name": "no person",
+                        "value": 0.98647034
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Zmhsv0Ch",
+                        "name": "outdoors",
+                        "value": 0.9827641
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_zFnPQdgB",
+                        "name": "wood",
+                        "value": 0.97995865
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_mp9KG5QH",
+                        "name": "grass",
+                        "value": 0.9594004
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_FsT0Zqdb",
+                        "name": "summer",
+                        "value": 0.9591398
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_6jpGRJmm",
+                        "name": "flora",
+                        "value": 0.9488556
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_wBCrHPDb",
+                        "name": "leaf",
+                        "value": 0.94849753
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_TjbmxC6B",
+                        "name": "tree",
+                        "value": 0.9468256
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_LxrzLJmf",
+                        "name": "bright",
+                        "value": 0.9246979
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Qp0fHhgG",
+                        "name": "season",
+                        "value": 0.9012869
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_MTvKbKJv",
+                        "name": "landscape",
+                        "value": 0.8941208
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_C9qfV4F8",
+                        "name": "garden",
+                        "value": 0.89237356
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_RzrbbnhM",
+                        "name": "guidance",
+                        "value": 0.8803698
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_5WfQcbMp",
+                        "name": "flower",
+                        "value": 0.87910855
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_ZSKpCCHD",
+                        "name": "vertical",
+                        "value": 0.8610263
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_LmFtHz7q",
+                        "name": "fall",
+                        "value": 0.85995686
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_0HffL2Dp",
+                        "name": "environment",
+                        "value": 0.8585144
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_9Dcdh0PK",
+                        "name": "house",
+                        "value": 0.85315454
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_PBTpj0kl",
+                        "name": "park",
+                        "value": 0.8484415
+                    }
+                ]
+            },
+            "id": "d60f56a17f3849a0a760cb90687da02b",
+            "input": {
+                "data": {
+                    "image": {
+                        "base64": "true",
+                        "url": "https://s3.amazonaws.com/clarifai-api/img/prod/d309d541c5a147cab44fb8f00349a067/bbc4474f18ef450fb397a7b984f7d959.jpeg"
+                    }
+                },
+                "id": "dbff50038c22498da26cf4a21531a246"
+            },
+            "model": {
+                "app_id": "main",
+                "created_at": "2016-03-09T17:11:39.608845Z",
+                "id": "aaa03c23b3724a16a56b629203edc62c",
+                "model_version": {
+                    "created_at": "2016-07-13T01:19:12.147644Z",
+                    "id": "aa9ca48295b37401f8af92ad1af0d91d",
+                    "status": {
+                        "code": 21100,
+                        "description": "Model trained successfully"
+                    }
+                },
+                "name": "general-v1.3",
+                "output_info": {
+                    "message": "Show output_info with: GET /models/{model_id}/output_info",
+                    "type": "concept",
+                    "type_ext": "concept"
+                }
+            },
+            "status": {
+                "code": 10000,
+                "description": "Ok"
+            }
+        }
+    ],
+    "status": {
+        "code": 10000,
+        "description": "Ok"
+    }
+}

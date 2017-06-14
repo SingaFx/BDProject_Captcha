@@ -6,14 +6,15 @@ import numpy as np
 import cv2
 import os
 
-folder = 'railway'
+folder = '9x9'
 
 pwd = os.path.split(os.path.realpath(__file__))[0]
 #處理驗證碼
 def Captcha():
     #循環處理
     for t in range(0,100):
-        path = os.path.join(pwd, 'img\\' + folder + '\\' + str(t))
+        path = os.path.join(pwd, '..\..\img\\' + folder + '\\' + str(t))
+        print(path)
         #讀圖檔
         im = cv2.imread(path + '.bmp', flags=cv2.IMREAD_GRAYSCALE)
         retval, im = cv2.threshold(im, 115, 255, cv2.THRESH_BINARY_INV)

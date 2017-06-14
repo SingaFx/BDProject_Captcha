@@ -1,0 +1,168 @@
+{
+    "outputs": [
+        {
+            "created_at": "2017-06-12T12:33:57.238673526Z",
+            "data": {
+                "concepts": [
+                    {
+                        "app_id": "main",
+                        "id": "ai_tBcWlsCp",
+                        "name": "nature",
+                        "value": 0.97693294
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_TZ3C79C6",
+                        "name": "road",
+                        "value": 0.9715192
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_mp9KG5QH",
+                        "name": "grass",
+                        "value": 0.9663871
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_RzrbbnhM",
+                        "name": "guidance",
+                        "value": 0.9662466
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Zmhsv0Ch",
+                        "name": "outdoors",
+                        "value": 0.9648495
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_FsT0Zqdb",
+                        "name": "summer",
+                        "value": 0.9572677
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_786Zr311",
+                        "name": "no person",
+                        "value": 0.9515987
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_xDBZXVs6",
+                        "name": "panoramic",
+                        "value": 0.943161
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_l2vWw8mr",
+                        "name": "empty",
+                        "value": 0.94081724
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_JfH5nDwN",
+                        "name": "footpath",
+                        "value": 0.9324926
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_GjVpxXrs",
+                        "name": "street",
+                        "value": 0.92221916
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_0HffL2Dp",
+                        "name": "environment",
+                        "value": 0.9156392
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_6jpGRJmm",
+                        "name": "flora",
+                        "value": 0.910611
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_h16c4hS0",
+                        "name": "signal",
+                        "value": 0.91014886
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_BlL0wSQh",
+                        "name": "water",
+                        "value": 0.89935184
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_5DSJM9t2",
+                        "name": "growth",
+                        "value": 0.8793901
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_VRmbGVWh",
+                        "name": "travel",
+                        "value": 0.87404424
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_kP2nBjcZ",
+                        "name": "roadside",
+                        "value": 0.8570564
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_wBCrHPDb",
+                        "name": "leaf",
+                        "value": 0.8536046
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_7k7NSWlT",
+                        "name": "soil",
+                        "value": 0.8478104
+                    }
+                ]
+            },
+            "id": "f96a6f902c2a42af968f10ce70b5a97f",
+            "input": {
+                "data": {
+                    "image": {
+                        "base64": "true",
+                        "url": "https://s3.amazonaws.com/clarifai-api/img/prod/d309d541c5a147cab44fb8f00349a067/dcb6f035947542749c0506385ba083b4.jpeg"
+                    }
+                },
+                "id": "db2a7d09f6f142418a63d81a6a07fa2d"
+            },
+            "model": {
+                "app_id": "main",
+                "created_at": "2016-03-09T17:11:39.608845Z",
+                "id": "aaa03c23b3724a16a56b629203edc62c",
+                "model_version": {
+                    "created_at": "2016-07-13T01:19:12.147644Z",
+                    "id": "aa9ca48295b37401f8af92ad1af0d91d",
+                    "status": {
+                        "code": 21100,
+                        "description": "Model trained successfully"
+                    }
+                },
+                "name": "general-v1.3",
+                "output_info": {
+                    "message": "Show output_info with: GET /models/{model_id}/output_info",
+                    "type": "concept",
+                    "type_ext": "concept"
+                }
+            },
+            "status": {
+                "code": 10000,
+                "description": "Ok"
+            }
+        }
+    ],
+    "status": {
+        "code": 10000,
+        "description": "Ok"
+    }
+}

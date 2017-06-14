@@ -1,0 +1,168 @@
+{
+    "outputs": [
+        {
+            "created_at": "2017-06-12T12:34:07.614560453Z",
+            "data": {
+                "concepts": [
+                    {
+                        "app_id": "main",
+                        "id": "ai_ggQlMG6W",
+                        "name": "industry",
+                        "value": 0.9847587
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_l2vWw8mr",
+                        "name": "empty",
+                        "value": 0.97133857
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_S8G0FCx3",
+                        "name": "row",
+                        "value": 0.9582737
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_GjVpxXrs",
+                        "name": "street",
+                        "value": 0.95087814
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_xxnGcd42",
+                        "name": "seat",
+                        "value": 0.94784945
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_4MH8HGdc",
+                        "name": "bleachers",
+                        "value": 0.94766366
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_CpFBRWzD",
+                        "name": "urban",
+                        "value": 0.9461347
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_786Zr311",
+                        "name": "no person",
+                        "value": 0.94333977
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_62K34TR4",
+                        "name": "technology",
+                        "value": 0.93244565
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_WvHmQsC0",
+                        "name": "line",
+                        "value": 0.93120426
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_V0WFhmCF",
+                        "name": "pattern",
+                        "value": 0.9234523
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Zmhsv0Ch",
+                        "name": "outdoors",
+                        "value": 0.9179473
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_Lq00FggW",
+                        "name": "desktop",
+                        "value": 0.90552914
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_f3fsJS61",
+                        "name": "pavement",
+                        "value": 0.9053985
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_xDBZXVs6",
+                        "name": "panoramic",
+                        "value": 0.90254545
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_cTv1BBXG",
+                        "name": "expression",
+                        "value": 0.8969388
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_TZ3C79C6",
+                        "name": "road",
+                        "value": 0.8954543
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_kKszJrhP",
+                        "name": "safety",
+                        "value": 0.8857691
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_tr0MBp64",
+                        "name": "traffic",
+                        "value": 0.8717675
+                    },
+                    {
+                        "app_id": "main",
+                        "id": "ai_6lhccv44",
+                        "name": "business",
+                        "value": 0.871212
+                    }
+                ]
+            },
+            "id": "f9d435baf9d046fd9616e986255da469",
+            "input": {
+                "data": {
+                    "image": {
+                        "base64": "true",
+                        "url": "https://s3.amazonaws.com/clarifai-api/img/prod/d309d541c5a147cab44fb8f00349a067/bbcea3f4f88a42d48af5b4f46d2831df.jpeg"
+                    }
+                },
+                "id": "b789d18beeef422ebbff49ca524d43cb"
+            },
+            "model": {
+                "app_id": "main",
+                "created_at": "2016-03-09T17:11:39.608845Z",
+                "id": "aaa03c23b3724a16a56b629203edc62c",
+                "model_version": {
+                    "created_at": "2016-07-13T01:19:12.147644Z",
+                    "id": "aa9ca48295b37401f8af92ad1af0d91d",
+                    "status": {
+                        "code": 21100,
+                        "description": "Model trained successfully"
+                    }
+                },
+                "name": "general-v1.3",
+                "output_info": {
+                    "message": "Show output_info with: GET /models/{model_id}/output_info",
+                    "type": "concept",
+                    "type_ext": "concept"
+                }
+            },
+            "status": {
+                "code": 10000,
+                "description": "Ok"
+            }
+        }
+    ],
+    "status": {
+        "code": 10000,
+        "description": "Ok"
+    }
+}
