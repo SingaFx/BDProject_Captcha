@@ -16,7 +16,7 @@ class main_captcha:
     def __init__(self):
         self.converter = convertImage()
         self.threshold = 3
-    def captcha(self, rand):
+    def run(self, rand):
         img = self.converter.url_to_image('http://140.138.152.207/house/BDProject/upload/' + rand + '/src.png')
         # Convert to RGB mode
         if img.mode != "RGB":

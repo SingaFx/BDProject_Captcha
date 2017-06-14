@@ -17,18 +17,23 @@ import numpy as np
 import cv2
 import re
 import urllib.request
-import pytesseract
+import datetime
+from random import randint
 from PIL import Image, ImageEnhance
 from io import StringIO
 
 from googleVision import googleVision
+
+# methods import
 sys.path.append('../')
 from methods.url.main_captcha import main_captcha
 from methods.url.canny_captcha import canny_captcha
 from methods.url.benny_captcha import benny_captcha
 from methods.url.recaptcha import recaptcha
+# util import
 sys.path.append('../')
 from util.convertImage import convertImage
+from util.ocr import ocr
 
 auth = HTTPBasicAuth()
 app = Flask(__name__)
@@ -36,11 +41,11 @@ CORS(app)
 methods = [
     {
         'id': 1,
-        'description': u'Our algorithm'
+        'description': u'Our first algorithm'
     },
     {
         'id': 2,
-        'description': u'Our anoter algorithm'
+        'description': u'Our second algorithm'
     },
     {
         'id': 3,
@@ -60,8 +65,12 @@ methods = [
 # init
 vision = googleVision()
 reCaptcha = recaptcha()
+ocr = ocr()
 uri = 'http://140.138.152.207/house/BDProject/upload/'
-
+main = main_captcha()
+benny = benny_captcha()
+canny = canny_captcha()
+captcha_methods = [main, benny, canny]
 @app.route('/BD_Project/api/v1.0/methods', methods=['GET'])
 def get_methods():
     return jsonify({'methods': methods})
@@ -72,60 +81,48 @@ def runAll():
     
     
     path = request.args.get('path')
-    main = main_captcha()
-    canny = canny_captcha()
-    benny = benny_captcha()
-    m1 = main.captcha(path)
-    m2 = benny.captcha(path)
-    m3 = canny.cannyDetection(path)
-    m1_result = ''
-    m2_result = ''
-    m3_result = ''
-    m1_visionResult = ''
-    m2_visionResult = ''
-    m3_visionResult = ''
-    if m1 != '':
-        m1_result = ocr_text(uri + m1)
-        m1_visionResult = vision.detect_text_uri(uri+m1).replace(' ', '')
-        m1_result = re.sub('[^a-zA-Z0-9]', '', m1_result)
-        m1_visionResult = re.sub('[^a-zA-Z0-9]', '', m1_visionResult)
-        
-    if m2 != '':
-        m2_result = ocr_text(uri + m2)
-        m2_visionResult = vision.detect_text_uri(uri+m2).replace(' ', '')
-        m2_result = re.sub('[^a-zA-Z0-9]', '', m2_result)
-        m2_visionResult = re.sub('[^a-zA-Z0-9]', '', m2_visionResult)
-
-    if m3 != '':
-        m3_result = ocr_text(uri + m3)
-        m3_visionResult = vision.detect_text_uri(uri+m3).replace(' ', '')
-        m3_result = re.sub('[^a-zA-Z0-9]', '', m3_result)
-        m3_visionResult = re.sub('[^a-zA-Z0-9]', '', m3_visionResult)
+    if path is None:
+        abort(404)
+    pathArr = []
+    for index, method in enumerate(captcha_methods):
+        # 'http://140.138.152.207/house/BDProject/upload/' + rand + '/src.png'
+        pathArr.append(captcha_methods[index].run('http://140.138.152.207/house/BDProject/upload/' + path + '/src.png', path))
+    resultArr = []
+    
+    for index, captcha in enumerate(pathArr):
+        resultArr.append([])
+        if captcha != '':
+            resultArr[index].append(re.sub('[^a-zA-Z0-9]', '', ocr_text(uri + captcha).replace(' ', '')))
+            resultArr[index].append(re.sub('[^a-zA-Z0-9]', '', vision.detect_text_uri(uri + captcha).replace(' ', '')))
+        else:
+            resultArr[index].append('')
+            resultArr[index].append('')
+            
 
     return jsonify(
         {
             'method1' : 
             {
-                'name' : 'Our algorithm',
-                'path' : m1, 
-                'tesseract_result' : m1_result,
-                'googleVision_result' : m1_visionResult
+                'name' : 'Our first algorithm',
+                'path' : pathArr[0], 
+                'tesseract_result' : resultArr[0][0],
+                'googleVision_result' : resultArr[0][1]
                 # 'googleVision_result' : ''
             }, 
             'method2' : 
             {
-                'name' : 'Our anoter algorithm',
-                'path' : m2, 
-                'tesseract_result' : m2_result,
-                'googleVision_result' : m2_visionResult
+                'name' : 'Our second algorithm',
+                'path' : pathArr[1], 
+                'tesseract_result' : resultArr[1][0],
+                'googleVision_result' : resultArr[1][1],
                 # 'googleVision_result' : ''
             }, 
             'method3' : 
             {
                 'name' : 'Canny Detection algorithm',
-                'path' : m3, 
-                'tesseract_result' : m3_result,
-                'googleVision_result' : m3_visionResult
+                'path' : pathArr[2], 
+                'tesseract_result' : resultArr[2][0],
+                'googleVision_result' : resultArr[2][1],
                 # 'googleVision_result' : ''
             }
         })
@@ -155,14 +152,27 @@ def googleReCaptcha():
         })
 
 
-@app.route('/BD_Project/api/v1.0/methods/<int:method_id>?<string:path>', methods=['GET'])
-@auth.login_required
-def get_method(method_id, path):
-
+@app.route('/BD_Project/api/v1.0/methods/<int:method_id>', methods=['GET'])
+# @auth.login_required
+def get_method(method_id):
+    url = request.args.get('url')
+    # key = request.args.get('key')
     method = list(filter(lambda t: t['id'] == method_id, methods))
-    if len(method) == 0:
+    if len(method) == 0 or url is None:
         abort(404)
-    return jsonify({'method': method[0]})
+
+    rand = datetime.datetime.now().strftime("%Y%m%d%H%M%S") + '_' + str(randint(1,32768))
+    captchaResult = captcha_methods[method_id-1].run(url, rand)
+
+    return jsonify(
+        {
+            'method' + str(method_id): 
+            {
+                'name' : methods[method_id-1]['description'],
+                'tesseract_result' : re.sub('[^a-zA-Z0-9]', '', ocr_text(uri + captchaResult).replace(' ', '')),
+                'googleVision_result' : re.sub('[^a-zA-Z0-9]', '', vision.detect_text_uri(uri + captchaResult).replace(' ', ''))
+            }
+        })
 
 @app.route('/BD_Project/api/v1.0/methods/<int:method_id>', methods=['POST'])
 def create_method(method_id):
@@ -189,15 +199,7 @@ def get_password(username):
 def unauthorized():
     return make_response(jsonify({'error': 'Unauthorized access'}), 401)
 
-def ocr_text(url):
-    converter = convertImage()
-    text = ''
-    img = converter.url_to_image(url)
-    img.load()
-    text = pytesseract.image_to_string(img, lang='eng')
-    text = text.replace(' ', '')
-    print(url + '     ' + text.encode(sys.stdin.encoding, "replace").decode(sys.stdin.encoding))
-    return text
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)

@@ -12,8 +12,8 @@ class canny_captcha:
         self.converter = convertImage()
         self.threshold = 3
 
-    def cannyDetection(self, rand):
-        img = self.converter.cv_url_to_image('http://140.138.152.207/house/BDProject/upload/' + rand + '/src.png')
+    def run(self, url, rand):
+        img = self.converter.cv_url_to_image(url)
         if img is not None:
             height, width = img.shape[:2]
 

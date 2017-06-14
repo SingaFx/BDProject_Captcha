@@ -12,8 +12,9 @@ class benny_captcha:
     def __init__(self):
         self.converter = convertImage()
         self.threshold = 3
-    def captcha(self, rand):
-        im = self.converter.cv_url_to_image('http://140.138.152.207/house/BDProject/upload/' + rand + '/src.png')
+
+    def run(self, url, rand):
+        im = self.converter.cv_url_to_image(url)
         if im is not None:
             im = self.Binarization(im)
             im = self.NoiseReduce_eight(im, self.threshold)
