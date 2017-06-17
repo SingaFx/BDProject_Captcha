@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE HTML>
 <!--
 	Road Trip by TEMPLATED
@@ -6,7 +7,7 @@
 -->
 <html>
 	<head>
-		<title>BDProject</title>
+		<title>Big Data Project</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
@@ -19,32 +20,45 @@
     <style>
     </style>
 	<body>
-		<!-- Header -->
-			<header id="header">
-				<a href="#menu"><span>Menu</span></a>
-			</header>
+	<!-- Header -->
+		<header id="header">
+            <div class="logo">
+                <a href="index.php">Big Data Project</a>
+            </div>
+			<a href="#menu"><span>Menu</span></a>
+		</header>
 
-		<!-- Nav -->
-			<nav id="menu">
-				<ul class="links">
-					<li><a href="index.html">Home</a></li>
-				</ul>
-			</nav>
+	<!-- Nav -->
+		<nav id="menu">
+			<ul class="links">
+				<li><a href="index.php">首頁</a></li>
+                <li><a href="api.php">API</a></li>
+                <?php
+                if (!$_SESSION) {
+                    echo '<li><a href="login.php">登入</a></li>';
+                }
+                else{
+                    echo '<li><a href="logout.php">登出</a></li>';
+                }
+                ?>
+                
+			</ul>
+		</nav>
 
-		<!-- Banner -->
-		<!--
-			Note: To show a background image, set the "data-bg" attribute below
-			to the full filename of your image. This is used in each section to set
-			the background image.
-		-->
-			<section id="banner" class="bg-img" data-bg="banner.jpg">
-				<div class="inner">
-					<header>
-						<h1>This is an Analysis for Captcha</h1>
-					</header>
-				</div>
-				<a href="#one" class="more">Learn More</a>
-			</section>
+	<!-- Banner -->
+	<!--
+		Note: To show a background image, set the "data-bg" attribute below
+		to the full filename of your image. This is used in each section to set
+		the background image.
+	-->
+		<section id="banner" class="bg-img" data-bg="banner.jpg">
+			<div class="inner">
+				<header>
+					<h1>This is an Analysis for Captcha</h1>
+				</header>
+			</div>
+			<a href="#one" class="more">Learn More</a>
+		</section>
         <!--Upload Image-->
         <section id="one" class="wrapper post bg-img" data-bg="banner6.jpg">
             <div class="inner">
@@ -384,17 +398,28 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 <script>
-    var loadFile = function(file, formid) {
-        if(formid == 'captcha')
+    var loadFile = function(file, form) {
+        if( form.classList.contains( 'is-uploading' ) || form.classList.contains( 'is-processing' ))
+        {
+            alert("處理中，請勿重複上傳！");
+            return false;
+        }
+        if(form.id == 'captcha')
         {
             id = 'previewFile'
         }
-        else if(formid == 'reCaptcha')
+        else if(form.id == 'reCaptcha')
         {
+            if($('#keyword').val() == "")
+            {
+                alert("請輸入reCAPTCHA關鍵字！");
+                return false;
+            }
             id = 'previewFile2'
         }
         var output = document.getElementById(id);
         output.src = URL.createObjectURL(file);
+        return true;
     };
       
 </script>
@@ -458,8 +483,13 @@
                 droppedFiles = false,
                 showFiles    = function( files )
                 {
-                    label.textContent = files.length > 1 ? ( input.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', files.length ) : files[ 0 ].name;
-                    loadFile(files[0], form.id);
+                    var isLoad = loadFile(files[0], form);
+                    if(isLoad){
+                        label.textContent = files.length > 1 ? ( input.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', files.length ) : files[ 0 ].name;
+                        return true;
+                    }
+                    else
+                        return false;
                 },
                 triggerFormSubmit = function()
                 {
@@ -478,8 +508,8 @@
             // automatically submit the form on file select
             input.addEventListener( 'change', function( e )
             {
-                showFiles( e.target.files );
-                triggerFormSubmit();
+                if(showFiles( e.target.files ))
+                    triggerFormSubmit();
             });
 
             // drag&drop files if the feature is available
@@ -512,8 +542,8 @@
                 });
                 form.addEventListener( 'drop', function( e ){
                     droppedFiles = e.dataTransfer.files; // the files that were dropped
-                    showFiles( droppedFiles );
-                    triggerFormSubmit();
+                    if(showFiles( droppedFiles ))
+                        triggerFormSubmit();
                 });
             }
 
@@ -634,7 +664,7 @@
                     */
                     ajax.onload = function()
                     {
-                        var host = "http://27.105.217.10"
+                        var host = "http://27.105.245.67"
                         form.classList.remove( 'is-uploading' );
                         if( ajax.status >= 200 && ajax.status < 400 )
                         {

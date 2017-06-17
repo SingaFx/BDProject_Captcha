@@ -20,7 +20,12 @@ class benny_captcha:
             im = self.NoiseReduce_eight(im, self.threshold)
             im = self.NoiseReduce_Burst(im, self.threshold)
 
-            
+            if not os.path.exists('img'):
+                os.makedirs('img')
+
+            if not os.path.exists('img/' + rand):
+                os.makedirs('img/' + rand)        
+                
             cv2.imwrite('img/' + rand + '/3_test.png', im)
             r = requests.post('http://140.138.152.207/house/BDProject/receiver.php', files={'3_test': open('img/' + rand + '/3_test.png', 'rb')}, data={'path':rand})
             print (r.text)

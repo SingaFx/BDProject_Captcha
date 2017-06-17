@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="index.html" server="140.138.152.207" local="131410385485809811" remote="131410384800000000" Dst="0" />
 <file name="receiver.php" server="140.138.152.207" local="131406379041503658" remote="131410384200000000" Dst="0" />
-<file name="index.html" server="140.138.152.207/BDProject/" local="131419068313187449" remote="131419067400000000" Dst="0" />
-<file name="receiver.php" server="140.138.152.207/BDProject/" local="131415482498319244" remote="131415481800000000" Dst="0" />
+<file name="receiver.php" server="140.138.152.207/BDProject/" local="131419931227008242" remote="131419930200000000" Dst="0" />
+<file name="generateKey.php" server="140.138.152.207/BDProject/" local="131421987733307395" remote="131421987000000000" Dst="0" />
+<file name="loginCheck.php" server="140.138.152.207/BDProject/" local="131421802626679901" remote="131421801600000000" Dst="0" />
+<file name="login.php" server="140.138.152.207/BDProject/" local="131421803277637134" remote="131421802200000000" Dst="0" />
+<file name="registerToDB.php" server="140.138.152.207/BDProject/" local="131422000574881891" remote="131421999600000000" Dst="0" />
+<file name="signUp.html" server="140.138.152.207/BDProject/" local="131421782042032527" remote="131421781200000000" Dst="0" />
+<file name="index.php" server="140.138.152.207/BDProject/" local="131421748755548649" remote="131421748200000000" Dst="0" />
+<file name="api.php" server="140.138.152.207/BDProject/" local="131421999756335073" remote="131421999000000000" Dst="0" />
+<file name="logout.php" server="140.138.152.207/BDProject/" local="131408575135626712" remote="131421747000000000" Dst="0" />
 </dwsync>

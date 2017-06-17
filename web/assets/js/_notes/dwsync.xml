@@ -6,10 +6,10 @@
 <file name="util.js" server="140.138.152.207" local="131406295699866789" remote="131410384200000000" Dst="0" />
 <file name="main.js" server="140.138.152.207" local="131406295699856788" remote="131410384200000000" Dst="0" />
 <file name="jquery.scrollex.min.js" server="140.138.152.207" local="131406295699846788" remote="131410384200000000" Dst="0" />
-<file name="jquery.scrollex.min.js" server="140.138.152.207/BDProject/" local="131406295699846788" remote="131410385400000000" Dst="0" />
-<file name="skel.min.js" server="140.138.152.207/BDProject/" local="131406295699856788" remote="131410385400000000" Dst="0" />
-<file name="jquery.scrolly.min.js" server="140.138.152.207/BDProject/" local="131406295699846788" remote="131410385400000000" Dst="0" />
-<file name="util.js" server="140.138.152.207/BDProject/" local="131406295699866789" remote="131410385400000000" Dst="0" />
-<file name="main.js" server="140.138.152.207/BDProject/" local="131406295699856788" remote="131410385400000000" Dst="0" />
-<file name="jquery.min.js" server="140.138.152.207/BDProject/" local="131406295699846788" remote="131410385400000000" Dst="0" />
+<file name="jquery.scrollex.min.js" server="140.138.152.207/BDProject/" local="131406295699846788" remote="131420815800000000" Dst="0" />
+<file name="skel.min.js" server="140.138.152.207/BDProject/" local="131406295699856788" remote="131420815800000000" Dst="0" />
+<file name="jquery.scrolly.min.js" server="140.138.152.207/BDProject/" local="131406295699846788" remote="131420815800000000" Dst="0" />
+<file name="util.js" server="140.138.152.207/BDProject/" local="131406295699866789" remote="131420815800000000" Dst="0" />
+<file name="main.js" server="140.138.152.207/BDProject/" local="131406295699856788" remote="131420815800000000" Dst="0" />
+<file name="jquery.min.js" server="140.138.152.207/BDProject/" local="131406295699846788" remote="131420815800000000" Dst="0" />
 </dwsync>

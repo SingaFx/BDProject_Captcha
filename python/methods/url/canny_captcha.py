@@ -46,8 +46,11 @@ class canny_captcha:
 
             img = cv2.GaussianBlur(img,(3,3),0)  
             canny = cv2.Canny(img, 300, 150)  
+            if not os.path.exists('img'):
+                os.makedirs('img')
+
             if not os.path.exists('img/' + rand):
-                os.makedirs('img/' + rand)
+                os.makedirs('img/' + rand)        
             # cv2.imshow('Canny', canny)  
             cv2.imwrite('img/' + rand + '/2_canny.png', canny)
             r = requests.post('http://140.138.152.207/house/BDProject/receiver.php', files={'2_canny': open('img/' + rand + '/2_canny.png', 'rb')}, data={'path':rand})

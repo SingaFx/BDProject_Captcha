@@ -35,6 +35,8 @@
 	}else{
 		$path = $_POST['path'];
 		if($path){
+			if(!is_file($_SERVER['HTTP_HOST']."/upload/".$path))
+				mkdir("upload/".$path);
 			move_uploaded_file($_FILES["1_black"]["tmp_name"],"upload/".$path."/1_black.png");
 			//echo("<meta http-equiv=refresh content=0;url=index.html>");
 			//echo $_SERVER['HTTP_HOST']."/upload/".$path."/1_black.jpg";
@@ -46,6 +48,8 @@
 	}else{
 		$path = $_POST['path'];
 		if($path){
+			if(!is_file($_SERVER['HTTP_HOST']."/upload/".$path))
+				mkdir("upload/".$path);
 			move_uploaded_file($_FILES["2_canny"]["tmp_name"],"upload/".$path."/2_canny.png");
 			//echo("<meta http-equiv=refresh content=0;url=index.html>");
 			//echo $_SERVER['HTTP_HOST']."/upload/".$path."/2_canny.jpg";
@@ -57,6 +61,8 @@
 	}else{
 		$path = $_POST['path'];
 		if($path){
+			if(!is_file($_SERVER['HTTP_HOST']."/upload/".$path))
+				mkdir("upload/".$path);
 			move_uploaded_file($_FILES["3_test"]["tmp_name"],"upload/".$path."/3_test.png");
 		}
 	}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Captcha Analysis</title>
+		<meta http-equiv="content-type" content="text/html" charset="UTF-8" />
+		<link rel="stylesheet" href="assets_login/css/index.css" />
+		<script type="text/javascript" src="assets_login/js/jquery-1.8.2.min.js"></script>
+    <style>
+        /*#Username,#Password,#Password2,#Email{
+            width: 99%;
+            border-radius: 5px;
+            border: 1px solid darkgray;
+            height: 25px;
+            padding-left: 10px;
+            font-family: 微軟正黑體;
+            font-size:16px;
+            outline:none;
+        }*/
+    </style>
+    <script>
+		//各式正規表達法 帳號 密碼 信箱
+		var rule = [/^[a-zA-Z][a-zA-Z0-9_]{4,15}$/,
+				  /^.*(?=.{6,})(?=.*[a-z]).*$/,
+				  /^.*(?=.{6,})(?=.*[a-z]).*$/,
+				  /^.([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}).*$/]
+		$(document).ready(function(){
+			$("#Username,#Password,#Password2,#Email").focus(function(){
+				$(this).css("border-color","#006cff")
+			})
+		
+			//簡易判斷輸入是否符合規則
+			$("#Username,#Password,#Password2,#Email").blur(function()
+            {
+                var index = $("input").index(this);
+                if(rule[index].test($(this).val()))
+                {
+                    if($(this).attr('id') == "Password2")
+                    {
+                        if($("#Password2").val() == $("#Password").val())
+                        {
+                            $(this).css("border-color","green")
+                        }
+                        else 
+                        {
+                            $(this).css("border-color","red")
+                        }
+                    }
+                    else 
+                    {
+                        $(this).css("border-color","green")
+                    }
+                }
+                else 
+                {
+                    $(this).css("border-color","red")
+                }
+			})
+		})
+    </script>
+	</head>
+	<body>
+		<header id="header" align="center">
+			<h1>Captcha Analysis API</h1>
+			<p>註冊</p>
+		</header>
+		<form  id="signup-form" method = "post" action = "registerToDB.php" align="center">
+        	<input type='text' id='Username' name='Username' placeholder="帳號"></input><br/>
+
+        	<input type='password' id='Password' name='Password' placeholder="密碼"></input><br/>
+        	<input type='password' id='Password2' name='Password2' placeholder="重新輸入密碼"></input><br/>
+
+        	<input type='text' id='Email' name='Email' placeholder="電子郵件"></input><br/>                    
+            <input type="submit" value="SIGN UP"/>
+            <input type ="button" onclick="javascript:location.href='login.php'" value="BACK"></input>
+		</form>
+	</body>
+</html>

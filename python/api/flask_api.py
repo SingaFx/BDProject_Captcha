@@ -23,7 +23,6 @@ from PIL import Image, ImageEnhance
 from io import StringIO
 
 from googleVision import googleVision
-
 # methods import
 sys.path.append('../')
 from methods.url.main_captcha import main_captcha
@@ -92,7 +91,7 @@ def runAll():
     for index, captcha in enumerate(pathArr):
         resultArr.append([])
         if captcha != '':
-            resultArr[index].append(re.sub('[^a-zA-Z0-9]', '', ocr_text(uri + captcha).replace(' ', '')))
+            resultArr[index].append(re.sub('[^a-zA-Z0-9]', '', ocr.ocr_text(uri + captcha).replace(' ', '')))
             resultArr[index].append(re.sub('[^a-zA-Z0-9]', '', vision.detect_text_uri(uri + captcha).replace(' ', '')))
         else:
             resultArr[index].append('')
@@ -163,13 +162,13 @@ def get_method(method_id):
 
     rand = datetime.datetime.now().strftime("%Y%m%d%H%M%S") + '_' + str(randint(1,32768))
     captchaResult = captcha_methods[method_id-1].run(url, rand)
-
+    
     return jsonify(
         {
             'method' + str(method_id): 
             {
                 'name' : methods[method_id-1]['description'],
-                'tesseract_result' : re.sub('[^a-zA-Z0-9]', '', ocr_text(uri + captchaResult).replace(' ', '')),
+                'tesseract_result' : re.sub('[^a-zA-Z0-9]', '', ocr.ocr_text(uri + captchaResult).replace(' ', '')),
                 'googleVision_result' : re.sub('[^a-zA-Z0-9]', '', vision.detect_text_uri(uri + captchaResult).replace(' ', ''))
             }
         })
