@@ -33,6 +33,7 @@ from methods.url.recaptcha import recaptcha
 sys.path.append('../')
 from util.convertImage import convertImage
 from util.ocr import ocr
+from util.db import db
 
 auth = HTTPBasicAuth()
 app = Flask(__name__)
@@ -62,6 +63,7 @@ methods = [
 
 
 # init
+db = db()
 vision = googleVision()
 reCaptcha = recaptcha()
 ocr = ocr()
@@ -77,8 +79,6 @@ def get_methods():
 @app.route('/BD_Project/api/v1.0/methods/runAll', methods=['GET'])
 # @auth.login_required
 def runAll():
-    
-    
     path = request.args.get('path')
     if path is None:
         abort(404)
@@ -155,38 +155,32 @@ def googleReCaptcha():
 # @auth.login_required
 def get_method(method_id):
     url = request.args.get('url')
-    # key = request.args.get('key')
+    api_key = request.args.get('key')
     method = list(filter(lambda t: t['id'] == method_id, methods))
-    if len(method) == 0 or url is None:
+    if len(method) == 0 or url is None or api_key is None:
         abort(404)
 
-    rand = datetime.datetime.now().strftime("%Y%m%d%H%M%S") + '_' + str(randint(1,32768))
-    captchaResult = captcha_methods[method_id-1].run(url, rand)
-    
-    return jsonify(
-        {
-            'method' + str(method_id): 
-            {
-                'name' : methods[method_id-1]['description'],
-                'tesseract_result' : re.sub('[^a-zA-Z0-9]', '', ocr.ocr_text(uri + captchaResult).replace(' ', '')),
-                'googleVision_result' : re.sub('[^a-zA-Z0-9]', '', vision.detect_text_uri(uri + captchaResult).replace(' ', ''))
-            }
-        })
+    if validate(api_key):
+        rand = datetime.datetime.now().strftime("%Y%m%d%H%M%S") + '_' + str(randint(1,32768))
+        captchaResult = captcha_methods[method_id-1].run(url, rand)
+        if captchaResult != '':
+            tesseractResult = re.sub('[^a-zA-Z0-9]', '', ocr.ocr_text(uri + captchaResult).replace(' ', ''))
+            visionResult = re.sub('[^a-zA-Z0-9]', '', vision.detect_text_uri(uri + captchaResult).replace(' ', ''))
+        else:
+            tesseractResult = ''
+            visionResult = ''
 
-@app.route('/BD_Project/api/v1.0/methods/<int:method_id>', methods=['POST'])
-def create_method(method_id):
-    if not request.json or not 'image' in request.json:
-        abort(400)
-    # with open('report.xls', 'rb') as f: 
-        # r = requests.post('http://httpbin.org/post', files={'report.xls': f})
-    method = {
-        'id': methods[-1]['id'] + 1,
-        'method': request.json.get('method', ""),
-        'description': request.json.get('description', ""),
-        'result': 'pathtofile'
-    }
-    methods.append(method)
-    return jsonify({'method': method}), 201
+        return jsonify(
+            {
+                'method' + str(method_id): 
+                {
+                    'name' : methods[method_id-1]['description'],
+                    'tesseract_result' : tesseractResult,
+                    'googleVision_result' : visionResult
+                }
+            })
+    else:
+        abort(422)
 
 @auth.get_password
 def get_password(username):
@@ -198,7 +192,13 @@ def get_password(username):
 def unauthorized():
     return make_response(jsonify({'error': 'Unauthorized access'}), 401)
 
-
+def validate(api_key):
+    print(api_key)
+    data = db.execute('SELECT * FROM db_captcha_user WHERE api_key="'+api_key+'"')
+    if data is not None:
+        return True
+    else:
+        return False
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)

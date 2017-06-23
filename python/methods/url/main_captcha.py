@@ -18,6 +18,8 @@ class main_captcha:
         self.threshold = 3
     def run(self, url, rand):
         img = self.converter.url_to_image(url)
+        if img is None:
+            return ''
         # Convert to RGB mode
         if img.mode != "RGB":
             img = img.convert("RGB")

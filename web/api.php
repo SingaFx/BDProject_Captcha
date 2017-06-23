@@ -101,7 +101,10 @@
             <!-- Preformatted Code -->
                 <h3>Example</h3>
                 <pre><code>
-                http://27.105.245.67:8080/BD_Project/api/v1.0/methods/1?url=http://140.138.152.207/house/BDProject/upload/20170617122555_30997/src.png
+                <?php
+                echo 'http://27.105.245.67:8080/BD_Project/api/v1.0/methods/1?key='.$key.'&url=http://140.138.152.207/house/BDProject/upload/20170617122555_30997/src.png';
+                ?>
+                
                 </code></pre>
                 <hr class="major" />
                 <h3>Result</h3>

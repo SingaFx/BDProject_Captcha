@@ -1,24 +1,28 @@
 #!/usr/bin/python3
 
-import PyMySQL
+import pymysql
 
 class db:
-    __init__(self):
+    def __init__(self):
         # Open database connection
-        self.db = PyMySQL.connect("140.138.152.207","blazing93","metoer95188","house" )
+        self.db = pymysql.connect("140.138.152.207","blazing93","meteor95188","house" )
+
+    def execute(self, query):
+        # connection is not autocommit by default. So you must commit to save
+        # your changes.
+        self.db = pymysql.connect("140.138.152.207","blazing93","meteor95188","house" )
+        self.db.commit()
 
         # prepare a cursor object using cursor() method
-        self.cursor = self.db.cursor()
-
-    execute(self, query):
+        cursor = self.db.cursor()
         # execute SQL query using execute() method.
-        self.cursor.execute("SELECT VERSION()")
-
+        cursor.execute(query)
+        
         # Fetch a single row using fetchone() method.
-        data = self.cursor.fetchone()
+        data = cursor.fetchone()
 
         return data
 
-    close(self):
+    def close(self):
         # disconnect from server
         self.db.close()
