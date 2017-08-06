@@ -7,10 +7,12 @@ import sys
 import requests
 sys.path.append('../../')
 from util.convertImage import convertImage
+from util.GetConfig import GetConfig
 
 class benny_captcha:
     def __init__(self):
         self.converter = convertImage()
+        self.config = GetConfig()
         self.threshold = 3
 
     def run(self, url, rand):
@@ -27,7 +29,7 @@ class benny_captcha:
                 os.makedirs('img/' + rand)        
                 
             cv2.imwrite('img/' + rand + '/3_test.png', im)
-            r = requests.post('http://140.138.152.207/house/BDProject/receiver.php', files={'3_test': open('img/' + rand + '/3_test.png', 'rb')}, data={'path':rand})
+            r = requests.post(self.config.Web_host + 'receiver.php', files={'3_test': open('img/' + rand + '/3_test.png', 'rb')}, data={'path':rand})
             print (r.text)
             return rand + '/3_test.png'
         return ''

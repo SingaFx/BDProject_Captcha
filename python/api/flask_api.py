@@ -67,7 +67,7 @@ db = db()
 vision = googleVision()
 reCaptcha = recaptcha()
 ocr = ocr()
-uri = 'http://140.138.152.207/house/BDProject/upload/'
+uri = 'http://localhost/BDProject/upload/'
 main = main_captcha()
 benny = benny_captcha()
 canny = canny_captcha()
@@ -85,7 +85,7 @@ def runAll():
     pathArr = []
     for index, method in enumerate(captcha_methods):
         # 'http://140.138.152.207/house/BDProject/upload/' + rand + '/src.png'
-        pathArr.append(captcha_methods[index].run('http://140.138.152.207/house/BDProject/upload/' + path + '/src.png', path))
+        pathArr.append(captcha_methods[index].run(uri + path + '/src.png', path))
     resultArr = []
     
     for index, captcha in enumerate(pathArr):

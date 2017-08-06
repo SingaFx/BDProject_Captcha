@@ -80,12 +80,11 @@
                 <div class="row uniform">
                     <div class="9u 12u$(small)">
                         <?php
-                        $database = mysql_connect( "140.138.152.207","blazing93", "meteor95188" );
-                        if ( !mysql_select_db( "house", $database ) )
-                            die( "Could not open database!" );
-                        $result = mysql_query("SELECT api_key FROM db_captcha_user WHERE account = '".mysql_real_escape_string($_SESSION["account"])."'", $database);
-                        $row = mysql_fetch_row($result);
-                        $key = $row[0];
+                        require 'db_connection.php';
+
+                        $result = $conn->query("SELECT * FROM user WHERE account = '".$_SESSION["account"]."'");
+                        $row = $result->fetch(PDO::FETCH_ASSOC);
+                        $key = $row['api_key'];
                         if($key != '')
                             echo '<input type="text" name="api_key" id="api_key" value="'.$key.'" placeholder="API" readonly>';
                         else
@@ -102,7 +101,8 @@
                 <h3>Example</h3>
                 <pre><code>
                 <?php
-                echo 'http://27.105.245.67:8080/BD_Project/api/v1.0/methods/1?key='.$key.'&url=http://140.138.152.207/house/BDProject/upload/20170617122555_30997/src.png';
+                require 'config.php';
+                echo $api_url.'1?key='.$key.'&url='.$url.'upload/20170617122555_30997/src.png';
                 ?>
                 
                 </code></pre>

@@ -100,12 +100,6 @@ class recaptcha:
                 return True
         return False
 
-
-
-
-
-
-
     # 將本地端全部recaptcha切塊
     def cropAll(self, num):
         folder = 'car'

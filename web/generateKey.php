@@ -33,12 +33,10 @@
 
     $account = $_SESSION["account"];
     $token = getToken(40);
-    $database = mysql_connect( "140.138.152.207","blazing93", "meteor95188" );
-    if ( !mysql_select_db( "house", $database ) )
-        die( "Could not open database!" );
+    require 'db_connection.php';
 
     // 更新資料庫
-    $sql = "UPDATE db_captcha_user SET api_key = '".$token."' WHERE account = '".mysql_real_escape_string($account)."'";
-    $result = mysql_query( $sql, $database );
+    $sql = "UPDATE user SET api_key = '".$token."' WHERE account = '".$account."'";
+    $result = $conn->query($sql);
     echo $token;
 ?>

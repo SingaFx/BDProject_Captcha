@@ -5,11 +5,12 @@ import os
 import requests
 sys.path.append('../../')
 from util.convertImage import convertImage
-
+from util.GetConfig import GetConfig
 
 class canny_captcha:
     def __init__(self):
         self.converter = convertImage()
+        self.config = GetConfig()
         self.threshold = 3
 
     def run(self, url, rand):
@@ -53,7 +54,7 @@ class canny_captcha:
                 os.makedirs('img/' + rand)        
             # cv2.imshow('Canny', canny)  
             cv2.imwrite('img/' + rand + '/2_canny.png', canny)
-            r = requests.post('http://140.138.152.207/house/BDProject/receiver.php', files={'2_canny': open('img/' + rand + '/2_canny.png', 'rb')}, data={'path':rand})
+            r = requests.post(self.config.Web_host + 'receiver.php', files={'2_canny': open('img/' + rand + '/2_canny.png', 'rb')}, data={'path':rand})
             print (r.text)
             # cv2.waitKey(0)  
             # cv2.destroyAllWindows()

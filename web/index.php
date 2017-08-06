@@ -595,13 +595,14 @@
                             {
                                 form.classList.remove( 'is-processing' );
                                 var data = JSON.parse(xhr.responseText);
+                                var webHost = 'http://localhost/'
                                 // alert()
                                 //alert(xhr.responseText)
                                 $('#imageContainer').empty();
                                 $('#resultContainer').empty();
-                                $('#imageContainer').append("<img src="+'http://140.138.152.207/house/BDProject/upload/' + data['method1']['path'] + ' height="100" width="200"' + " />");
-                                $('#imageContainer').append("<img src="+'http://140.138.152.207/house/BDProject/upload/' + data['method2']['path'] + ' height="100" width="200"' + " />");
-                                $('#imageContainer').append("<img src="+'http://140.138.152.207/house/BDProject/upload/' + data['method3']['path'] + ' height="100" width="200"' + " />");
+                                $('#imageContainer').append("<img src="+webHost+'BDProject/upload/' + data['method1']['path'] + ' height="100" width="200"' + " />");
+                                $('#imageContainer').append("<img src="+webHost+'BDProject/upload/' + data['method2']['path'] + ' height="100" width="200"' + " />");
+                                $('#imageContainer').append("<img src="+webHost+'BDProject/upload/' + data['method3']['path'] + ' height="100" width="200"' + " />");
                                 $('#resultContainer').append("<div><span style='color:#737CA1;'>Tesseract result:</span><div>");
                                 $('#resultContainer').append("<span style='color:#737CA1; width: 200px; display: inline-block;'> " + data['method1']['tesseract_result'] + " </span>");
                                 $('#resultContainer').append("<span style='color:#737CA1; width: 200px; display: inline-block;'> " + data['method2']['tesseract_result'] + " </span>");
@@ -664,7 +665,7 @@
                     */
                     ajax.onload = function()
                     {
-                        var host = "http://27.105.245.67"
+                        var host = "http://localhost"
                         form.classList.remove( 'is-uploading' );
                         if( ajax.status >= 200 && ajax.status < 400 )
                         {

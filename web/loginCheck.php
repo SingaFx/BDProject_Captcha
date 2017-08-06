@@ -3,14 +3,12 @@
 	$userAcc = trim($_POST["account"]);
 	$userPwd = trim($_POST["password"]);
 
-	$database = mysql_connect( "140.138.152.207","blazing93", "meteor95188" );
-	if ( !mysql_select_db( "house", $database ) )
-	   die( "Could not open database!" );
+	require 'db_connection.php';
 	// 比對其帳號與密碼
-	$sql = "SELECT * FROM db_captcha_user WHERE account = '".mysql_real_escape_string($userAcc)."' AND password = '".mysql_real_escape_string($userPwd)."' ";
-	$result = mysql_query( $sql, $database );
+	$sql = "SELECT * FROM user WHERE account = '".$userAcc."' AND password = '".$userPwd."' ";
+	$result = $conn->query($sql);
 
-	$row = mysql_fetch_row($result);
+	$row = $result->fetch(PDO::FETCH_ASSOC);
 
 	// 依檢查結果分別導向主作業畫面與錯誤警告畫面
 	if ($row != null && $userAcc != null && $userPwd != null) {

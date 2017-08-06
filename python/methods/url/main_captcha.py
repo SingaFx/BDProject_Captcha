@@ -11,10 +11,12 @@ from PIL import Image, ImageEnhance
 
 sys.path.append('../../')
 from util.convertImage import convertImage
+from util.GetConfig import GetConfig
 
 class main_captcha:
     def __init__(self):
         self.converter = convertImage()
+        self.config = GetConfig()
         self.threshold = 3
     def run(self, url, rand):
         img = self.converter.url_to_image(url)
@@ -38,7 +40,7 @@ class main_captcha:
             os.makedirs('img/' + rand)
             
         img.save('img/' + rand + '/1_bright.png')
-        r = requests.post('http://140.138.152.207/house/BDProject/receiver.php', files={'1_bright': open('img/' + rand + '/1_bright.png', 'rb')}, data={'path':rand})
+        r = requests.post(self.config.Web_host + 'receiver.php', files={'1_bright': open('img/' + rand + '/1_bright.png', 'rb')}, data={'path':rand})
         print (r.text)
         # for y in range(img.size[1]): 
             # for x in range(img.size[0]): 
@@ -89,7 +91,7 @@ class main_captcha:
         
 
         img.save('img/' + rand + '/1_black.png')
-        r = requests.post('http://140.138.152.207/house/BDProject/receiver.php', files={'1_black': open('img/' + rand + '/1_black.png', 'rb')}, data={'path':rand})
+        r = requests.post(self.config.Web_host + 'receiver.php', files={'1_black': open('img/' + rand + '/1_black.png', 'rb')}, data={'path':rand})
         print (r.text)
 
         # 平滑補強
