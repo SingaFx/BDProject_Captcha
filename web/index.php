@@ -595,7 +595,7 @@
                             {
                                 form.classList.remove( 'is-processing' );
                                 var data = JSON.parse(xhr.responseText);
-                                var webHost = 'http://localhost/'
+                                var webHost = 'http://140.138.152.207/'
                                 // alert()
                                 //alert(xhr.responseText)
                                 $('#imageContainer').empty();
@@ -665,7 +665,7 @@
                     */
                     ajax.onload = function()
                     {
-                        var host = "http://localhost"
+                        var host = "http://140.138.152.199"
                         form.classList.remove( 'is-uploading' );
                         if( ajax.status >= 200 && ajax.status < 400 )
                         {

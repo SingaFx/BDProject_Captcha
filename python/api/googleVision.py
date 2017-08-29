@@ -31,7 +31,7 @@ class googleVision:
     def detect_text(self, path):
         """Detects text in the file."""
         client = vision.ImageAnnotatorClient()
-
+        print(path)
         with io.open(path, 'rb') as image_file:
             content = image_file.read()
 
@@ -39,15 +39,11 @@ class googleVision:
 
         response = client.text_detection(image=image)
         texts = response.text_annotations
-        print('Texts:')
-
-        for text in texts:
-            print('\n"{}"'.format(text.description))
-
-            vertices = (['({},{})'.format(vertex.x, vertex.y)
-                        for vertex in text.bounding_poly.vertices])
-
-            print('bounds: {}'.format(','.join(vertices)))
+        if len(texts) > 0:
+            print('Text:' + texts[0].description.replace('\n', '').encode(sys.stdin.encoding, "replace").decode(sys.stdin.encoding))
+            return texts[0].description.replace('\n', '')
+        else:
+            return ''
 
     def detect_text_uri(self, uri):
         """Detects text in the file located in Google Cloud Storage or on the Web.
@@ -79,17 +75,17 @@ class googleVision:
         response = client.text_detection(image=image)
         print(response)
         texts = response.text_annotations
-        print('Texts:')
-
-        for text in texts:
-            print('\n"{}"'.format(text.description))
-
-            vertices = (['({},{})'.format(vertex.x, vertex.y)
-                        for vertex in text.bounding_poly.vertices])
-
-            print('bounds: {}'.format(','.join(vertices)))
+        if len(texts) > 0:
+            print('Text:' + texts[0].description.replace('\n', '').encode(sys.stdin.encoding, "replace").decode(sys.stdin.encoding))
+            return texts[0].description.replace('\n', '')
+        else:
+            return ''
 
 if __name__ == "__main__":
     v = googleVision()
-    print(v.detect_text_uri('http://218.161.48.30/BDProject/upload/20170805143147_785264572/3_test.png'))
-    # v.detect_text('./img/text.png')
+    # v.detect_text_uri('http://140.138.152.207/BDProject/upload/20170824061839_4301/3_test.png')
+    # print(v.detect_text_uri('https://pic.brushes8.com/uploads/2012/12/text-logo-27.jpg'))
+    
+
+    # v.detect_text('D:/BDProject_Captcha/python/img/yzu_course/0_black.bmp')
+    v.detect_text('D:/BDProject_Captcha/python/api/img/20170824084000_25223/3_test.png')

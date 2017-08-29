@@ -39,6 +39,22 @@ class GetConfig(object):
         return self.config_file.get('Web', 'host')
 
     @LazyProperty
+    def DB_host(self):
+        return self.config_file.get('DB', 'host')    
+
+    @LazyProperty
+    def DB_username(self):
+        return self.config_file.get('DB', 'username')
+
+    @LazyProperty
+    def DB_password(self):
+        return self.config_file.get('DB', 'password')
+
+    @LazyProperty
+    def DB_database(self):
+        return self.config_file.get('DB', 'database')
+
+    @LazyProperty
     def pytesseract_traindata(self):
         return self.config_file.get('pytesseract', 'traindata')
 

@@ -1,0 +1,6 @@
+flask==0.12.2
+flask_httpauth==3.2.3
+flask_cors==3.0.3
+google-cloud-vision==0.26.0
+clarifai==2.0.31
+pytesseract==0.1.7

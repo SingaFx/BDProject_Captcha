@@ -13,10 +13,12 @@ class benny_captcha:
     def __init__(self):
         self.converter = convertImage()
         self.config = GetConfig()
-        self.threshold = 3
+        self.threshold = 4
+        self.rand = -1
 
     def run(self, url, rand):
         im = self.converter.cv_url_to_image(url)
+        self.rand = rand
         if im is not None:
             im = self.Binarization(im)
             im = self.NoiseReduce_eight(im, self.threshold)
@@ -29,6 +31,7 @@ class benny_captcha:
                 os.makedirs('img/' + rand)        
                 
             cv2.imwrite('img/' + rand + '/3_test.png', im)
+            self.Image_Cut(im)
             r = requests.post(self.config.Web_host + 'receiver.php', files={'3_test': open('img/' + rand + '/3_test.png', 'rb')}, data={'path':rand})
             print (r.text)
             return rand + '/3_test.png'
@@ -151,7 +154,7 @@ class benny_captcha:
             for j in range(img_height):
                 if image[j,i] != 255:
                     ColorCount[image[j,i]] += 1
-        pArea = float(threshold)
+        pArea = float(20)
         #Get rid of noise point
         for i in range(len(image)):
             for j in range(len(image[i])):
@@ -163,6 +166,65 @@ class benny_captcha:
                     image[j,i] = 0
         return image
 
+
+    #文字切割
+    def Image_Cut(self, im):
+        # im = cv2.dilate(im, (2, 2), iterations=1)
+        #cv2.imwrite(path + '_result.png', im)
+        _, contours, _ = cv2.findContours(im.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        cnts = sorted([(c, cv2.boundingRect(c)[0]) for c in contours], key=lambda x:x[1])
+        arr = []
+        for index, (c, _) in enumerate(cnts):
+            (x, y, w, h) = cv2.boundingRect(c)
+
+            try:
+                # 只將寬高大於 8 視為數字留存
+                if w > 8 and h > 8:
+                    add = True
+                    for i in range(0, len(arr)):
+                        # 這邊是要防止如 0、9 等，可能會偵測出兩個點，當兩點過於接近需忽略
+                        if abs(cnts[index][1] - arr[i][0]) <= 3:
+                            add = False
+                            break
+                    if add:
+                        arr.append((x, y, w, h))
+            except IndexError:
+                pass
+
+        for index, (x, y, w, h) in enumerate(arr):
+            roi = im[y: y + h, x: x + w]
+            thresh = roi.copy() 
+            
+            angle = 0
+            smallest = 999
+            row, col = thresh.shape
+
+            for ang in range(-60, 61):
+                M = cv2.getRotationMatrix2D((col / 2, row / 2), ang, 1)
+                t = cv2.warpAffine(thresh.copy(), M, (col, row))
+
+                r, c = t.shape
+                right = 0
+                left = 999
+
+                for i in range(r):
+                    for j in range(c):
+                        if t[i][j] == 255 and left > j:
+                            left = j
+                        if t[i][j] == 255 and right < j:
+                            right = j
+
+                if abs(right - left) <= smallest:
+                    smallest = abs(right - left)
+                    angle = ang
+
+            # M = cv2.getRotationMatrix2D((col / 2, row / 2), angle, 1)
+            # thresh = cv2.warpAffine(thresh, M, (col, row))
+            # # resize 成相同大小以利後續辨識
+            # thresh = cv2.resize(thresh, (50, 50))
+            cv2.imwrite('img/' + self.rand + '/3_' + str(index) + '.png', thresh)
+
+
 if __name__ == '__main__':
     benny = benny_captcha()
-    benny.captcha('20170610153454_9241')
+    benny.run('http://140.138.152.207/BDProject/upload/20170824092140_21554/src.png', '20170824092140_21554')

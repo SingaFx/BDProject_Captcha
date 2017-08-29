@@ -34,6 +34,7 @@ sys.path.append('../')
 from util.convertImage import convertImage
 from util.ocr import ocr
 from util.db import db
+from util.GetConfig import GetConfig
 
 auth = HTTPBasicAuth()
 app = Flask(__name__)
@@ -67,7 +68,8 @@ db = db()
 vision = googleVision()
 reCaptcha = recaptcha()
 ocr = ocr()
-uri = 'http://localhost/BDProject/upload/'
+config = GetConfig()
+uri = config.Web_host + 'upload/'
 main = main_captcha()
 benny = benny_captcha()
 canny = canny_captcha()
@@ -91,8 +93,16 @@ def runAll():
     for index, captcha in enumerate(pathArr):
         resultArr.append([])
         if captcha != '':
-            resultArr[index].append(re.sub('[^a-zA-Z0-9]', '', ocr.ocr_text(uri + captcha).replace(' ', '')))
-            resultArr[index].append(re.sub('[^a-zA-Z0-9]', '', vision.detect_text_uri(uri + captcha).replace(' ', '')))
+            ocrResult = ocr.ocr_text(uri + captcha)
+            visionResult = vision.detect_text("img/" + captcha)
+            if ocrResult != None:
+                resultArr[index].append(re.sub('[^a-zA-Z0-9]', '', ocrResult.replace(' ', '')))
+            else:
+                resultArr[index].append('')
+            if visionResult != None:
+                resultArr[index].append(re.sub('[^a-zA-Z0-9]', '', visionResult.replace(' ', '')))
+            else:
+                resultArr[index].append('')
         else:
             resultArr[index].append('')
             resultArr[index].append('')
@@ -164,8 +174,12 @@ def get_method(method_id):
         rand = datetime.datetime.now().strftime("%Y%m%d%H%M%S") + '_' + str(randint(1,32768))
         captchaResult = captcha_methods[method_id-1].run(url, rand)
         if captchaResult != '':
-            tesseractResult = re.sub('[^a-zA-Z0-9]', '', ocr.ocr_text(uri + captchaResult).replace(' ', ''))
-            visionResult = re.sub('[^a-zA-Z0-9]', '', vision.detect_text_uri(uri + captchaResult).replace(' ', ''))
+            tesseractResult = ocr.ocr_text(uri + captchaResult)
+            visionResult = vision.detect_text("img/" + captchaResult)
+            if tesseractResult != None:
+                tesseractResult = re.sub('[^a-zA-Z0-9]', '', tesseractResult.replace(' ', ''))
+            if visionResult != None:
+                visionResult = re.sub('[^a-zA-Z0-9]', '', visionResult.replace(' ', ''))
         else:
             tesseractResult = ''
             visionResult = ''
@@ -194,7 +208,7 @@ def unauthorized():
 
 def validate(api_key):
     print(api_key)
-    data = db.execute('SELECT * FROM db_captcha_user WHERE api_key="'+api_key+'"')
+    data = db.execute('SELECT * FROM user WHERE api_key="'+api_key+'"')
     if data is not None:
         return True
     else:
